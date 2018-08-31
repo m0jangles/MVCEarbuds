@@ -130,6 +130,7 @@ public class Song {
 			genres = new ArrayList<>();
 
 		if (!genres.contains(genre)) {
+			genres.add(genre);
 			genre.addSong(this);
 		}
 	}
