@@ -49,29 +49,4 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 	    return u;
 	  }
 	
-	@Override
-	public User createUser(User user) {
-		
-		em.persist(user);
-		
-		em.flush();
-		
-		return user;
-		
-		
-	}
-	
-	@Override
-	public boolean destroyUser(User user) {
-		User u = em.find(User.class, user.getId());
-		em.remove(u);
-		
-		if(em.find(User.class, u.getId()) == null)
-			return true;
-		else
-			return false;	
-			
-	}
-
-
 }
