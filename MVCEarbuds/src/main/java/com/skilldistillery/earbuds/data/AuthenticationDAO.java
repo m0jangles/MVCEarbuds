@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.data;
 
+import java.util.List;
+
 import com.skilldistillery.earbuds.entities.User;
 
 public interface AuthenticationDAO {
@@ -11,5 +13,7 @@ public interface AuthenticationDAO {
 	public User findUserById(int userId);
 
 	public boolean destroyUser(User user);
+
+	List<User> getAllUsers();
 
 }

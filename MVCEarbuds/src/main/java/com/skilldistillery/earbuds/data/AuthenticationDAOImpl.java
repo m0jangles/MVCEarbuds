@@ -1,6 +1,6 @@
 package com.skilldistillery.earbuds.data;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -14,15 +14,24 @@ import com.skilldistillery.earbuds.entities.User;
 @Transactional
 public class AuthenticationDAOImpl implements AuthenticationDAO {
 	private EntityManager em;
+	private AuthenticationDAOImpl dao; 
 	
-	private Map<Integer, User> users;
 
 	@Override
+	public List<User> getAllUsers() {
+		String query = "SELECT u FROM User u";
+		List<User> users = em.createQuery(query, User.class).getResultList();
+		
+		return users;
+		
+	}
+	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
+		
 		User u = null;
-		Set<Integer> keys = users.keySet();
-		for (Integer key : keys) {
-			User user = users.get(key);
+		List<User> users = dao.getAllUsers();
+		
+		for (User user : users) {
 			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 				u = user;
 				break;
@@ -33,6 +42,7 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 	
 	@Override
 	  public User findUserById(int userId) {
+		List<User> users = dao.getAllUsers();
 	    User u = users.get(userId);
 	    
 	    return u;
@@ -61,5 +71,6 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 			return false;	
 			
 	}
+
 
 }
