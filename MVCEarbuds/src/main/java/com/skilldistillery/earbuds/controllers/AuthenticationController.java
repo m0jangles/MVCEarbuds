@@ -27,7 +27,8 @@ public class AuthenticationController {
 		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
 		if(daoUser == null) {
 			mv.setViewName("login");
-			errors.rejectValue("userName", "error.userName", "Invalid credentials");
+			errors.rejectValue("username", "error.username", "Invalid credentials");
+			errors.rejectValue("password", "error.password", "Invalid credentials");
 		}
 		else {
 			// load the User object into session, and redirect to their feed, homepage.do
