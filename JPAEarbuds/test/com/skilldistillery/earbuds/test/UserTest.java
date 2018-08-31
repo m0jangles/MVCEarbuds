@@ -52,9 +52,13 @@ class UserTest {
 	}
 	@Test
 	void test_user_addFriends_adds_friends_to_both() {
+		// Find another user
 		User f = em.find(User.class, 2);
+		// add that second user to first user's friend list
 		u.addFriend(f);
+		// test that user f is now in user u's list
 		assertTrue(u.getFriends().contains(f));
+		// test that user u is now in user f's list
 		assertTrue(f.getFriends().contains(u));
 	}
 	@Test
