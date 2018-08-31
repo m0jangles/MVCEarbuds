@@ -21,7 +21,7 @@ public class Playlist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column
+	@Column(name = "name")
 	private String playlistName;
 
 	@ManyToOne
