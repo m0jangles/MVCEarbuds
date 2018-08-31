@@ -134,7 +134,8 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + "]";
+		return "Location [id=" + id + ", city=" + city + ", state=" + state
+				+ ", country=" + country + "]";
 	}
 
 	public void addProfile(Profile profile) {

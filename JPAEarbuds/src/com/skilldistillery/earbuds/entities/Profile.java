@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 public class Profile {
 
 	// fields
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -47,10 +48,8 @@ public class Profile {
 
 	}
 
-	
-
-	public Profile(int id, User user, String image, String firstName, String lastName, Location location,
-			List<Playlist> playlists) {
+	public Profile(int id, User user, String image, String firstName,
+			String lastName, Location location, List<Playlist> playlists) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -60,8 +59,6 @@ public class Profile {
 		this.location = location;
 		this.playlists = playlists;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -118,12 +115,13 @@ public class Profile {
 	public void setPlaylists(List<Playlist> playlists) {
 		this.playlists = playlists;
 	}
-    // helpers
 	
-	
+	// helpers
+
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName
+				+ ", lastName=" + lastName + "]";
 	}
 
 	@Override
@@ -139,8 +137,6 @@ public class Profile {
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -185,8 +181,6 @@ public class Profile {
 			return false;
 		return true;
 	}
-
-
 
 	public void addPlaylist(Playlist playlist) {
 		if (playlists == null)

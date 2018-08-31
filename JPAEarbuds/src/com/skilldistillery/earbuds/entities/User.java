@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 public class User {
 
 	// fields
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -25,7 +26,8 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
 	@ManyToMany
-	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
+	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "friend_id"))
 	private List<User> friends;
 
 	// constructors
@@ -33,7 +35,8 @@ public class User {
 	public User() {
 	}
 
-	public User(int id, String username, String password, String email, Profile profile, List<User> friends) {
+	public User(int id, String username, String password, String email,
+			Profile profile, List<User> friends) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -43,7 +46,7 @@ public class User {
 		this.friends = friends;
 	}
 
-	// Getters and Setters
+	// Getters & Setters
 
 	public int getId() {
 		return id;
@@ -93,7 +96,7 @@ public class User {
 		this.friends = friends;
 	}
 
-	// Add and Remove Helpers
+	// Helpers
 
 	@Override
 	public int hashCode() {
@@ -167,7 +170,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "]";
+		return "User [id=" + id + ", username=" + username + ", password="
+				+ password + ", email=" + email + "]";
 	}
 
 }

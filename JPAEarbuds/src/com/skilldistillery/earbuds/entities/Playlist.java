@@ -14,32 +14,34 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Playlist {
+
 	// fields
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column
 	private String playlistName;
-	
+
 	@ManyToOne
-	@JoinColumn(name="profile_id")
+	@JoinColumn(name = "profile_id")
 	private Profile profile;
-	
-	@Column(name="is_private")
+
+	@Column(name = "is_private")
 	private int isPrivate;
-	
-	@ManyToMany(mappedBy="playlists")
+
+	@ManyToMany(mappedBy = "playlists")
 	private List<Song> songs;
-	
+
 	// constructors
-	
+
 	public Playlist() {
-		
+
 	}
-	
-	public Playlist(int id, String playlistName, Profile profile, int isPrivate, List<Song> songs) {
+
+	public Playlist(int id, String playlistName, Profile profile, int isPrivate,
+			List<Song> songs) {
 		super();
 		this.id = id;
 		this.playlistName = playlistName;
@@ -48,16 +50,15 @@ public class Playlist {
 		this.songs = songs;
 	}
 
-    // getters and setters
+	// getters and setters
+	
 	public Profile getProfile() {
 		return profile;
 	}
 
-
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
-
 
 	public int getId() {
 		return id;
@@ -75,7 +76,6 @@ public class Playlist {
 		this.playlistName = playlistName;
 	}
 
-
 	public int getIsPrivate() {
 		return isPrivate;
 	}
@@ -83,15 +83,17 @@ public class Playlist {
 	public void setIsPrivate(int isPrivate) {
 		this.isPrivate = isPrivate;
 	}
-	
+
 	// helpers
-    @Override
+	
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + isPrivate;
-		result = prime * result + ((playlistName == null) ? 0 : playlistName.hashCode());
+		result = prime * result
+				+ ((playlistName == null) ? 0 : playlistName.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
 		result = prime * result + ((songs == null) ? 0 : songs.hashCode());
 		return result;
@@ -130,9 +132,10 @@ public class Playlist {
 
 	@Override
 	public String toString() {
-		return "Playlist [id=" + id + ", playlistName=" + playlistName + ", isPrivate=" + isPrivate + "]";
+		return "Playlist [id=" + id + ", playlistName=" + playlistName
+				+ ", isPrivate=" + isPrivate + "]";
 	}
-	
+
 	public void addSong(Song song) {
 		if (songs == null)
 			songs = new ArrayList<>();
@@ -149,6 +152,5 @@ public class Playlist {
 		}
 
 	}
-	
-	
+
 }
