@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -86,6 +87,24 @@ public class User {
 	}
 	
 	// Add and Remove Helpers
+	
+	public void addFriend(User friend) {
+		if (friends == null)
+			friends = new ArrayList<>();
+
+		if (!friends.contains(friend)) {
+			friends.add(friend);
+			friend.getFriends().add(this);
+		}
+		
+	}
+
+	public void removeFriend(User friend) {
+		if (friends != null && friends.contains(friend)) {
+			friends.remove(friend);
+			friend.getFriends().remove(this);
+		}
+	}
 
 	@Override
 	public String toString() {

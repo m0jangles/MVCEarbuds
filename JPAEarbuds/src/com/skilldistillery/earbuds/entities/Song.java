@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -107,6 +108,30 @@ public class Song {
 	}
 
 	// Add and Remove Helpers
+	
+	public void addGenre(Genre genre) {
+		if (genres == null)
+			genres = new ArrayList<>();
+
+		if (!genres.contains(genre)) {
+			genre.addSong(this);
+		}
+	}
+
+	public void removeGenre(Genre genre) {
+		if (genres != null && genres.contains(genre)) {
+			genres.remove(genre);
+			genre.removeSong(this);
+		}
+	}
+	
+	public void addPlaylist(Playlist playlist) {
+		
+	}
+	
+	public void removePlaylist(Playlist playlist) {
+		
+	}
 
 	@Override
 	public String toString() {
