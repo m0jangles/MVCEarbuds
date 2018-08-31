@@ -126,12 +126,21 @@ public class Song {
 	}
 	
 	public void addPlaylist(Playlist playlist) {
-		
+		if (playlists == null) {
+			playlists = new ArrayList<>();
+		}
+		if (!playlists.contains(playlist)) {
+			playlists.addSong(this);
+		}
+			
+	}
+	public void removePlaylist(Playlist playlist) {
+		if (playlists != null && playlists.contains(playlist)) {
+			playlists.remove(playlist);
+			playlist.removeSong(this);
+		}
 	}
 	
-	public void removePlaylist(Playlist playlist) {
-		
-	}
 
 	@Override
 	public String toString() {
