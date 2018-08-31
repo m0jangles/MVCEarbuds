@@ -21,7 +21,7 @@ public class Playlist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column
+	@Column(name = "name")
 	private String playlistName;
 
 	@ManyToOne
@@ -84,8 +84,17 @@ public class Playlist {
 		this.isPrivate = isPrivate;
 	}
 
+	
 	// helpers
 	
+	public List<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
