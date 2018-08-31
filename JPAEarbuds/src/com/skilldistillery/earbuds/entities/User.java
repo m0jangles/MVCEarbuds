@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class User {
+
+	// fields
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,14 +28,19 @@ public class User {
 	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
 	private List<User> friends;
 
-	public User(int id, String username, String password, String email) {
+	// constructors
+
+	public User() {
+	}
+
+	public User(int id, String username, String password, String email, Profile profile, List<User> friends) {
+		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-	}
-
-	public User() {
+		this.profile = profile;
+		this.friends = friends;
 	}
 
 	// Getters and Setters
@@ -85,9 +92,61 @@ public class User {
 	public void setFriends(List<User> friends) {
 		this.friends = friends;
 	}
-	
+
 	// Add and Remove Helpers
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (friends == null) {
+			if (other.friends != null)
+				return false;
+		} else if (!friends.equals(other.friends))
+			return false;
+		if (id != other.id)
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (profile == null) {
+			if (other.profile != null)
+				return false;
+		} else if (!profile.equals(other.profile))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
 	public void addFriend(User friend) {
 		if (friends == null)
 			friends = new ArrayList<>();
@@ -96,7 +155,7 @@ public class User {
 			friends.add(friend);
 			friend.getFriends().add(this);
 		}
-		
+
 	}
 
 	public void removeFriend(User friend) {

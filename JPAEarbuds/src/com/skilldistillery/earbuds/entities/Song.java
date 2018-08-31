@@ -28,17 +28,22 @@ public class Song {
 	private List<Playlist> playlists;
 	@ManyToMany(mappedBy = "songs")
 	private List<Genre> genres;
-
+	// constructors
+	
 	public Song() {
 	}
 
-	public Song(int id, String title, String album, String albumImage, String url, String artist) {
+	public Song(int id, String title, String album, String albumImage, String url, String artist,
+			List<Playlist> playlists, List<Genre> genres) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.album = album;
 		this.albumImage = albumImage;
 		this.url = url;
 		this.artist = artist;
+		this.playlists = playlists;
+		this.genres = genres;
 	}
 
 	// Getters and Setters
@@ -141,6 +146,70 @@ public class Song {
 		}
 	}
 	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((album == null) ? 0 : album.hashCode());
+		result = prime * result + ((albumImage == null) ? 0 : albumImage.hashCode());
+		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((playlists == null) ? 0 : playlists.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Song other = (Song) obj;
+		if (album == null) {
+			if (other.album != null)
+				return false;
+		} else if (!album.equals(other.album))
+			return false;
+		if (albumImage == null) {
+			if (other.albumImage != null)
+				return false;
+		} else if (!albumImage.equals(other.albumImage))
+			return false;
+		if (artist == null) {
+			if (other.artist != null)
+				return false;
+		} else if (!artist.equals(other.artist))
+			return false;
+		if (genres == null) {
+			if (other.genres != null)
+				return false;
+		} else if (!genres.equals(other.genres))
+			return false;
+		if (id != other.id)
+			return false;
+		if (playlists == null) {
+			if (other.playlists != null)
+				return false;
+		} else if (!playlists.equals(other.playlists))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {

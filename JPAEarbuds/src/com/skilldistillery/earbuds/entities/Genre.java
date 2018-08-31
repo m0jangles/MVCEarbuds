@@ -72,6 +72,7 @@ public class Genre {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((songs == null) ? 0 : songs.hashCode());
 		return result;
 	}
 
@@ -90,6 +91,11 @@ public class Genre {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (songs == null) {
+			if (other.songs != null)
+				return false;
+		} else if (!songs.equals(other.songs))
 			return false;
 		return true;
 	}

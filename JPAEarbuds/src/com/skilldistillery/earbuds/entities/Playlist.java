@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Playlist {
+	// fields
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,12 +33,22 @@ public class Playlist {
 	@ManyToMany(mappedBy="playlists")
 	private List<Song> songs;
 	
-	//end fields
+	// constructors
 	
 	public Playlist() {
 		
 	}
 	
+	public Playlist(int id, String playlistName, Profile profile, int isPrivate, List<Song> songs) {
+		super();
+		this.id = id;
+		this.playlistName = playlistName;
+		this.profile = profile;
+		this.isPrivate = isPrivate;
+		this.songs = songs;
+	}
+
+    // getters and setters
 	public Profile getProfile() {
 		return profile;
 	}
@@ -71,6 +82,50 @@ public class Playlist {
 
 	public void setIsPrivate(int isPrivate) {
 		this.isPrivate = isPrivate;
+	}
+	
+	// helpers
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + isPrivate;
+		result = prime * result + ((playlistName == null) ? 0 : playlistName.hashCode());
+		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
+		result = prime * result + ((songs == null) ? 0 : songs.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Playlist other = (Playlist) obj;
+		if (id != other.id)
+			return false;
+		if (isPrivate != other.isPrivate)
+			return false;
+		if (playlistName == null) {
+			if (other.playlistName != null)
+				return false;
+		} else if (!playlistName.equals(other.playlistName))
+			return false;
+		if (profile == null) {
+			if (other.profile != null)
+				return false;
+		} else if (!profile.equals(other.profile))
+			return false;
+		if (songs == null) {
+			if (other.songs != null)
+				return false;
+		} else if (!songs.equals(other.songs))
+			return false;
+		return true;
 	}
 
 	@Override
