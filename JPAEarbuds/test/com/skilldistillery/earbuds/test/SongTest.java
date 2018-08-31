@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,26 +41,33 @@ class SongTest {
 		assertEquals("Africa", s.getTitle());
 		assertEquals("Toto", s.getArtist());
 	}
-	
+
 	@Test
 	void test_song_to_playlist_mappings() {
 		assertNotNull(s.getPlaylists());
 		assertNotEquals(0, s.getPlaylists().size());
 		assertEquals("Songs to Sing in the Shower", s.getPlaylists().get(0).getPlaylistName());
 	}
-	
+
 	@Test
 	void test_song_to_genres_mappings() {
 		assertNotNull(s.getPlaylists());
 		assertNotEquals(0, s.getGenres().size());
 		assertEquals("Rock", s.getGenres().get(0).getName());
 	}
-	
+
 	@Test
 	void test_song_add_genre_adds_genre() {
 		Genre g = em.find(Genre.class, 1);
 		s.addGenre(g);
 		assertTrue(s.getGenres().contains(g));
+	}
+
+	@Test
+	void test_song_remove_genre_removes_genre() {
+		Genre g = em.find(Genre.class, 1);
+		s.removeGenre(g);
+		assertFalse(s.getGenres().contains(g));
 	}
 
 }
