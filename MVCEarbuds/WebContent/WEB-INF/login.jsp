@@ -13,6 +13,7 @@
 
 	<h1>Earbuds</h1>
 
+	<h2>Log In</h2>
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<table>
 			<tr>
@@ -25,13 +26,11 @@
 				<td><form:input path="password" /></td>
 				<td><form:errors path="password" /></td>
 			</tr>
-			<tr>
-				<td><form:label path="email">Email:</form:label></td>
-				<td><form:input path="email" /></td>
-				<td><form:errors path="email" /></td>
-			</tr>
 		</table>
+		<input type="submit" value="Log In">
 	</form:form>
+	
+	<h2>Sign Up</h2>
 
 </body>
 </html>
