@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.skilldistillery.earbuds.data.UserDAO;
+import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.entities.User;
 
 @Controller
 public class AuthenticationController {
 	@Autowired
-	private UserDAO dao;
+	private AuthenticationDAO dao;
 
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
