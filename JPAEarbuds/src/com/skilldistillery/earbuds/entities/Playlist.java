@@ -84,8 +84,17 @@ public class Playlist {
 		this.isPrivate = isPrivate;
 	}
 
+	
 	// helpers
 	
+	public List<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
