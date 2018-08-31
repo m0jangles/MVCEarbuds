@@ -21,23 +21,22 @@ public class AuthenticationController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	// Login a user
-	@RequestMapping(path="login.do", method = RequestMethod.POST)
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView loginUser(User inputUser, Errors errors, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
-		if(daoUser == null) {
+		if (daoUser == null) {
 			mv.setViewName("login");
 			errors.rejectValue("username", "error.username", "Invalid credentials");
 			errors.rejectValue("password", "error.password", "Invalid credentials");
-		}
-		else {
+		} else {
 			// load the User object into session, and redirect to their feed, homepage.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
 			mv.setViewName("redirect:homepage.do");
 		}
 		return mv;
 	}
-	
+
 	// Redirect a user that is already logged in
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
@@ -48,17 +47,18 @@ public class AuthenticationController {
 			return "redirect:homepage.do";
 		}
 		model.addAttribute("user", new User());
+		model.addAttribute("userSignUp", new User());
 		return "login";
 	}
-	
+
 	// Homepage display
 	@RequestMapping(path = "homepage.do", method = RequestMethod.GET)
 	public String showHomepage() {
 		return "homepage";
 	}
-	
+
 	// Logout
-	@RequestMapping(path="logout.do")
+	@RequestMapping(path = "logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute(USER_IN_SESSION_KEY);
 		return "redirect:login.do";
