@@ -50,6 +50,12 @@ public class AuthenticationController {
 		model.addAttribute("user", new User());
 		return "login";
 	}
+	// Homepage display
+	
+	@RequestMapping(path = "homepage.do", method = RequestMethod.GET)
+	public String showHomepage() {
+		return "homepage";
+	}
 	
 	// Logout
 	@RequestMapping(path="logout.do")

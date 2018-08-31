@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
@@ -13,8 +14,8 @@ import com.skilldistillery.earbuds.entities.User;
 @Component
 @Transactional
 public class AuthenticationDAOImpl implements AuthenticationDAO {
+	@PersistenceContext
 	private EntityManager em;
-	private AuthenticationDAOImpl dao; 
 	
 
 	@Override
@@ -29,7 +30,7 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 	public User getUserByUserNameAndPassword(String username, String password) {
 		
 		User u = null;
-		List<User> users = dao.getAllUsers();
+		List<User> users = getAllUsers();
 		
 		for (User user : users) {
 			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
@@ -42,7 +43,7 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 	
 	@Override
 	  public User findUserById(int userId) {
-		List<User> users = dao.getAllUsers();
+		List<User> users = getAllUsers();
 	    User u = users.get(userId);
 	    
 	    return u;
