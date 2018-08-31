@@ -130,7 +130,7 @@ public class Song {
 			playlists = new ArrayList<>();
 		}
 		if (!playlists.contains(playlist)) {
-			playlists.addSong(this);
+			playlist.addSong(this);
 		}
 			
 	}
