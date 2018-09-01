@@ -15,8 +15,9 @@
 
 <a href="logout.do">Logout</a>
 
-<a href="viewPlaylists.do">View Playlists</a>
-<%-- <c:choose>
+<%-- <a href="viewPlaylists.do?user=${UserInSession.id }">View Playlists</a>
+
+<c:choose>
 <c:when test="${not empty UserInSession.profile.playlists }">
 <ul>
 <c:forEach var="playlist" items="${UserInSession.profile.playlists }">
@@ -30,7 +31,6 @@
 </c:otherwise>
 </c:choose>
  --%>
-
 
 
 </body>
