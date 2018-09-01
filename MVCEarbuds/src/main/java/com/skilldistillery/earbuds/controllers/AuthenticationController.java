@@ -15,7 +15,7 @@ import com.skilldistillery.earbuds.entities.User;
 
 @Controller
 public class AuthenticationController {
-	
+	// comment
 	@Autowired
 	private AuthenticationDAO dao;
 
