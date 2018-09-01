@@ -13,7 +13,6 @@
 
 	<h1>Earbuds</h1>
 
-	<!-- <h2>Log In</h2> -->
 	<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 		<legend> Log In </legend>
 		<form:form action="login.do" method="POST" modelAttribute="user">
@@ -33,31 +32,34 @@
 		</form:form>
 	</fieldset>
 
-	<h2>Sign Up</h2>
-	<form:form action="signUp.do" method="POST" modelAttribute="userSignUp">
-		<table>
-			<tr>
-				<td><form:label path="username">User name:</form:label></td>
-				<td><form:input path="username" /></td>
-				<td><form:errors path="username" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="password">Password:</form:label></td>
-				<td><form:input path="password" /></td>
-				<td><form:errors path="password" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="email">Email:</form:label></td>
-				<td><form:input path="email" /></td>
-				<td><form:errors path="email" /></td>
-			</tr>
-		</table>
-		<input type="submit" value="Sign Up">
-	</form:form>
+	<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
+		<legend> Sign Up </legend>
+		<form:form action="signUp.do" method="POST"
+			modelAttribute="userSignUp">
+			<table>
+				<tr>
+					<td><form:label path="username">Username:</form:label></td>
+					<td><form:input path="username" /></td>
+					<td><form:errors path="username" /></td>
+				</tr>
+				<tr>
+					<td><form:label path="password">Password:</form:label></td>
+					<td><form:input path="password" /></td>
+					<td><form:errors path="password" /></td>
+				</tr>
+				<tr>
+					<td><form:label path="email">Email:</form:label></td>
+					<td><form:input path="email" /></td>
+					<td><form:errors path="email" /></td>
+				</tr>
+			</table>
+			<input type="submit" value="Sign Up">
+		</form:form>
+	</fieldset>
 
-	<form action="logout.do">
-		<input type="submit" value="Log Out" />
-	</form>
+	<c:if test="${wasSignUpSuccessful}">
+		<p>User sign up was successful!</p>
+	</c:if>
 
 </body>
 </html>

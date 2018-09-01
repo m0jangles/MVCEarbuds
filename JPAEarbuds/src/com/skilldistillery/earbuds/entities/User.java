@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class User {
 
@@ -20,11 +22,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@NotEmpty
 	private String username;
+
+	@NotEmpty
 	private String password;
+
+	@NotEmpty
 	private String email;
+
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
+
 	@ManyToMany
 	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "friend_id"))

@@ -15,6 +15,7 @@ import com.skilldistillery.earbuds.entities.User;
 
 @Controller
 public class AuthenticationController {
+	
 	@Autowired
 	private AuthenticationDAO dao;
 
@@ -22,33 +23,45 @@ public class AuthenticationController {
 
 	// Login a user
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView loginUser(User inputUser, Errors errors, HttpSession session) {
+	public ModelAndView loginUser(User inputUser, Errors errors,
+			HttpSession session) {
+
 		ModelAndView mv = new ModelAndView();
-		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
+
+		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(),
+				inputUser.getPassword());
+
 		if (daoUser == null) {
 			mv.setViewName("login");
 			errors.rejectValue("username", "error.username", "Invalid credentials");
 			errors.rejectValue("password", "error.password", "Invalid credentials");
+			// We have to provide the modelAttribute("userSignUp") from the login.jsp
+			// the object it needs in order for the login page to display
 			mv.addObject("userSignUp", new User());
 		} else {
-			// load the User object into session, and redirect to their feed, homepage.do
+			// load the User object into session, and redirect to their feed,
+			// homepage.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
 			mv.setViewName("redirect:homepage.do");
 		}
+
 		return mv;
 	}
 
-	// Redirect a user that is already logged in
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
-		// If a user is logged in and requests login.do, they should be redirected to
-		// their feed (homepage.do)
+
+		model.addAttribute("user", new User());
+		model.addAttribute("userSignUp", new User());
+
+		// If a user is logged in and requests login.do, they should be redirected
+		// to their feed (homepage.do)
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
+
 		if (userInSession != null) {
 			return "redirect:homepage.do";
 		}
-		model.addAttribute("user", new User());
-		model.addAttribute("userSignUp", new User());
+
 		return "login";
 	}
 
