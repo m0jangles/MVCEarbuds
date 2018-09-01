@@ -29,6 +29,7 @@ public class AuthenticationController {
 			mv.setViewName("login");
 			errors.rejectValue("username", "error.username", "Invalid credentials");
 			errors.rejectValue("password", "error.password", "Invalid credentials");
+			mv.addObject("userSignUp", new User());
 		} else {
 			// load the User object into session, and redirect to their feed, homepage.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);

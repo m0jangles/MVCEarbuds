@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.User;
@@ -14,13 +13,15 @@ import com.skilldistillery.earbuds.entities.User;
 public class UserController {
 	@Autowired
 	private UserDAO userdao;
-	
+
 	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
-	public String createNewUser(User newuser, Model model) {
-		User signedUp = userdao.createUser(newuser);
+	public String createNewUser(User newUser, Model model) {
+		
+		User signedUp = userdao.createUser(newUser);
+		
 		model.addAttribute("userSignUp", signedUp);
+		
 		return "login";
 	}
-
 
 }
