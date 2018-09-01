@@ -15,18 +15,7 @@ import com.skilldistillery.earbuds.entities.User;
 public class ProfileDAOImpl implements ProfileDAO {
 	@PersistenceContext
 	private EntityManager em;
-	private Profile userProfile;
 	private String query;
-
-	@Override
-	public Profile getInfo(User user) {
-		userProfile.setFirstName(user.getProfile().getFirstName());
-		userProfile.setLastName(user.getProfile().getLastName());
-		userProfile.setImage(user.getProfile().getImage());
-		userProfile.setLocation(user.getProfile().getLocation());
-		userProfile.setPlaylists(user.getProfile().getPlaylists());
-		return userProfile;
-	}
 
 	@Override
 	public boolean updateInfo(User user) {
