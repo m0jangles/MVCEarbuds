@@ -4,18 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Earbuds | Homepage</title>
+<title>Playlists</title>
 </head>
 <body>
-
-<h2>Homepage</h2>
-
-<a href="profile.do">Profile</a>
-
-<a href="logout.do">Logout</a>
-
-<a href="viewPlaylists.do">View Playlists</a>
-
 
 </body>
 </html>
