@@ -10,5 +10,10 @@
 
 <h2>Homepage</h2>
 
+<a href="profile.do">Profile</a>
+
+<a href="logout.do">Logout</a>
+
+
 </body>
 </html>
