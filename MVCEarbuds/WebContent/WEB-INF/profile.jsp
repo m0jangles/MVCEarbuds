@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +8,18 @@
 </head>
 <body>
 
-<h2>Profile Page</h2>
+	<h2>Profile Page</h2>
 
-<a href="settings.do">Settings</a>
-<a href="logout.do">Logout</a>
-<a href="homepage.do">Home</a>
+	<a href="settings.do">Settings</a>
+	<a href="logout.do">Logout</a>
+	<a href="homepage.do">Home</a>
 
+	<p>Playlists</p>
+
+	<p>Create Post</p>
+
+	${UserInSession.profile.firstName}
+	<img src="${UserInSession.profile.image}">
 
 </body>
 </html>
