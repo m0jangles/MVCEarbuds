@@ -10,7 +10,7 @@ import com.skilldistillery.earbuds.entities.Profile;
 
 @Component
 @Transactional
-public class ProfileDAOPImpl implements ProfileDAO {
+public class ProfileDAOImpl implements ProfileDAO {
 	@PersistenceContext
 	private EntityManager em;
 
