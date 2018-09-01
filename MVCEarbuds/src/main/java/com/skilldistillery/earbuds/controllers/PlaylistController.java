@@ -20,8 +20,8 @@ public class PlaylistController {
 
 	@RequestMapping(path = "viewPlaylists.do", method = RequestMethod.GET)
 	public String viewPlaylists(Model model, User user) {
-		List<Playlist> list= dao.getPlaylistsByUser(user);
-		model.addAttribute(list);
+		List<Playlist> playlists = dao.getPlaylistsByUser(user);
+		model.addAttribute("playlists", playlists);
 		return "viewPlaylists";
 	}
 	
