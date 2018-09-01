@@ -257,9 +257,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `earbuds`;
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (1, 1, 'images/DennisRod.jpg', 'Dennis', 'Rodman', 1);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (2, 2, 'images/dreamy.png', 'Jason', 'Momoa', 2);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (3, 3, 'images/Daenerys.png', 'Daenerys', 'Targaryen', 3);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (1, 1, 'images/ProfilePic/DennisRod.jpg', 'Dennis', 'Rodman', 1);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (2, 2, 'images/ProfilePic/dreamy.png', 'Jason', 'Momoa', 2);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (3, 3, 'images/Profile/Pic/Daenerys.png', 'Daenerys', 'Targaryen', 3);
 
 COMMIT;
 
