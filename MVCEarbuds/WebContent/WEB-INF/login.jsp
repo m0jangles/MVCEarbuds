@@ -52,6 +52,14 @@
 					<td><form:input path="email" /></td>
 					<td><form:errors path="email" /></td>
 				</tr>
+				<tr>
+					<td><label for="firstName">First Name:</label></td>
+					<td><input type="text" name="firstName"></td>
+				</tr>
+				<tr>
+					<td><label for="lastName">Last Name:</label></td>
+					<td><input type="text" name="lastName"></td>
+				</tr>
 			</table>
 			<input type="submit" value="Sign Up">
 		</form:form>

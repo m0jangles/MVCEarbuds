@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.earbuds.data.UserDAO;
@@ -22,14 +23,16 @@ public class UserController {
 
 	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
 	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser,
-			BindingResult result, Model model, RedirectAttributes redir) {
+			BindingResult result, Model model, RedirectAttributes redir,
+			@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("user", new User());
 			return "login";
 		}
 
-		User signedUp = userdao.createUser(newUser);
+		User signedUp = userdao.createUser(newUser, firstName, lastName);
 
 		if (signedUp != null) {
 			redir.addFlashAttribute("wasSignUpSuccessful", true);
