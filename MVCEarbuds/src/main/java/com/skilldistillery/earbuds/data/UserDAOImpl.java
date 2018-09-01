@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.earbuds.entities.Location;
+import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
 
 @Component
@@ -16,10 +18,15 @@ public class UserDAOImpl implements UserDAO {
 	private EntityManager em;
 
 	@Override
-	public User createUser(User user) {
-
-		em.persist(user);
-
+	public User createUser(User user, String firstname, String lastname) {
+		Profile newProfile = new Profile ();
+		Location l = em.find(Location.class, 1);
+		newProfile.setFirstName(firstname);
+		newProfile.setLastName(lastname);
+		newProfile.setUser(user);
+		newProfile.setLocation(l);
+		
+		em.persist(newProfile);
 		em.flush();
 
 		return user;

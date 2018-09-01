@@ -32,7 +32,7 @@ public class UserController {
 			return "login";
 		}
 
-		User signedUp = userdao.createUser(newUser);
+		User signedUp = userdao.createUser(newUser, firstName, lastName);
 
 		if (signedUp != null) {
 			redir.addFlashAttribute("wasSignUpSuccessful", true);
