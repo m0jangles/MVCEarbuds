@@ -1,9 +1,7 @@
 package com.skilldistillery.earbuds.data;
 		
-import com.skilldistillery.earbuds.entities.User;
+import com.skilldistillery.earbuds.entities.Profile;
 
 public interface ProfileDAO {
-	boolean updateInfo(User user);
-
-
+	Profile updateInfo(Profile profile, int id);
 }

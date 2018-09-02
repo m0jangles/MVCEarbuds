@@ -18,8 +18,15 @@
 
 	<p>Create Post</p>
 
-	${UserInSession.profile.firstName}
 	<img src="${UserInSession.profile.image}">
+
+	<p>${UserInSession.profile.firstName}
+		${UserInSession.profile.lastName}</p>
+
+	<p>${UserInSession.profile.location.city},
+		${UserInSession.profile.location.state}<br>
+		${UserInSession.profile.location.country}
+	</p>
 
 </body>
 </html>
