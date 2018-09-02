@@ -45,7 +45,7 @@
 				</tr>
 			</table>
 			<input type="hidden" value="${UserInSession.profile.id}"> 
-			<input type="submit" value="Update Profile">
+			<input type="submit" value="Update Profile" name="id">
 		</form>
 	</fieldset>
 
