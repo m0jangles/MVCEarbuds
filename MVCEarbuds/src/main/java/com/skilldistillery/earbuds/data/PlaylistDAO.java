@@ -3,10 +3,10 @@ package com.skilldistillery.earbuds.data;
 import java.util.List;
 
 import com.skilldistillery.earbuds.entities.Playlist;
-import com.skilldistillery.earbuds.entities.User;
+import com.skilldistillery.earbuds.entities.Profile;
 
 public interface PlaylistDAO {
-	public List<Playlist> getPlaylistsByUser(User user);
+	public List<Playlist> getPlaylists(Profile profile);
 	
 
 }

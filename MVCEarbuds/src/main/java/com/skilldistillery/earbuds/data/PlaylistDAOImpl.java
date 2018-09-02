@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.skilldistillery.earbuds.entities.Playlist;
-import com.skilldistillery.earbuds.entities.User;
+import com.skilldistillery.earbuds.entities.Profile;
 
 @Component
 @Transactional
@@ -18,13 +18,15 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<Playlist> getPlaylistsByUser(User user){
+	public List<Playlist> getPlaylists(Profile profile){
 		
-		List<Playlist> playlists = user.getProfile().getPlaylists();
+		List<Playlist> playlists = profile.getPlaylists();
 		
 		return playlists;
 		
 	}
+
+
 
 	
 }
