@@ -7,4 +7,6 @@ import com.skilldistillery.earbuds.entities.User;
 
 public interface PlaylistDAO {
 	public List<Playlist> getPlaylistsByUser(User user);
+	
+
 }
