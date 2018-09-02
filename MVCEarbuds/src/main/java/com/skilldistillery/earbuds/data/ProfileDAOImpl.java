@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.skilldistillery.earbuds.entities.Profile;
-import com.skilldistillery.earbuds.entities.User;
 
 @Component
 @Transactional
@@ -18,14 +17,13 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private String query;
 
 	@Override
-	public boolean updateInfo(User user) {
-		Profile profile = user.getProfile();
-		query = "UPDATE ";
-		
-		em.persist(profile);
-		em.flush();
-		
-		return false;
+	public Profile updateInfo(Profile profile) {
+		Profile managedProfile = em.find(Profile.class, profile.getId());
+		managedProfile.setFirstName(profile.getFirstName());
+		managedProfile.setLastName(profile.getLastName());
+		managedProfile.setLocation(profile.getLocation());
+		managedProfile.setImage(profile.getImage());
+		return managedProfile;
 	}
 	
 	

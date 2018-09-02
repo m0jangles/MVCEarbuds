@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.ProfileDAO;
-import com.skilldistillery.earbuds.entities.User;
+import com.skilldistillery.earbuds.entities.Profile;
 
 @Controller
 public class ProfileController {
@@ -25,10 +25,10 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path = "updateProfile.do", params = "user", method = RequestMethod.POST)
-	public ModelAndView updateSettings(User user) {
+	public ModelAndView updateSettings(Profile profile) {
 		ModelAndView mv = new ModelAndView();
-		Boolean infoUpdated = dao.updateInfo(user);
-		mv.addObject("infoUpdated", infoUpdated);
+		Profile updatedProfile = dao.updateInfo(profile);
+		mv.addObject("infoUpdated", updatedProfile);
 		mv.setViewName("profile");
 		return mv;
 	}
