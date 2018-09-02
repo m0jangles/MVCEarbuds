@@ -17,11 +17,11 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private String query;
 
 	@Override
-	public Profile updateInfo(Profile profile) {
+	public Profile updateInfo(Profile profile, int id) {
 		Profile managedProfile = em.find(Profile.class, profile.getId());
 		managedProfile.setFirstName(profile.getFirstName());
 		managedProfile.setLastName(profile.getLastName());
-		managedProfile.setLocation(profile.getLocation());
+//		managedProfile.setLocation(profile.getLocation());
 		managedProfile.setImage(profile.getImage());
 		return managedProfile;
 	}
