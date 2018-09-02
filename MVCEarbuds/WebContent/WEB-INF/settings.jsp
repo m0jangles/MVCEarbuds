@@ -44,6 +44,7 @@
 						value="${UserInSession.profile.location.country}"></td>
 				</tr>
 			</table>
+			<input type="hidden" value="${UserInSession.profile.id}"> 
 			<input type="submit" value="Update Profile">
 		</form>
 	</fieldset>
