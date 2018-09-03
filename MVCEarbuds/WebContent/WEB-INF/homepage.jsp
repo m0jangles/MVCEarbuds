@@ -45,7 +45,9 @@
 </c:choose>
 
 <c:forEach var="song" items="${songs }">
+
 <img src="${song.albumImage }">
+
 <h3><strong> Artist: </strong></h3><p>${song.artist }</p>
 <h4><strong>Title: </strong></h4><p>${song.title }</p>
 <h4><strong>Album: </strong></h4><p>${song.album}</p>
@@ -54,7 +56,7 @@
     <input type="submit" value="Watch Video" />
 </form>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="350" height="200" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <br>
 </ul>
