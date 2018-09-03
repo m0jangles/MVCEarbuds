@@ -18,31 +18,35 @@ public class PlaylistController {
 	@Autowired
 	private PlaylistDAO dao;
 
-	@RequestMapping(path = "viewPlaylists.do", params="id", method = RequestMethod.GET)
+	@RequestMapping(path = "viewPlaylists.do", params = "id", method = RequestMethod.GET)
 	public String viewPlaylists(Model model, Integer id) {
-		
-		List<Playlist> playlists = dao.getPlaylists(id);
-		if(playlists != null) {
-		model.addAttribute("playlists", playlists);
+		if (id > 0) {
+			List<Playlist> playlists = dao.getPlaylists(id);
+			if (!playlists.isEmpty()) {
+				model.addAttribute("playlists", playlists);
+			}
+			return "homepage";
 		}
-		return "homepage";
+		else {
+			return "newPlaylist.do";
+		}
 	}
-	
-	@RequestMapping(path = "getSongs.do", params="id", method = RequestMethod.GET)
+
+	@RequestMapping(path = "getSongs.do", params = "id", method = RequestMethod.GET)
 	public String getSongs(Model model, Integer id) {
-		
-	List<Song> songs = dao.getSongs(id);
-	if(songs != null) {
-		model.addAttribute("songs", songs);
-	}
-		
+
+		List<Song> songs = dao.getSongs(id);
+		if (songs != null) {
+			model.addAttribute("songs", songs);
+		}
+
 		return "homepage";
 	}
 
 	@RequestMapping(path = "showVideo.do", method = RequestMethod.GET)
 	public String showVideo() {
-		
+
 		return "homepage";
-		
+
 	}
 }
