@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.data;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -25,7 +26,6 @@ public class UserDAOImpl implements UserDAO {
 		newProfile.setLastName(lastname);
 		newProfile.setUser(user);
 		newProfile.setLocation(l);
-		
 		em.persist(newProfile);
 		em.flush();
 
