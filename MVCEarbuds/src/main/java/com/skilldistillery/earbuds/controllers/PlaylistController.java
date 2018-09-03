@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.entities.Playlist;
-import com.skilldistillery.earbuds.entities.Profile;
+import com.skilldistillery.earbuds.entities.Song;
 
 @Controller
 public class PlaylistController {
@@ -28,5 +28,21 @@ public class PlaylistController {
 		return "homepage";
 	}
 	
+	@RequestMapping(path = "getSongs.do", params="id", method = RequestMethod.GET)
+	public String getSongs(Model model, Integer id) {
+		
+	List<Song> songs = dao.getSongs(id);
+	if(songs != null) {
+		model.addAttribute("songs", songs);
+	}
+		
+		return "homepage";
+	}
 
+	@RequestMapping(path = "showVideo.do", method = RequestMethod.GET)
+	public String showVideo() {
+		
+		return "homepage";
+		
+	}
 }

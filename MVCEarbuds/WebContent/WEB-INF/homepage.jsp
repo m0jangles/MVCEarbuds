@@ -14,7 +14,7 @@
 <a href="profile.do">Profile</a>
 
 <a href="logout.do">Logout</a>
-
+<br>
 <form action="viewPlaylists.do" method="GET">
 <input type="hidden" name="id" value="${UserInSession.profile.id }">
 <button type="submit" value="View Playlists">View Playlists</button>
@@ -25,12 +25,17 @@
 <c:when test="${not empty playlists }">
 <ul>
 <c:forEach var="playlist" items="${playlists }">
-<li>${playlist.playlistName }</li>
+<li>${playlist.playlistName }
+<form action="getSongs.do" method="GET">
+<input type="hidden" name="id" value="${playlist.id }">
+<button type="submit" value="View Songs">View Songs</button>
+</form>
+</li>
 </ul>
 </c:forEach>
 </c:when>
 <c:otherwise>
-
+<br>
 <form action="newPlaylist.do" method="GET">
 <input type="hidden" name="id" value="${UserInSession.profile.id }">
 <button type="submit" value="New Playlist">Create New Playlist</button>
@@ -38,6 +43,24 @@
 
 </c:otherwise>
 </c:choose>
+
+<c:forEach var="song" items="${songs }">
+<img src="${song.albumImage }">
+<h3><strong> Artist: </strong></h3><p>${song.artist }</p>
+<h4><strong>Title: </strong></h4><p>${song.title }</p>
+<h4><strong>Album: </strong></h4><p>${song.album}</p>
+
+<form action="${song.url }">
+    <input type="submit" value="Watch Video" />
+</form>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br>
+</ul>
+</c:forEach>
+
+
 
 
  
