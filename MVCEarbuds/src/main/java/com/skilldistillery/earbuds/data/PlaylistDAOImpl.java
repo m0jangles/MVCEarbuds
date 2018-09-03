@@ -18,9 +18,11 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<Playlist> getPlaylists(Profile profile){
+	public List<Playlist> getPlaylists(Integer id){
+		String query = "SELECT p from Profile p JOIN FETCH p.playlists WHERE p.id = :id";
+		Profile result = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
 		
-		List<Playlist> playlists = profile.getPlaylists();
+		List<Playlist> playlists = result.getPlaylists();
 		
 		return playlists;
 		

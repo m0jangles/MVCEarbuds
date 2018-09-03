@@ -6,7 +6,7 @@ import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Profile;
 
 public interface PlaylistDAO {
-	public List<Playlist> getPlaylists(Profile profile);
+	public List<Playlist> getPlaylists(Integer id);
 	
 
 }

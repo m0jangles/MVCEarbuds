@@ -18,10 +18,10 @@ public class PlaylistController {
 	@Autowired
 	private PlaylistDAO dao;
 
-	@RequestMapping(path = "viewPlaylists.do", params="profile", method = RequestMethod.GET)
-	public String viewPlaylists(Model model, Profile profile) {
+	@RequestMapping(path = "viewPlaylists.do", params="id", method = RequestMethod.GET)
+	public String viewPlaylists(Model model, Integer id) {
 		
-		List<Playlist> playlists = dao.getPlaylists(profile);
+		List<Playlist> playlists = dao.getPlaylists(id);
 		if(playlists != null) {
 		model.addAttribute("playlists", playlists);
 		}
