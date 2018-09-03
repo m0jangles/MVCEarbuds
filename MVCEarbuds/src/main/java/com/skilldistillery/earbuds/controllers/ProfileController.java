@@ -12,6 +12,7 @@ import com.skilldistillery.earbuds.entities.Profile;
 
 @Controller
 public class ProfileController {
+
 	@Autowired
 	private ProfileDAO dao;
 
@@ -26,14 +27,19 @@ public class ProfileController {
 	}
 
 	@RequestMapping(path = "updateProfile.do", method = RequestMethod.POST)
-	public ModelAndView updateSettings(Profile profile, @RequestParam("locationCity") String city,
-			@RequestParam("locationState") String state, @RequestParam("locationCountry") String country) {
+	public ModelAndView updateSettings(Profile profile,
+			@RequestParam("updateID") int id,
+			@RequestParam("locationCity") String city,
+			@RequestParam("locationState") String state,
+			@RequestParam("locationCountry") String country) {
+
 		ModelAndView mv = new ModelAndView();
-		int id = profile.getId();
-		System.out.println(id);
-		Profile updatedProfile = dao.updateInfo(profile, id);
-		mv.addObject("infoUpdated", updatedProfile);
+
+		dao.updateInfo(profile, id, city, state, country);
+
 		mv.setViewName("profile");
+
 		return mv;
 	}
+
 }

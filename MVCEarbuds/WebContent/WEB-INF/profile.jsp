@@ -18,7 +18,7 @@
 
 	<p>Create Post</p>
 
-	<img src="${UserInSession.profile.image}">
+	<img src="${UserInSession.profile.image}" height="200" width="200">
 
 	<p>${UserInSession.profile.firstName}
 		${UserInSession.profile.lastName}</p>
