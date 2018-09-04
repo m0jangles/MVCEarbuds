@@ -26,10 +26,13 @@ public class EarbudsDAOImpl implements EarbudsDAO {
 			List<Profile> results = em.createQuery(query, Profile.class).getResultList();
 			return results;
 		} else {
-			query = "SELECT p.firstName, p.lastName, p.image FROM Profile p WHERE p.user.username = :search"
-					+ " OR p.user.email = :search " + " OR p.firstName = :search " + " OR p.lastName = :search";
-			List<Profile> results = em.createQuery(query, Profile.class).setParameter("search", searchInput)
-					.getResultList();
+			query = "SELECT u.profile.firstName, u.profile.lastName, u.profile.image FROM User u JOIN FETCH u.profile"
+					+ " WHERE u.username LIKE :search"
+					+ " OR u.email LIKE :search " 
+					+ " OR u.profile.firstName LIKE :search " 
+					+ " OR u.profile.lastName LIKE :search";
+			List<Profile> results = em.createQuery(query, Profile.class)
+					.setParameter("search", "%" + searchInput + "%").getResultList();
 			return results;
 		}
 	}
@@ -41,9 +44,11 @@ public class EarbudsDAOImpl implements EarbudsDAO {
 			List<Song> results = em.createQuery(query, Song.class).getResultList();
 			return results;
 		} else {
-			query = "SELECT s FROM Song s WHERE s.title = :search" + " OR s.artist = :search"
-					+ " OR s.alblum = :search";
-			List<Song> results = em.createQuery(query, Song.class).setParameter("search", searchInput).getResultList();
+			query = "SELECT s FROM Song s WHERE s.title LIKE :search" 
+					+ " OR s.artist LIKE :search"
+					+ " OR s.album LIKE :search";
+			List<Song> results = em.createQuery(query, Song.class)
+					.setParameter("search", "%" + searchInput + "%").getResultList();
 			return results;
 		}
 	}
