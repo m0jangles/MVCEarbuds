@@ -4,30 +4,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Earbuds | Profile</title>
 </head>
 <body>
+	<div class="container">
+		<h2>Profile Page</h2>
 
-	<h2>Profile Page</h2>
+		<a class="btn btn-primary btn-std" href="settings.do" type="button">Settings</a>
+		<a class="btn btn-primary btn-std" href="logout.do" type="button">Logout</a>
+		<a class="btn btn-primary btn-std" href="homepage.do" type="button">Home</a>
+		<p>
 
-	<a href="settings.do">Settings</a>
-	<a href="logout.do">Logout</a>
-	<a href="homepage.do">Home</a>
+			<form action="viewPlaylists.do" method="GET"><input type="hidden" name="id" value="${UserInSession.profile.id }">
+			<button type="submit" value="View Playlists">Playlists</button>
+		</p>
+		
+		</form>
 
-	<p>Playlists</p>
+		<p>Create Post</p>
 
-	<p>Create Post</p>
+		<img src="${UserInSession.profile.image}" width="300">
 
-	<img src="${UserInSession.profile.image}" height="200" width="200">
+		<p>${UserInSession.profile.firstName}
+			${UserInSession.profile.lastName}</p>
 
-	<p>${UserInSession.profile.firstName}
-		${UserInSession.profile.lastName}</p>
-
-	<p>${UserInSession.profile.location.city},
-		${UserInSession.profile.location.state}<br>
-		${UserInSession.profile.location.country}
-	</p>
+		<p>${UserInSession.profile.location.city},
+			${UserInSession.profile.location.state}<br>
+			${UserInSession.profile.location.country}
+		</p>
+	</div>
 
 </body>
 </html>

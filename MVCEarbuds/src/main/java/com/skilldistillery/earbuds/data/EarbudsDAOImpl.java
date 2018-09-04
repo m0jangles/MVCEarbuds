@@ -22,11 +22,11 @@ public class EarbudsDAOImpl implements EarbudsDAO {
 	@Override
 	public List<Profile> searchForUsers(String searchInput) {
 		if (searchInput.isEmpty()) {
-			query = "Select p.firstName, p.lastName, p.image FROM Profile p";
+			query = "Select p FROM Profile p";
 			List<Profile> results = em.createQuery(query, Profile.class).getResultList();
 			return results;
 		} else {
-			query = "SELECT u.profile.firstName, u.profile.lastName, u.profile.image FROM User u JOIN FETCH u.profile"
+			query = "SELECT u.profile FROM User u "
 					+ " WHERE u.username LIKE :search"
 					+ " OR u.email LIKE :search " 
 					+ " OR u.profile.firstName LIKE :search " 

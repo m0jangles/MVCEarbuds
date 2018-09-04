@@ -14,20 +14,25 @@
 				<c:forEach var="song" items="${songs}">
 					<table>
 						<tr>
-							<td><img src="${song.albumImage}" height="80" width="80"></td>
+							<c:if test="${song.albumImage}">
+								<td><img src="${song.albumImage}" height="80" width="80"></td>
+							</c:if>
 							<td>${song.title}</td>
 							<td>${song.artist}</td>
 							<td>${song.album}</td>
 							<td>${song.url }</td>
 						</tr>
-				</c:forEach>
+						</c:forEach>
 
-				</table>
+					</table>
 			</c:when>
 			<c:when test="${not empty profiles }">
 				<c:forEach var="profile" items="${profiles }">
 					<dl>
-						<li>${profile.image }</li>
+						<c:if test="${not empty profile.image}">
+							<li><img src="${profile.image }"
+								alt="Photo of ${profile.firstName}" width="100"></li>
+						</c:if>
 						<li>${profile.firstName }${profile.lastName }</li>
 					</dl>
 				</c:forEach>
