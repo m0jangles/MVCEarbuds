@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -43,14 +45,22 @@ public class Profile {
 	@OneToMany(mappedBy = "profile")
 	private List<Playlist> playlists;
 
+	// TODO: add and remove for below fields
+	@ManyToMany()
+	@JoinTable(name = "song_post", joinColumns = @JoinColumn(name = "profile_id"), inverseJoinColumns = @JoinColumn(name = "song_id"))
+	private List<Song> songs;
+	
+	@OneToMany(mappedBy = "profile")
+	private List<Post> posts;
+
 	// constructors
 
 	public Profile() {
 
 	}
 
-	public Profile(int id, User user, String image, String firstName,
-			String lastName, Location location, List<Playlist> playlists) {
+	public Profile(int id, User user, String image, String firstName, String lastName, Location location,
+			List<Playlist> playlists) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -121,8 +131,7 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName
-				+ ", lastName=" + lastName + "]";
+		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 	@Override

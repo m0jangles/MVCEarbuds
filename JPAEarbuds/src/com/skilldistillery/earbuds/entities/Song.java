@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Song {
@@ -39,6 +40,12 @@ public class Song {
 
 	@ManyToMany(mappedBy = "songs")
 	private List<Genre> genres;
+	// TODO: add and remove for below fields
+	@ManyToMany(mappedBy = "songs")
+	private List<Profile> profiles;
+	
+	@OneToMany(mappedBy = "song")
+	private List<Post> posts;
 
 	// constructors
 
