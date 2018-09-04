@@ -3,6 +3,7 @@ package com.skilldistillery.earbuds.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Song {
 
 	private String artist;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	@JoinTable(name = "playlist_song",
 			joinColumns = @JoinColumn(name = "song_id"),
 			inverseJoinColumns = @JoinColumn(name = "playlist_id"))
