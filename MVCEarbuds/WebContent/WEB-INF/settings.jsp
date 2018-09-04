@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Settings</title>
+<title>Earbuds | Settings</title>
 </head>
 <body>
+
 	<h3>Settings</h3>
+
+	<p>
+		<a href="homepage.do">Home</a> <a href="profile.do">Profile</a> <a
+			href="logout.do">Logout</a>
+	</p>
 
 	<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 		<legend> Update Profile </legend>
@@ -48,6 +55,10 @@
 				name="updateID" value="${UserInSession.profile.id}" />
 		</form>
 	</fieldset>
+
+	<p>
+		${UserInSession} <br> ${UserInSession.profile}
+	</p>
 
 </body>
 </html>
