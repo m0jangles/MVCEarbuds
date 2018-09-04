@@ -14,7 +14,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "song_post")
 public class Post {
+	
 	// Fields
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -92,6 +94,8 @@ public class Post {
 		return "Post [id=" + id + ", message=" + message + ", postDate=" + postDate + "]";
 	}
 
+	// Helpers
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
