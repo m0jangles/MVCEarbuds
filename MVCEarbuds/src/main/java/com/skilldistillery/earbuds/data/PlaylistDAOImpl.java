@@ -26,13 +26,13 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 		return playlists;
 
 	}
-	
+
 	public List<Song> getSongs(Integer id) {
 		String query = "SELECT p from Playlist p JOIN FETCH p.songs WHERE p.id = :id";
 		Playlist result = em.createQuery(query, Playlist.class).setParameter("id", id).getResultList().get(0);
 
 		List<Song> songs = result.getSongs();
-		
+
 		return songs;
 
 	}
@@ -48,5 +48,15 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 		return newPlaylist;
 	}
 
+	@Override
+	public boolean removePlaylist(Integer id) {
+		Playlist playlist = em.find(Playlist.class, id);
+		em.remove(playlist);
+		if (em.find(Playlist.class, id) == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

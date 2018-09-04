@@ -9,5 +9,6 @@ public interface PlaylistDAO {
 	public List<Playlist> getPlaylists(Integer id);
 	public List<Song> getSongs(Integer id);
 	public Playlist createPlaylist(Integer id, String name);
+	public boolean removePlaylist(Integer id);
 
 }
