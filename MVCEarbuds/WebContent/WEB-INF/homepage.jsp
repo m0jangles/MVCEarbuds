@@ -31,8 +31,8 @@
 <button type="submit" value="View Songs">View Songs</button>
 </form>
 </li>
-</ul>
 </c:forEach>
+</ul>
 </c:when>
 <c:otherwise>
 <br>

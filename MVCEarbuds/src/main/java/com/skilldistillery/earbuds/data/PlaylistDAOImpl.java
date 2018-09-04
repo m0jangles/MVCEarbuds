@@ -20,10 +20,8 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	private EntityManager em;
 
 	public List<Playlist> getPlaylists(Integer id) {
-		String query = "SELECT p from Profile p JOIN FETCH p.playlists WHERE p.id = :id";
-		Profile result = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
-
-		List<Playlist> playlists = result.getPlaylists();
+		String query = "SELECT p from Playlist p JOIN FETCH p.profile WHERE p.profile.id = :id";
+		List<Playlist> playlists = em.createQuery(query, Playlist.class).setParameter("id", id).getResultList();
 
 		return playlists;
 
