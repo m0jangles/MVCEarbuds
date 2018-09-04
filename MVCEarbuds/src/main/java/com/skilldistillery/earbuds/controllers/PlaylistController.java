@@ -39,7 +39,7 @@ public class PlaylistController {
 			model.addAttribute("songs", songs);
 		}
 		model.addAttribute("playlistName", playlistName);
-
+		model.addAttribute("id", playlistId);
 		return "viewPlaylists";
 	}
 
