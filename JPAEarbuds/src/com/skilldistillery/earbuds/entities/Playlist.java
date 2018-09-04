@@ -102,8 +102,7 @@ public class Playlist {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + isPrivate;
-		result = prime * result
-				+ ((playlistName == null) ? 0 : playlistName.hashCode());
+		result = prime * result + ((playlistName == null) ? 0 : playlistName.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
 		result = prime * result + ((songs == null) ? 0 : songs.hashCode());
 		return result;
