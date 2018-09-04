@@ -45,12 +45,14 @@
 	</table>
 
 	<br>
-	<form action="addSong.do" method="POST">
+	<form action="displayAddSongForm.do" method="GET">
 		<input type="submit" value="Add Song to Playlist">
+		<input type="hidden" name="id" value="${id}">
 	</form>
 	<br>
 	<!-- some boolean check here to see if add song button was clicked -->
-
+	<c:if test="${addFormButtonClicked }">
+	
 	<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 		<legend> Add Song </legend>
 
@@ -97,6 +99,7 @@
 		</form>
 
 	</fieldset>
+	</c:if>
 
 </body>
 </html>
