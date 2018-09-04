@@ -15,30 +15,30 @@ import com.skilldistillery.earbuds.data.SongDAO;
 public class SongController {
 	@Autowired
 	private SongDAO dao;
-	
+
 	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
-	public ModelAndView addSongToPlaylist(Integer playlistId,  
-			@RequestParam("title")String title, 
-			@RequestParam("album")String album, 
-			@RequestParam("albumImage")String albumImage, 
-			@RequestParam("url")String url, 
-			@RequestParam("artist")String artist ) {
+	public ModelAndView addSongToPlaylist(Integer playlistId,
+			@RequestParam("title") String title, @RequestParam("album") String album,
+			@RequestParam("albumImage") String albumImage,
+			@RequestParam("url") String url, @RequestParam("artist") String artist) {
+		
 		dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("homepage");
+
+		return mv;
+	}
+
+	// *** Corresponds to action on viewPlaylists.jsp ***
+	@RequestMapping(path = "displayAddSongForm.do", method = RequestMethod.GET)
+	public ModelAndView getAddSongForm(Model model, RedirectAttributes redir,
+			@RequestParam("id") Integer id) {
+		
+		ModelAndView mv = new ModelAndView();
+		redir.addFlashAttribute("addFormButtonClicked", true);
+		mv.setViewName("redirect:getSongs.do?id=" + id);
 		
 		return mv;
 	}
-	
-	@RequestMapping(path = "displayAddSongForm.do", method = RequestMethod.GET)
-	public ModelAndView getAddSongForm(Model model, RedirectAttributes redir, @RequestParam("id")Integer id) {
-		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("addFormButtonClicked", true);
-		redir.addFlashAttribute("id", id);
-		mv.setViewName("redirect:getSongs.do");
-		return mv;
-	}
-	
-	
 
 }
