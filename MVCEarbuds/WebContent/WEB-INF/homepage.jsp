@@ -30,6 +30,10 @@
 							<input type="hidden" name="id" value="${playlist.id }">
 							<button type="submit" value="View Songs">View Songs</button>
 						</form>
+						<form action="removePlaylist.do" method="POST">
+							<input type="hidden" name="playlistId" value="${playlist.id }">
+							<button type="submit" value="Delete Playlist">Delete this playlist</button>
+						</form>
 					</li>
 				</c:forEach>
 			</ul>
@@ -42,7 +46,6 @@
 				<button type="submit" value="New Playlist">Create New
 					Playlist</button>
 			</form>
-
 		</c:otherwise>
 	</c:choose>
 

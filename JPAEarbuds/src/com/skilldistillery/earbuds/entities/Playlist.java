@@ -25,7 +25,7 @@ public class Playlist {
 	@Column(name = "name")
 	private String playlistName;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "profile_id")
 	private Profile profile;
 

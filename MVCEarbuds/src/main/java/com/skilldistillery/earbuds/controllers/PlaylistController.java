@@ -49,7 +49,7 @@ public class PlaylistController {
 	}
 
 	@RequestMapping(path = "newPlaylist.do", method = RequestMethod.POST)
-	public ModelAndView createPlaylist(Model model, RedirectAttributes redir, String name,
+	public ModelAndView createNewPlaylist(RedirectAttributes redir, String name,
 			@RequestParam("playlistProfileId") Integer playlistProfileId) {
 		ModelAndView mv = new ModelAndView();
 		if (!name.isEmpty()) {
@@ -63,5 +63,14 @@ public class PlaylistController {
 			mv.setViewName("homepage");
 			return mv;
 		}
+	}
+	
+	@RequestMapping(path = "removePlaylist.do", method = RequestMethod.POST)
+	public ModelAndView deletePlaylist(Integer playlistId) {
+		ModelAndView mv = new ModelAndView();
+		Boolean deletedPlaylist = dao.removePlaylist(playlistId);
+		mv.addObject("deletedPlaylist", deletedPlaylist); // To be able to display a message when the playlist is deleted
+		mv.setViewName("homepage");
+		return mv;
 	}
 }
