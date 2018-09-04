@@ -27,7 +27,7 @@ public class PlaylistController {
 		if (!playlists.isEmpty()) {
 			model.addAttribute("playlists", playlists);
 		}
-		return "homepage";
+		return "viewPlaylists";
 	}
 
 	@RequestMapping(path = "getSongs.do", params = "id", method = RequestMethod.GET)
