@@ -27,18 +27,18 @@ public class PlaylistController {
 		if (!playlists.isEmpty()) {
 			model.addAttribute("playlists", playlists);
 		}
-		return "viewPlaylists";
+		return "homepage";
 	}
 
 	@RequestMapping(path = "getSongs.do", params = "id", method = RequestMethod.GET)
-	public String getSongs(Model model, Integer id) {
+	public String getSongs(Model model, @RequestParam("id") Integer playlistId) {
 
-		List<Song> songs = dao.getSongs(id);
+		List<Song> songs = dao.getSongs(playlistId);
 		if (songs != null) {
 			model.addAttribute("songs", songs);
 		}
 
-		return "homepage";
+		return "viewPlaylists";
 	}
 
 	@RequestMapping(path = "showVideo.do", method = RequestMethod.GET)
