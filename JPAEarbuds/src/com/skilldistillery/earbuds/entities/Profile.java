@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -43,14 +45,21 @@ public class Profile {
 	@OneToMany(mappedBy = "profile")
 	private List<Playlist> playlists;
 
+	@ManyToMany()
+	@JoinTable(name = "song_post", joinColumns = @JoinColumn(name = "profile_id"), inverseJoinColumns = @JoinColumn(name = "song_id"))
+	private List<Song> songs;
+	
+	@OneToMany(mappedBy = "profile")
+	private List<Post> posts;
+
 	// constructors
 
 	public Profile() {
 
 	}
 
-	public Profile(int id, User user, String image, String firstName,
-			String lastName, Location location, List<Playlist> playlists) {
+	public Profile(int id, User user, String image, String firstName, String lastName, Location location,
+			List<Playlist> playlists) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -119,10 +128,25 @@ public class Profile {
 
 	// helpers
 
+	public List<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName
-				+ ", lastName=" + lastName + "]";
+		return "Profile [id=" + id + ", image=" + image + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 	@Override
@@ -201,6 +225,44 @@ public class Profile {
 		playlist.setProfile(null);
 		if (playlists != null) {
 			playlists.remove(playlist);
+		}
+	}
+	
+	public void addSong(Song song) {
+		if (songs == null)
+			songs = new ArrayList<>();
+		if (!songs.contains(song)) {
+			songs.add(song);
+			song.addProfile(this);
+		}
+	}
+
+	public void removeSong(Song song) {
+		if (songs != null && songs.contains(song)) {
+			songs.remove(song);
+			song.removeProfile(this);
+		}
+
+	}
+	
+	public void addPost(Post post) {
+		if (posts == null)
+			posts = new ArrayList<>();
+		if (!posts.contains(post)) {
+			posts.add(post);
+			if (post.getProfile() != null) {
+				post.getProfile().getPosts().remove(post);
+
+			}
+			post.setProfile(this);
+
+		}
+	}
+
+	public void removePost(Post post) {
+		post.setProfile(null);
+		if (posts != null) {
+			posts.remove(post);
 		}
 	}
 

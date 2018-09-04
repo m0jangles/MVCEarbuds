@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Song {
@@ -39,6 +40,12 @@ public class Song {
 
 	@ManyToMany(mappedBy = "songs")
 	private List<Genre> genres;
+
+	@ManyToMany(mappedBy = "songs")
+	private List<Profile> profiles;
+	
+	@OneToMany(mappedBy = "song")
+	private List<Post> posts;
 
 	// constructors
 
@@ -126,6 +133,22 @@ public class Song {
 
 	// Helpers
 
+	public List<Profile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(List<Profile> profiles) {
+		this.profiles = profiles;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
 	public void addGenre(Genre genre) {
 		if (genres == null)
 			genres = new ArrayList<>();
@@ -158,6 +181,42 @@ public class Song {
 		if (playlists != null && playlists.contains(playlist)) {
 			playlists.remove(playlist);
 			playlist.removeSong(this);
+		}
+	}
+	
+	public void addProfile(Profile profile) {
+		if (profiles == null)
+			profiles = new ArrayList<>();
+		if (!profiles.contains(profile)) {
+			profiles.add(profile);
+			profile.addSong(this);
+		}
+	}
+
+	public void removeProfile(Profile profile) {
+		if (profiles != null && profiles.contains(profile)) {
+			profiles.remove(profile);
+			profile.removeSong(this);
+		}
+
+	}
+	
+	public void addPost(Post post) {
+		if (posts == null)
+			posts = new ArrayList<>();
+		if (!posts.contains(post)) {
+			posts.add(post);
+			if (post.getSong() != null) {
+				post.getSong().getPosts().remove(post);
+			}
+			post.setSong(this);
+		}
+	}
+
+	public void removePost(Post post) {
+		post.setSong(null);
+		if (posts != null) {
+			posts.remove(post);
 		}
 	}
 

@@ -15,6 +15,7 @@
 		<class>com.skilldistillery.earbuds.entities.Profile</class>
 		<class>com.skilldistillery.earbuds.entities.Song</class>
 		<class>com.skilldistillery.earbuds.entities.User</class>
+		<class>com.skilldistillery.earbuds.entities.Post</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
