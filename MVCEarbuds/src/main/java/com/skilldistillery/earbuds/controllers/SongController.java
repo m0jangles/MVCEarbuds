@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.SongDAO;
-import com.skilldistillery.earbuds.entities.Song;
 
 @Controller
 public class SongController {
@@ -22,7 +21,7 @@ public class SongController {
 			@RequestParam("albumImage")String albumImage, 
 			@RequestParam("url")String url, 
 			@RequestParam("artist")String artist ) {
-		Song newSong = dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
+		dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("homepage");
 		

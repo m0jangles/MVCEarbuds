@@ -38,9 +38,6 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 		else {
 			return null;
 		}
-
-
-
 	}
 
 	@Override
@@ -63,6 +60,12 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public Playlist getPlaylistById(Integer id) {
+		Playlist playlist = em.find(Playlist.class, id);
+		return playlist;
 	}
 
 }

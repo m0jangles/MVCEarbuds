@@ -148,6 +148,7 @@ public class Song {
 			playlists = new ArrayList<>();
 		}
 		if (!playlists.contains(playlist)) {
+			playlists.add(playlist);
 			playlist.addSong(this);
 		}
 
