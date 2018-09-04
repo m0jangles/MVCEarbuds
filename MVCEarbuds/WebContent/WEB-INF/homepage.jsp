@@ -14,6 +14,17 @@
 	<a href="profile.do">Profile</a>
 
 	<a href="logout.do">Logout</a>
+	
+	<a href="settings.do">Settings</a>
+	<br>
+	<form action="findUsers.do" method="GET">
+	<input type="text" name="searchInput" placeholder="Find Friends">
+	<button type="submit" value="Search">Search Users</button>
+	</form>
+	<form action="findSongs.do" method="GET">
+	<input type="text" name="searchInput" placeholder="Search Music">
+	<button type="submit" value="Search">Search Music</button>
+	</form>
 	<br>
 	<form action="viewPlaylists.do" method="GET">
 		<input type="hidden" name="id" value="${UserInSession.profile.id }">
