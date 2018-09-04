@@ -35,7 +35,8 @@ public class ProfileController {
 
 		ModelAndView mv = new ModelAndView();
 
-		dao.updateInfo(profile, id, city, state, country);
+		// In case we want to do something with the updated profile later
+		Profile updatedProfile = dao.updateInfo(profile, id, city, state, country);
 
 		mv.setViewName("profile");
 
