@@ -11,7 +11,7 @@ import com.skilldistillery.earbuds.entities.Song;
 
 @Component
 @Transactional
-public class SongDAOImpl {
+public class SongDAOImpl implements SongDAO {
 	
 	@PersistenceContext
 	private EntityManager em;

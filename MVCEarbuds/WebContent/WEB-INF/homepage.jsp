@@ -30,6 +30,15 @@
 							<input type="hidden" name="id" value="${playlist.id }">
 							<button type="submit" value="View Songs">View Songs</button>
 						</form>
+						<form action="addSong.do" method="POST">
+						<input type="hidden" name="playlistId" value="${playlist.id }">
+						<input type="text" name="title" placeholder="Title">
+						<input type="text" name="album" placeholder="Album">
+						<input type="text" name="albumImage" placeholder="Image URL">
+						<input type="text" name="url" placeholder="YouTube URL">
+						<input type="text" name="artist" placeholder="Artist">
+						<button type="submit" value="Add Song">Add Song</button>
+						</form>
 						<form action="removePlaylist.do" method="POST">
 							<input type="hidden" name="playlistId" value="${playlist.id }">
 							<button type="submit" value="Delete Playlist">Delete this playlist</button>
