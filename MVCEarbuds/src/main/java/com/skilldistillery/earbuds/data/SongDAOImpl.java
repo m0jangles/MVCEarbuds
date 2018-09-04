@@ -26,7 +26,8 @@ public class SongDAOImpl implements SongDAO {
 		song.setAlbumImage(albumImage);
 		song.setUrl(url);
 		song.setArtist(artist);
-
+		
+		em.persist(playlist);
 		em.persist(song);
 		em.flush();
 
