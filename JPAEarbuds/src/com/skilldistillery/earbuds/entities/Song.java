@@ -38,7 +38,7 @@ public class Song {
 			inverseJoinColumns = @JoinColumn(name = "playlist_id"))
 	private List<Playlist> playlists;
 
-	@ManyToMany(mappedBy = "songs")
+	@ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL)
 	private List<Genre> genres;
 
 	@ManyToMany(mappedBy = "songs")

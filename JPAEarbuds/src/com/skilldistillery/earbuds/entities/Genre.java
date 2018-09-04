@@ -110,6 +110,7 @@ public class Genre {
 			songs = new ArrayList<>();
 
 		if (!songs.contains(song)) {
+			songs.add(song);
 			song.addGenre(this);
 		}
 	}

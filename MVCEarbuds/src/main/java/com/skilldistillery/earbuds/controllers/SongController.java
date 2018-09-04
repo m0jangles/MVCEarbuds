@@ -17,21 +17,36 @@ public class SongController {
 	@Autowired
 	private SongDAO dao;
 
-	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
-	public ModelAndView addSongToPlaylist(Integer playlistId, @RequestParam("title") String title,
-			@RequestParam("album") String album, @RequestParam("albumImage") String albumImage,
-			@RequestParam("url") String url, @RequestParam("artist") String artist) {
+//	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
+//	public ModelAndView addSongToPlaylist(Integer playlistId,
+//			@RequestParam("title") String title, @RequestParam("album") String album,
+//			@RequestParam("albumImage") String albumImage,
+//			@RequestParam("url") String url, @RequestParam("artist") String artist) {
+//
+//		dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("homepage");
+//
+//		return mv;
+//	}
 
-		dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
+	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
+	public ModelAndView addSongToPlaylist(Integer playlistId, Song song,
+			@RequestParam("genre") String genre) {
+
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("homepage");
+		
+		dao.addSongToPlaylist(song, playlistId, genre);
+		
+		mv.setViewName("redirect:getSongs.do?id=" + playlistId);
 
 		return mv;
 	}
 
 	// *** Corresponds to action on viewPlaylists.jsp ***
 	@RequestMapping(path = "displayAddSongForm.do", method = RequestMethod.GET)
-	public ModelAndView getAddSongForm(Model model, RedirectAttributes redir, @RequestParam("id") Integer id) {
+	public ModelAndView getAddSongForm(Model model, RedirectAttributes redir,
+			@RequestParam("id") Integer id) {
 
 		ModelAndView mv = new ModelAndView();
 		redir.addFlashAttribute("addFormButtonClicked", true);
@@ -41,12 +56,13 @@ public class SongController {
 	}
 
 	@RequestMapping(path = "deleteSong.do", method = RequestMethod.POST)
-	public ModelAndView removeSongFromPlaylist(Integer playlistId, Integer songId) {
+	public ModelAndView removeSongFromPlaylist(Integer playlistId,
+			Integer songId) {
 		ModelAndView mv = new ModelAndView();
 		boolean result = dao.removeSong(playlistId, songId);
 		mv.addObject("songDeleted", result);
-		mv.setViewName("redirect:getSongs.do?id="+playlistId);
-		
+		mv.setViewName("redirect:getSongs.do?id=" + playlistId);
+
 		return mv;
 	}
 }
