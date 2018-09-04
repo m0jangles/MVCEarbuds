@@ -32,7 +32,7 @@ public class Playlist {
 	@Column(name = "is_private")
 	private int isPrivate;
 
-	@ManyToMany(mappedBy = "playlists")
+	@ManyToMany(mappedBy = "playlists", cascade = CascadeType.PERSIST)
 	private List<Song> songs;
 
 	// constructors
