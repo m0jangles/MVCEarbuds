@@ -46,6 +46,7 @@ public class SongController {
 
 		boolean result = dao.removeSong(id, song);
 		mv.addObject("songDeleted", result);
+		mv.setViewName("redirect:getSongs.do?id="+id);
 		
 		return mv;
 	}
