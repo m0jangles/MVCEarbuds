@@ -25,14 +25,15 @@ public class Playlist {
 	@Column(name = "name")
 	private String playlistName;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
 	@Column(name = "is_private")
 	private int isPrivate;
 
-	@ManyToMany(mappedBy = "playlists", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany(mappedBy = "playlists",
+			cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<Song> songs;
 
 	// constructors
@@ -52,7 +53,7 @@ public class Playlist {
 	}
 
 	// getters and setters
-	
+
 	public Profile getProfile() {
 		return profile;
 	}
@@ -85,9 +86,8 @@ public class Playlist {
 		this.isPrivate = isPrivate;
 	}
 
-	
 	// helpers
-	
+
 	public List<Song> getSongs() {
 		return songs;
 	}
@@ -102,7 +102,8 @@ public class Playlist {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + isPrivate;
-		result = prime * result + ((playlistName == null) ? 0 : playlistName.hashCode());
+		result = prime * result
+				+ ((playlistName == null) ? 0 : playlistName.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
 		result = prime * result + ((songs == null) ? 0 : songs.hashCode());
 		return result;
@@ -155,9 +156,6 @@ public class Playlist {
 	}
 
 	public void removeSong(Song song) {
-		for (Song song1 : songs) {
-			System.out.println(song1);
-		}
 		if (songs != null && songs.contains(song)) {
 			songs.remove(song);
 			song.removePlaylist(this);
