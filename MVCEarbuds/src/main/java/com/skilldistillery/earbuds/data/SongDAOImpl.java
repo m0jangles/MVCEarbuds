@@ -20,19 +20,30 @@ public class SongDAOImpl implements SongDAO {
 			String artist) {
 		Playlist playlist = em.find(Playlist.class, id);
 		Song song = new Song();
-		playlist.addSong(song);
 		song.setTitle(title);
 		song.setAlbum(album);
 		song.setAlbumImage(albumImage);
 		song.setUrl(url);
 		song.setArtist(artist);
+		playlist.addSong(song);
 		
-		em.persist(playlist);
-		em.persist(song);
 		em.flush();
 
 		return song;
 
 	}
+	
+	@Override
+	public boolean removeSong(Integer id, Song song) {
+		Playlist playlist = em.find(Playlist.class, id);
+		playlist.removeSong(song);
+		if (!playlist.getSongs().contains(song)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 
 }
