@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.entities.Playlist;
@@ -20,16 +23,11 @@ public class PlaylistController {
 
 	@RequestMapping(path = "viewPlaylists.do", params = "id", method = RequestMethod.GET)
 	public String viewPlaylists(Model model, Integer id) {
-		if (id > 0) {
-			List<Playlist> playlists = dao.getPlaylists(id);
-			if (!playlists.isEmpty()) {
-				model.addAttribute("playlists", playlists);
-			}
-			return "homepage";
+		List<Playlist> playlists = dao.getPlaylists(id);
+		if (!playlists.isEmpty()) {
+			model.addAttribute("playlists", playlists);
 		}
-		else {
-			return "newPlaylist.do";
-		}
+		return "homepage";
 	}
 
 	@RequestMapping(path = "getSongs.do", params = "id", method = RequestMethod.GET)
@@ -48,5 +46,22 @@ public class PlaylistController {
 
 		return "homepage";
 
+	}
+
+	@RequestMapping(path = "newPlaylist.do", method = RequestMethod.POST)
+	public ModelAndView createPlaylist(Model model, RedirectAttributes redir, String name,
+			@RequestParam("playlistProfileId") Integer playlistProfileId) {
+		ModelAndView mv = new ModelAndView();
+		if (!name.isEmpty()) {
+			Playlist newPlaylist = dao.createPlaylist(playlistProfileId, name);
+			if (newPlaylist != null) {
+				redir.addFlashAttribute("newPlaylist", newPlaylist);
+				mv.setViewName("redirect:homepage.do");
+			}
+			return mv;
+		} else {
+			mv.setViewName("homepage");
+			return mv;
+		}
 	}
 }

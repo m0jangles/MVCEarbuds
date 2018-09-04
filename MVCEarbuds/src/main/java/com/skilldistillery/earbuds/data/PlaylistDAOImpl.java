@@ -37,5 +37,16 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 
 	}
 
+	@Override
+	public Playlist createPlaylist(Integer id, String name) {
+		Profile profile = em.find(Profile.class, id);
+		Playlist newPlaylist = new Playlist();
+		newPlaylist.setPlaylistName(name);
+		newPlaylist.setProfile(profile);
+		em.persist(newPlaylist);
+		em.flush();
+		return newPlaylist;
+	}
+
 
 }
