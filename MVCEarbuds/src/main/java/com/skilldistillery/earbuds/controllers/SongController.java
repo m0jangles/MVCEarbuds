@@ -17,19 +17,6 @@ public class SongController {
 	@Autowired
 	private SongDAO dao;
 
-//	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
-//	public ModelAndView addSongToPlaylist(Integer playlistId,
-//			@RequestParam("title") String title, @RequestParam("album") String album,
-//			@RequestParam("albumImage") String albumImage,
-//			@RequestParam("url") String url, @RequestParam("artist") String artist) {
-//
-//		dao.addSongToPlaylist(playlistId, title, album, albumImage, url, artist);
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("homepage");
-//
-//		return mv;
-//	}
-
 	@RequestMapping(path = "addSong.do", method = RequestMethod.POST)
 	public ModelAndView addSongToPlaylist(Integer playlistId, Song song,
 			@RequestParam("genre") String genre) {
