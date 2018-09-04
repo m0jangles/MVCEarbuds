@@ -225,12 +225,13 @@ public class Song {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((album == null) ? 0 : album.hashCode());
-		result = prime * result
-				+ ((albumImage == null) ? 0 : albumImage.hashCode());
+		result = prime * result + ((albumImage == null) ? 0 : albumImage.hashCode());
 		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
 		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((playlists == null) ? 0 : playlists.hashCode());
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
+		result = prime * result + ((profiles == null) ? 0 : profiles.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
@@ -271,6 +272,16 @@ public class Song {
 			if (other.playlists != null)
 				return false;
 		} else if (!playlists.equals(other.playlists))
+			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
+			return false;
+		if (profiles == null) {
+			if (other.profiles != null)
+				return false;
+		} else if (!profiles.equals(other.profiles))
 			return false;
 		if (title == null) {
 			if (other.title != null)

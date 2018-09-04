@@ -36,6 +36,8 @@
 				<td>${song.album}</td>
 				<td>
 					<form action="deleteSong.do" method="POST">
+					<input type="hidden" name="playlistId" value="${id }">
+					<input type="hidden" name="songId" value="${song.id }">
 						<input type="submit" value="Remove Song">
 					</form>
 				</td>

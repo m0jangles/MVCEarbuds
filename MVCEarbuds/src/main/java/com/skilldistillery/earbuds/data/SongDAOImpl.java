@@ -34,8 +34,10 @@ public class SongDAOImpl implements SongDAO {
 	}
 	
 	@Override
-	public boolean removeSong(Integer id, Song song) {
+	public boolean removeSong(Integer id, Integer songId) {
 		Playlist playlist = em.find(Playlist.class, id);
+		System.out.println("*************** " +songId);
+		Song song = em.find(Song.class, songId);
 		playlist.removeSong(song);
 		if (!playlist.getSongs().contains(song)) {
 			return true;

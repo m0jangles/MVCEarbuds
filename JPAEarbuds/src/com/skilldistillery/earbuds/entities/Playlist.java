@@ -32,7 +32,7 @@ public class Playlist {
 	@Column(name = "is_private")
 	private int isPrivate;
 
-	@ManyToMany(mappedBy = "playlists", cascade = CascadeType.PERSIST)
+	@ManyToMany(mappedBy = "playlists", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Song> songs;
 
 	// constructors
@@ -156,6 +156,9 @@ public class Playlist {
 	}
 
 	public void removeSong(Song song) {
+		for (Song song1 : songs) {
+			System.out.println(song1);
+		}
 		if (songs != null && songs.contains(song)) {
 			songs.remove(song);
 			song.removePlaylist(this);
