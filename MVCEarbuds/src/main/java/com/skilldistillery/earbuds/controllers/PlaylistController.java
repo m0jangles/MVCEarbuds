@@ -34,9 +34,11 @@ public class PlaylistController {
 	public String getSongs(Model model, @RequestParam("id") Integer playlistId) {
 
 		List<Song> songs = dao.getSongs(playlistId);
+		String playlistName = dao.getPlaylistById(playlistId).getPlaylistName();
 		if (songs != null) {
 			model.addAttribute("songs", songs);
 		}
+		model.addAttribute("playlistName", playlistName);
 
 		return "viewPlaylists";
 	}
