@@ -12,11 +12,12 @@ import com.skilldistillery.earbuds.entities.Song;
 @Component
 @Transactional
 public class SongDAOImpl implements SongDAO {
-	
+
 	@PersistenceContext
 	private EntityManager em;
-	
-	public Song addSongToPlaylist(Integer id, String title, String album, String albumImage, String url, String artist) {
+
+	public Song addSongToPlaylist(Integer id, String title, String album, String albumImage, String url,
+			String artist) {
 		Playlist playlist = em.find(Playlist.class, id);
 		Song song = new Song();
 		playlist.addSong(song);
@@ -25,12 +26,12 @@ public class SongDAOImpl implements SongDAO {
 		song.setAlbumImage(albumImage);
 		song.setUrl(url);
 		song.setArtist(artist);
-		
+
 		em.persist(song);
 		em.flush();
-		
+
 		return song;
-		
+
 	}
-	
+
 }
