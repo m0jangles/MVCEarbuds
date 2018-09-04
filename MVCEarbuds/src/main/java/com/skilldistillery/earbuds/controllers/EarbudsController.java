@@ -23,16 +23,16 @@ public class EarbudsController {
 	}
 
 	@RequestMapping(path = "findUsers.do", method = RequestMethod.GET)
-	public String viewUserResults(String searchInput, Model model) {
-		List<Profile> profiles = dao.searchForUsers(searchInput);
+	public String viewUserResults(String searchUserInput, Model model) {
+		List<Profile> profiles = dao.searchForUsers(searchUserInput);
 		model.addAllAttributes(profiles);
 		return "results";
 	}
 
 	@RequestMapping(path = "findSongs.do", method = RequestMethod.GET)
-	public String viewSongResults(String searchInput, Model model) {
-		List<Song> songs = dao.searchForSongs(searchInput);
-		model.addAllAttributes(songs);
+	public String viewSongResults(String searchSongInput, Model model) {
+		List<Song> songs = dao.searchForSongs(searchSongInput);
+		model.addAttribute("songs", songs);
 		return "results";
 	}
 

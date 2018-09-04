@@ -11,11 +11,18 @@
 	<div class="container">
 		<c:choose>
 			<c:when test="${not empty songs }">
-				<c:forEach var="song" items="${songs }">
-					<dl>
-						<li>${song }</li>
-					</dl>
+				<c:forEach var="song" items="${songs}">
+					<table>
+						<tr>
+							<td><img src="${song.albumImage}" height="80" width="80"></td>
+							<td>${song.title}</td>
+							<td>${song.artist}</td>
+							<td>${song.album}</td>
+							<td>${song.url }</td>
+						</tr>
 				</c:forEach>
+
+				</table>
 			</c:when>
 			<c:when test="${not empty profiles }">
 				<c:forEach var="profile" items="${profiles }">
@@ -29,10 +36,8 @@
 				<em>No Results Matching Your Search.</em>
 			</c:otherwise>
 		</c:choose>
-		<a href="homepage.do">Home</a>
-		<a href="profile.do">Profile</a>
-		<a href="settings.do">Settings</a>
-		<a href="logout.do">Logout</a>
+		<a href="homepage.do">Home</a> <a href="profile.do">Profile</a> <a
+			href="settings.do">Settings</a> <a href="logout.do">Logout</a>
 	</div>
 
 </body>

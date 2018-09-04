@@ -18,11 +18,11 @@
 	<a href="settings.do">Settings</a>
 	<br>
 	<form action="findUsers.do" method="GET">
-	<input type="text" name="searchInput" placeholder="Find Friends">
+	<input type="text" name="searchUserInput" placeholder="Find Friends">
 	<button type="submit" value="Search">Search Users</button>
 	</form>
 	<form action="findSongs.do" method="GET">
-	<input type="text" name="searchInput" placeholder="Search Music">
+	<input type="text" name="searchSongInput" placeholder="Search Music">
 	<button type="submit" value="Search">Search Music</button>
 	</form>
 	<br>
