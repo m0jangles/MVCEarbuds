@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
@@ -18,6 +19,9 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileDAO dao;
+
+	@Autowired
+	private AuthenticationDAO authDao;
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
 	public String showProfilePage() {
@@ -34,12 +38,16 @@ public class ProfileController {
 			@RequestParam("updateID") int id,
 			@RequestParam("locationCity") String city,
 			@RequestParam("locationState") String state,
-			@RequestParam("locationCountry") String country) {
+			@RequestParam("locationCountry") String country, HttpSession session) {
 
 		ModelAndView mv = new ModelAndView();
 
 		// In case we want to do something with the updated profile later
 		Profile updatedProfile = dao.updateInfo(profile, id, city, state, country);
+
+		User loggedInUser = (User) session.getAttribute("UserInSession");
+		session.setAttribute("UserInSession",
+				authDao.findUserById(loggedInUser.getId()));
 
 		mv.setViewName("profile");
 
