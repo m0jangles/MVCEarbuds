@@ -269,16 +269,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `earbuds`;
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (1, 'Africa', 'Toto IV', 'images/AlbumArt/Toto_IV.jpg', 'https://www.youtube.com/watch?v=FTQbiNvZqaY', 'Toto');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (2, 'Faith', 'Faith', 'images/AlbumArt/GeorgeMichael_Faith.jpg', 'https://www.youtube.com/watch?v=6Cs3Pvmmv0E', 'George Michael');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (3, 'Bohemian Rhapsody', 'A Night at the Opera', 'images/AlbumArt/Queen_ANightAtTheOpera.png', 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ', 'Queen');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (4, 'Hit Me Baby One More Time', '...Baby One More Time', 'images/AlbumArt/_Baby_One_More_Time_(album).png', 'https://www.youtube.com/watch?v=C-u5WLJ9Yk4', 'Britney Spears');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (5, 'Beethoven Moonlight Sonata', 'Classical Piano Pieces', 'images/AlbumArt/GlennMorrison_Classical.jpeg', 'https://www.youtube.com/watch?v=H6nz1OW_wzE', 'Glen Morrison');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (6, 'Ziggy Stardust', 'The Rise and Fall of Ziggy Stardust and the Spiders From Mars', 'images/AlbumArt/DavidBowie_ZiggyStardust.jpg', 'https://www.youtube.com/watch?v=3qrOvBuWJ-c', 'David Bowie');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (7, 'Despacito', 'Single', 'images/AlbumArt/LuisFonsi.jpeg', 'https://www.youtube.com/watch?v=kJQP7kiw5Fk', 'Luis Fonsi');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (8, 'Cherokee', 'The Epic', 'images/AlbumArt/Kamasi_Washington_The_Epic.jpg', 'https://www.youtube.com/watch?v=3DM9fGXHhlk', 'Kamasi Washington');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (9, 'Hurt', 'American IV: The Man Comes Around', 'images/AlbumArt/JohnnyCash_AmericanIV.jpg', 'https://www.youtube.com/watch?v=FywSzjRq0e4', 'Johnny Cash');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (10, 'Juicy', 'Ready To Die', 'images/AlbumArt/BiggieSmalls_ReadyToDie.jpg', 'https://www.youtube.com/watch?v=KVQfWRl97jo', 'Biggie Smalls');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (1, 'Africa', 'Toto IV', 'images/AlbumArt/Toto_IV.jpg', 'FTQbiNvZqaY', 'Toto');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (2, 'Faith', 'Faith', 'images/AlbumArt/GeorgeMichael_Faith.jpg', '6Cs3Pvmmv0E', 'George Michael');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (3, 'Bohemian Rhapsody', 'A Night at the Opera', 'images/AlbumArt/Queen_ANightAtTheOpera.png', 'fJ9rUzIMcZQ', 'Queen');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (4, 'Hit Me Baby One More Time', '...Baby One More Time', 'images/AlbumArt/_Baby_One_More_Time_(album).png', 'C-u5WLJ9Yk4', 'Britney Spears');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (5, 'Beethoven Moonlight Sonata', 'Classical Piano Pieces', 'images/AlbumArt/GlennMorrison_Classical.jpeg', 'H6nz1OW_wzE', 'Glen Morrison');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (6, 'Ziggy Stardust', 'The Rise and Fall of Ziggy Stardust and the Spiders From Mars', 'images/AlbumArt/DavidBowie_ZiggyStardust.jpg', '3qrOvBuWJ-c', 'David Bowie');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (7, 'Despacito', 'Single', 'images/AlbumArt/LuisFonsi.jpeg', 'kJQP7kiw5Fk', 'Luis Fonsi');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (8, 'Cherokee', 'The Epic', 'images/AlbumArt/Kamasi_Washington_The_Epic.jpg', '3DM9fGXHhlk', 'Kamasi Washington');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (9, 'Hurt', 'American IV: The Man Comes Around', 'images/AlbumArt/JohnnyCash_AmericanIV.jpg', 'FywSzjRq0e4', 'Johnny Cash');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (10, 'Juicy', 'Ready To Die', 'images/AlbumArt/BiggieSmalls_ReadyToDie.jpg', 'KVQfWRl97jo', 'Biggie Smalls');
 
 COMMIT;
 
