@@ -107,8 +107,8 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 	@Override
 	public boolean deletePost(User user, Integer postId) {
-		List<Post> posts = user.getProfile().getPosts();
 		Post post = em.find(Post.class, postId);
+		List<Post> posts = user.getProfile().getPosts();
 		user.getProfile().removePost(post);
 		if (!user.getProfile().getPosts().contains(post)) {
 			return true;

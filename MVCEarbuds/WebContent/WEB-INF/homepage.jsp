@@ -90,7 +90,7 @@
 							<input type="hidden" name="user"
 								value="${UserInSession }">
 							<input type="hidden" name="postId"
-								value="${post.id }">
+								value="${profile.post.id }">
 								
 								 <input
 								type="submit" value="Delete Post">

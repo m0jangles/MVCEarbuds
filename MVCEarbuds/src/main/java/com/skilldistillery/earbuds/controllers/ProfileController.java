@@ -81,10 +81,10 @@ public class ProfileController {
 	}
 	 
 	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
-	public String deletePost(Model model, User user, 
+	public String deletePost(Model model, User userInSession, 
 			@RequestParam("postId") Integer postId) {
 		
-		boolean postDeleted = dao.deletePost(user, postId);
+		boolean postDeleted = dao.deletePost(userInSession, postId);
 		if(postDeleted = true) {
 		model.addAttribute("postDeleted", postDeleted);
 		}

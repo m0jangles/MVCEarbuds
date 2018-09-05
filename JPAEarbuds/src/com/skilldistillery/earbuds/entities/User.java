@@ -36,7 +36,7 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
 
-	@ManyToMany(cascade = CascadeType.REMOVE)
+	@ManyToMany
 	@JoinTable(name = "user_friend", 
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "friend_id"))
