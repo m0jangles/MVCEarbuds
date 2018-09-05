@@ -51,4 +51,25 @@ public class SongController {
 
 		return mv;
 	}
+
+	// This method adds the song from the search page to the playlist selected
+	// from the drop-down menu on the same page via the add to playlist button
+	@RequestMapping(path = "addSongFromSearchPage.do",
+			method = RequestMethod.POST)
+	public ModelAndView addSongToPlaylistFromSearchPage(
+			@RequestParam("playlist") int playlistID,
+			@RequestParam("songId") int songID,
+			@RequestParam("searchSongInput") String searchSongInput,
+			RedirectAttributes redir) {
+
+		ModelAndView mv = new ModelAndView();
+
+		boolean result = dao.addSongToPlaylistFromSearchPage(playlistID, songID);
+		redir.addFlashAttribute("wasAdditionSuccessful", result);
+		redir.addFlashAttribute("songSuccessfulID", songID);
+
+		mv.setViewName("redirect:findSongs.do?searchSongInput="+searchSongInput);
+
+		return mv;
+	}
 }

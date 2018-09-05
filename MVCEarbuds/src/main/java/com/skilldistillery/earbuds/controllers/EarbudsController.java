@@ -40,9 +40,13 @@ public class EarbudsController {
 	@RequestMapping(path = "findSongs.do", method = RequestMethod.GET)
 	public String viewSongResults(String searchSongInput, Model model,
 			HttpSession session) {
+		
+		model.addAttribute("searchSongInput", searchSongInput);
 
+		// Get the user in session and get that user's list of playlists so that we
+		// can use this in a drop-down menu on the search results page so that the
+		// user can select which playlist to add an existing song to
 		User currentUser = (User) session.getAttribute("UserInSession");
-
 		List<Playlist> profilePlaylists = playlistDao
 				.getPlaylists(currentUser.getProfile().getId());
 

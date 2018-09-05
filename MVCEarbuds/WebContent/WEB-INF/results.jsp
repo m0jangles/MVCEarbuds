@@ -53,19 +53,25 @@
 							<td>${song.artist}</td>
 							<td>${song.album}</td>
 							<td>${song.genresAsString}</td>
-							<td><select class="inlineFormCustomSelect" name="playlist">
-									<option selected>Select Playlist</option>
-									<c:forEach var="playlist" items="${playlists}">
-										<option value="${playlist.playlistName}">${playlist.playlistName}</option>
-									</c:forEach>
-							</select></td>
 							<td>
-								<form action="deleteSong.do" method="POST">
-									<input type="hidden" name="playlistId" value="${id }">
-									<input type="hidden" name="songId" value="${song.id }">
-									<input type="submit" value="Add to Playlist">
+								<form action="addSongFromSearchPage.do" method="POST">
+
+									<select class="inlineFormCustomSelect" name="playlist">
+										<option selected>Select Playlist</option>
+										<c:forEach var="playlist" items="${playlists}">
+											<option value="${playlist.id}">${playlist.playlistName}</option>
+										</c:forEach>
+									</select> <input type="hidden" name="songId" value="${song.id}">
+									<input type="hidden" name="searchSongInput"
+										value="${searchSongInput}"> <input type="submit"
+										value="Add to Playlist">
+
 								</form>
 							</td>
+							<td><c:if
+									test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
+									Song successfully added to playlist!
+								</c:if></td>
 						</tr>
 					</c:forEach>
 
