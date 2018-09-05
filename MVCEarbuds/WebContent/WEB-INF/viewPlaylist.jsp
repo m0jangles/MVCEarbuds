@@ -29,18 +29,21 @@
 				<td colspan="5" align="center"><strong>${playlistName}</strong></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td>Song</td>
-				<td>Artist</td>
-				<td>Album</td>
-				<td>Genre</td>
-				<td>Song Link</td>
-				<td></td>
+				<th></th>
+				<th></th>
+				<th>Song</th>
+				<th>Artist</th>
+				<th>Album</th>
+				<th>Genre</th>
+				<th></th>
 			</tr>
 
 			<c:forEach var="song" items="${songs}">
 
 				<tr>
+					<td><iframe width="200" height="150"
+							src="https://www.youtube.com/embed/${song.url}" frameborder="0"
+							allow="autoplay; encrypted-media" allowfullscreen> </iframe></td>
 					<td><c:if test="${not empty song.albumImage }">
 							<img src="${song.albumImage}" height="80" width="80">
 						</c:if></td>
@@ -48,9 +51,6 @@
 					<td>${song.artist}</td>
 					<td>${song.album}</td>
 					<td>${song.genresAsString}</td>
-					<td><iframe width="200" height="150"
-							src="https://www.youtube.com/embed/${song.url}" frameborder="0"
-							allow="autoplay; encrypted-media" allowfullscreen> </iframe></td>
 					<td>
 						<form action="deleteSong.do" method="POST">
 							<input type="hidden" name="playlistId" value="${id }"> <input
