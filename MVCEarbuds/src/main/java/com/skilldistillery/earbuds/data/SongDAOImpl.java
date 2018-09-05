@@ -81,8 +81,17 @@ public class SongDAOImpl implements SongDAO {
 		}
 	}
 	
+	//Paul is a genius!
 	@Override
 	public String findYoutube11(String url) {
+        if (   !url.contains("http://youtu.be/")
+            && !url.contains("https://youtu.be/")
+            && !url.contains("http://www.youtube.com/")
+            && !url.contains("https://www.youtube.com/"))
+        {
+            return "OCmuATH2yzo"; // Homer - DOH !
+        }
+
         int pos = url.indexOf("watch?v=");
         if (pos >= 0)
             return url.substring(pos + 8, pos + 19);
@@ -100,6 +109,7 @@ public class SongDAOImpl implements SongDAO {
 
         return "OCmuATH2yzo"; // Homer - DOH !
     }
+	//Paul is a genius!
 
 
 }
