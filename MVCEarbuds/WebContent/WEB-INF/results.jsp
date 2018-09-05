@@ -20,7 +20,7 @@
 							<td>${song.title}</td>
 							<td>${song.artist}</td>
 							<td>${song.album}</td>
-							
+							<td>${song.url }</td>
 						</tr>
 						</c:forEach>
 

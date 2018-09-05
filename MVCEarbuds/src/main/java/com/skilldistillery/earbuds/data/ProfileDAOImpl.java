@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.data;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.skilldistillery.earbuds.entities.Location;
+import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
 
 @Component
@@ -80,6 +82,18 @@ public class ProfileDAOImpl implements ProfileDAO {
 		managedProfile.setImage(profileWithChanges.getImage());
 
 		return managedProfile;
+	}
+	
+	public Post addPost(Integer id, String message, Date postDate) {
+		Profile profile = em.find(Profile.class, id);
+		Post post = new Post();
+		post.setMessage(message);
+		post.setPostDate(postDate);
+		
+		em.persist(profile);
+		
+		return post;
+		
 	}
 
 }
