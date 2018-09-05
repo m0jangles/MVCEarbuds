@@ -62,6 +62,17 @@
 
 				<div class="col">
 					<br>
+					<form action="findUsers.do" method="GET">
+						<input type="text" name="searchUserInput"
+							placeholder="Search Users">
+						<button type="submit" value="Search Users">Search Users</button>
+					</form>
+					<form action="findSongs.do" method="GET">
+						<input type="text" name="searchSongInput"
+							placeholder="Search Songs">
+						<button type="submit" value="Search Songs">Search Songs</button>
+					</form>
+
 					<h3>Your Playlists</h3>
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
 						<c:choose>
