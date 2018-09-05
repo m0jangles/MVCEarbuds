@@ -64,11 +64,11 @@ public class SongDAOImpl implements SongDAO {
 			}
 
 			playlistToUpdate.addSong(songWithChanges);
-			
+
 		}
 
-		if (playlistToUpdate.getSongs().contains(result1.get(0))
-				|| playlistToUpdate.getSongs().contains(songWithChanges)) {
+		if (result1.size() > 0
+				|| em.find(Song.class, songWithChanges.getId()) != null) {
 			return true;
 		} else {
 			return false;
