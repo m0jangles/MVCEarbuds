@@ -64,9 +64,22 @@
 			</c:when>
 			<c:otherwise>
 				<br>
-			You don't have any playlists!
+			
 		</c:otherwise>
 		</c:choose>
+		<form action="createPost.do" method="POST">
+			<input type="hidden" name="id" value="${UserInSession.profile.id }">
+			<input type="text" name="message" placeholder="message"> 
+			<input
+				type="date" name="postDate" placeholder="postDate"> 
+				
+			<button type="submit" value="POST IT!">POST IT!</button>
+		</form>
+		
+		<c:if test="${not empty newPost }">
+		<c:out value="${newPost }" />
+		</c:if>
+		
 		<form action="findUsers.do" method="GET">
 			<input type="text" name="searchUserInput" placeholder="Find Friends">
 			<button type="submit" value="Search">Search Users</button>

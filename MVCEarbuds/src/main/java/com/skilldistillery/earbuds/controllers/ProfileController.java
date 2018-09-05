@@ -1,9 +1,12 @@
 package com.skilldistillery.earbuds.controllers;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
+import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
 
@@ -51,6 +55,18 @@ public class ProfileController {
 
 		mv.setViewName("profile");
 
+		return mv;
+	}
+	
+	@RequestMapping(path = "createPost.do", method = RequestMethod.POST)
+	public ModelAndView createPost(Integer id,
+			@RequestParam("message") String message,
+			@RequestParam("postDate") Date postDate) {
+		Post newPost = dao.addPost(id, message, postDate);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", id);
+		mv.addObject("newPost", newPost);
+		mv.setViewName("homepage");
 		return mv;
 	}
 
