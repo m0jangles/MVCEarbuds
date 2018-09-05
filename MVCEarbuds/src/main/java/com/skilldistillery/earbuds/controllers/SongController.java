@@ -22,9 +22,7 @@ public class SongController {
 			@RequestParam("genre") String genre) {
 
 		ModelAndView mv = new ModelAndView();
-		
 		dao.addSongToPlaylist(song, playlistId, genre);
-		
 		mv.setViewName("redirect:getSongs.do?id=" + playlistId);
 
 		return mv;
@@ -45,6 +43,7 @@ public class SongController {
 	@RequestMapping(path = "deleteSong.do", method = RequestMethod.POST)
 	public ModelAndView removeSongFromPlaylist(Integer playlistId,
 			Integer songId) {
+		
 		ModelAndView mv = new ModelAndView();
 		boolean result = dao.removeSong(playlistId, songId);
 		mv.addObject("songDeleted", result);

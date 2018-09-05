@@ -40,16 +40,27 @@ public class PlaylistController {
 			method = RequestMethod.GET)
 	public String getSongs(Model model, @RequestParam("id") Integer playlistId) {
 
+		// Get a list of songs for a particular playlist ID
 		List<Song> songs = dao.getSongs(playlistId);
 
+		// This line calls the gdao's impl method to retrieve the entire genre list
+		// from the database. This is so that we can use the genre list in a
+		// <c:foreach> loop on the jsp page for a dropdown selection of all genres.
 		List<Genre> genres = gdao.getEntireGenreList();
 
 		String playlistName = dao.getPlaylistById(playlistId).getPlaylistName();
 		if (songs != null) {
 			model.addAttribute("songs", songs);
 		}
+
+		// This is to be able to display the playlist's title on the
+		// viewPlaylists.jsp page
 		model.addAttribute("playlistName", playlistName);
+
+		// This line is so that we can reference the playlist in the
+		// viewPlaylists.jsp page
 		model.addAttribute("id", playlistId);
+
 		model.addAttribute("genres", genres);
 		return "viewPlaylists";
 	}

@@ -21,7 +21,7 @@ public class SongDAOImpl implements SongDAO {
 	private String query;
 
 	@Override
-	public Song addSongToPlaylist(Song songWithChanges, Integer playlistId,
+	public boolean addSongToPlaylist(Song songWithChanges, Integer playlistId,
 			String genre) {
 
 		Playlist playlistToUpdate = em.find(Playlist.class, playlistId);
@@ -47,7 +47,7 @@ public class SongDAOImpl implements SongDAO {
 		// If the song does not already exist, and the user provides a genre for the
 		// song, find the genre in the database and assign it to the song.
 		else {
-			String newUrl = findYoutube11(songWithChanges.getUrl());
+			String newUrl = SongDAO.findYoutube11(songWithChanges.getUrl());
 			songWithChanges.setUrl(newUrl);
 			em.persist(songWithChanges);
 			em.flush();
@@ -64,9 +64,16 @@ public class SongDAOImpl implements SongDAO {
 			}
 
 			playlistToUpdate.addSong(songWithChanges);
+			
 		}
 
-		return null;
+		if (playlistToUpdate.getSongs().contains(result1.get(0))
+				|| playlistToUpdate.getSongs().contains(songWithChanges)) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	@Override
@@ -80,36 +87,5 @@ public class SongDAOImpl implements SongDAO {
 			return false;
 		}
 	}
-	
-	//Paul is a genius!
-	@Override
-	public String findYoutube11(String url) {
-        if (   !url.contains("http://youtu.be/")
-            && !url.contains("https://youtu.be/")
-            && !url.contains("http://www.youtube.com/")
-            && !url.contains("https://www.youtube.com/"))
-        {
-            return "OCmuATH2yzo"; // Homer - DOH !
-        }
-
-        int pos = url.indexOf("watch?v=");
-        if (pos >= 0)
-            return url.substring(pos + 8, pos + 19);
-
-        pos = url.indexOf("/v/");
-        if (pos >= 0)
-            return url.substring(pos + 3, pos + 14);
-
-        pos = url.indexOf("?v=");
-        if (pos >= 0)
-            return url.substring(pos + 3, pos + 14);
-
-        if (url.length() >= 11)
-            return url.substring(url.length() - 11);
-
-        return "OCmuATH2yzo"; // Homer - DOH !
-    }
-	//Paul is a genius!
-
 
 }
