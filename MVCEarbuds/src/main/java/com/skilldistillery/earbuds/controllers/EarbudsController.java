@@ -34,7 +34,7 @@ public class EarbudsController {
 	public String viewUserResults(String searchUserInput, Model model) {
 		List<Profile> profiles = dao.searchForUsers(searchUserInput);
 		model.addAttribute("profiles", profiles);
-		return "results";
+		return "friendsResults";
 	}
 
 	@RequestMapping(path = "findSongs.do", method = RequestMethod.GET)

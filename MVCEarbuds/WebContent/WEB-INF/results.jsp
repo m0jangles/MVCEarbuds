@@ -76,24 +76,14 @@
 					</c:forEach>
 
 				</table>
+
 			</c:when>
-			<c:when test="${not empty profiles }">
-				<c:forEach var="profile" items="${profiles }">
-					<dl>
-						<c:if test="${not empty profile.image}">
-							<li><img src="${profile.image }"
-								alt="Photo of ${profile.firstName}" width="100"></li>
-						</c:if>
-						<li>${profile.firstName }${profile.lastName }</li>
-					</dl>
-				</c:forEach>
-			</c:when>
+
 			<c:otherwise>
 				<em>No Results Matching Your Search.</em>
 			</c:otherwise>
+
 		</c:choose>
-
-
 	</div>
 
 </body>
