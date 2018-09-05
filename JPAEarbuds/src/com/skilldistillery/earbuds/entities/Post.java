@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+
 @Entity
 @Table(name = "song_post")
 public class Post {
@@ -33,6 +36,7 @@ public class Post {
 	private String message;
 
 	@Column(name = "post_date")
+	@CreationTimestamp
 	private Date postDate;
 
 	// Constructors

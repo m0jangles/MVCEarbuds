@@ -1,6 +1,7 @@
 package com.skilldistillery.earbuds.data;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -87,13 +88,13 @@ public class ProfileDAOImpl implements ProfileDAO {
 	
 	public Post addPost(Integer id, String message, Date postDate) {
 		Profile profile = em.find(Profile.class, id);
+		
 		Post post = new Post();
 		post.setProfile(profile);
 		post.setMessage(message);
-		post.setPostDate(postDate);
 		post.setSong(em.find(Song.class, 1));
 		
-		em.persist(profile);
+		em.persist(post);
 		em.flush();
 		
 		return post;

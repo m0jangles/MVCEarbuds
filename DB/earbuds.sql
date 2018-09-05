@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `song_post` (
   `profile_id` INT UNSIGNED NOT NULL,
   `song_id` INT UNSIGNED NOT NULL,
   `message` TEXT NULL,
-  `post_date` TIMESTAMP NOT NULL,
+  `post_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_profile_song_post_idx` (`profile_id` ASC),
   INDEX `fk_song_post_song_idx` (`song_id` ASC),

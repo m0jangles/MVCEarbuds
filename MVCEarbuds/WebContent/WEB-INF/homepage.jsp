@@ -14,14 +14,11 @@
 <body>
 	<div class="container">
 		<h2>Welcome, ${UserInSession.username}</h2>
-		<a class="btn btn-primary btn-std" href="profile.do" role="button"> Profile </a>
-
-		<a class="btn btn-primary btn-std" href="logout.do" role="button"> Logout </a>
-
-		<a class="btn btn-primary btn-std" href="settings.do" role="button"> Settings </a>
-		<br> <img src="${UserInSession.profile.image}" width="250">
-		<br>
-
+		<a class="btn btn-primary btn-std" href="profile.do" role="button">
+			Profile </a> <a class="btn btn-primary btn-std" href="logout.do"
+			role="button"> Logout </a> <a class="btn btn-primary btn-std"
+			href="settings.do" role="button"> Settings </a> <br> <img
+			src="${UserInSession.profile.image}" width="250"> <br>
 		<form action="newPlaylist.do" method="POST">
 			<input type="hidden" name="playlistProfileId"
 				value="${UserInSession.profile.id }"> <input type="text"
@@ -65,40 +62,40 @@
 			</c:when>
 			<c:otherwise>
 				<br>
-			
-		</c:otherwise>
+
+			</c:otherwise>
 		</c:choose>
 		<form action="createPost.do" method="POST">
 			<input type="hidden" name="id" value="${UserInSession.profile.id }">
-			<input type="text" name="message" placeholder="message"> 
-			<input
-				type="date" name="postDate" placeholder="postDate"> 
-				
+			<input type="text" name="message" placeholder="message">
+
 			<button type="submit" value="POST IT!">POST IT!</button>
 		</form>
 		<form action="allPosts.do" method="GET">
-		<button type="submit" value="View All Posts">See What Everyone is Posting</button>
+			<button type="submit" value="View All Posts">See What
+				Everyone is Posting</button>
 		</form>
 		<c:if test="${not empty posts }">
-		
-		<c:forEach var="post" items="${posts}">
 
-			<tr>
-				<td>${post.profile.user.username}</td>
-				<td>${post.date}</td>
-				<td>${post.message}</td>
-				
-				<td>
-					<form action="deletePost.do" method="POST">
-						<input type="hidden" name="id" value="${UserInSession.profile.id }"> 
-						<input type="submit" value="Remove Song">
-					</form>
-				</td>
-			</tr>
+			<c:forEach var="post" items="${posts}">
 
-		</c:forEach>
+				<tr>
+					<td>${post.profile.user.username}</td>
+					<td>${post.postDate}</td>
+					<td>${post.message}</td>
+
+					<td>
+						<form action="deletePost.do" method="POST">
+							<input type="hidden" name="id"
+								value="${UserInSession.profile.id }"> <input
+								type="submit" value="Remove Song">
+						</form>
+					</td>
+				</tr>
+
+			</c:forEach>
 		</c:if>
-		
+
 		<form action="findUsers.do" method="GET">
 			<input type="text" name="searchUserInput" placeholder="Find Friends">
 			<button type="submit" value="Search">Search Users</button>

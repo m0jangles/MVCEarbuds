@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +50,7 @@ public class Profile {
 	@JoinTable(name = "song_post", joinColumns = @JoinColumn(name = "profile_id"), inverseJoinColumns = @JoinColumn(name = "song_id"))
 	private List<Song> songs;
 	
-	@OneToMany(mappedBy = "profile")
+	@OneToMany(mappedBy = "profile", fetch = FetchType.EAGER)
 	private List<Post> posts;
 
 	// constructors
