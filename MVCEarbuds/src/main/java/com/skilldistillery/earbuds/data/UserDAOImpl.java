@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -29,7 +31,6 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 
 		return user;
-
 	}
 
 	@Override
@@ -41,17 +42,34 @@ public class UserDAOImpl implements UserDAO {
 			return true;
 		else
 			return false;
-
 	}
-	
-	// User a friend to their friends list
+
+	// User adds friend to their friend's list - in the future we should just pass
+	// in the userInSession's ID, not the whole object
 	@Override
 	public boolean addNewFriend(User userInSession, Integer friendId) {
+
 		User userToBeFriended = em.find(User.class, friendId);
-		userInSession.addFriend(userToBeFriended);
-		em.persist(userInSession);
-		em.flush();
-		if (userInSession.getFriends().contains(userToBeFriended)) {
+
+		// If join fetch fails, entire thing fails, returns null - Join fetch gets
+		// around the lazily loading exception
+		String query = "SELECT u FROM User u JOIN FETCH u.friends WHERE u.id = :id";
+
+		List<User> result = em.createQuery(query, User.class)
+				.setParameter("id", userInSession.getId()).getResultList();
+
+		User currentUser = new User();
+
+		if (result.size() > 0) {
+			currentUser = result.get(0);
+			currentUser.addFriend(userToBeFriended);
+		} else {
+			// Contingency plan for first friend or if user has no friends
+			currentUser = em.find(User.class, userInSession.getId());
+			currentUser.addFriend(userToBeFriended);
+		}
+
+		if (currentUser.getFriends().contains(userToBeFriended)) {
 			return true;
 		} else {
 			return false;
@@ -67,6 +85,20 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<User> getFriendsList(User id) {
+		User currentUser = em.find(User.class, id);
+		List<User> friendsList = currentUser.getFriends();
+		return friendsList;
+	}
+
+	@Override
+	public Profile getUserProfileById(Integer id) {
+		User profileOwner = em.find(User.class, id);
+		Profile userProfile = profileOwner.getProfile();
+		return userProfile;
 	}
 
 }

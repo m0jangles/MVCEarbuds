@@ -1,5 +1,8 @@
 package com.skilldistillery.earbuds.controllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.User;
 
@@ -20,10 +24,14 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userdao;
+	
+	@Autowired
+	private AuthenticationDAO authDao;
 
 	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
-	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser, BindingResult result, Model model,
-			RedirectAttributes redir, @RequestParam("firstName") String firstName,
+	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser,
+			BindingResult result, Model model, RedirectAttributes redir,
+			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
 
 		if (result.hasErrors()) {
@@ -41,20 +49,47 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "addFriend.do", method = RequestMethod.POST)
-	public String userAddFriend(Model model, User userInSession, Integer friendId) {
+	public String userAddFriend(Model model, Integer friendId, HttpSession session) {
+		
+		User userInSession = (User) session.getAttribute("UserInSession");
+		
 		boolean friendAdded = userdao.addNewFriend(userInSession, friendId);
 		if (friendAdded = true) {
 			model.addAttribute("friendAdded", friendAdded);
 		}
+
 		return "homepage";
 	}
+
 	@RequestMapping(path = "removeFriend.do", method = RequestMethod.POST)
-	public String userRemoveFriend(Model model, User userInSession, Integer friendId) {
+	public String userRemoveFriend(Model model, User userInSession,
+			Integer friendId) {
 		boolean notMyFriend = userdao.deleteFriend(userInSession, friendId);
 		if (notMyFriend = true) {
 			model.addAttribute("friendRemoved", notMyFriend);
 		}
-		return "hompage";
+		return "homepage";
 	}
 
+	@RequestMapping(path = "viewMyFriends.do", method = RequestMethod.GET)
+	public String showUserFriendsList(Model model, User user) {
+		// If getting lazy load error, add fetch to User class
+		List<User> myFriends = userdao.getFriendsList(user);
+		if (myFriends != null) {
+			model.addAttribute("myFriends", myFriends);
+		}
+		return "homepage";
+	}
+
+	@RequestMapping(path = "friendProfile.do", method = RequestMethod.GET)
+	public String showFriendProfile(Model model, Integer friendID) {
+		
+		User otherUser = authDao.findUserById(friendID);
+		
+		model.addAttribute("otherUser", otherUser);
+		
+		return "friendProfile";
+	}
+	
+	
 }

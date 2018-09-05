@@ -23,7 +23,8 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private String query;
 
 	@Override
-	public Profile updateInfo(Profile profileWithChanges, int id, String city, String state, String country) {
+	public Profile updateInfo(Profile profileWithChanges, int id, String city,
+			String state, String country) {
 
 		// This is the profile that already exists in the database which we are
 		// updating with the passed in profile's attributes, which are different.
@@ -33,8 +34,9 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 		// See if the location already exists in the database.
 		query = "SELECT l FROM Location l WHERE l.city = :city AND l.state = :state";
-		List<Location> locationList = em.createQuery(query, Location.class).setParameter("city", city)
-				.setParameter("state", state).getResultList();
+		List<Location> locationList = em.createQuery(query, Location.class)
+				.setParameter("city", city).setParameter("state", state)
+				.getResultList();
 
 		// If the size is not 0, then the query found that the location already
 		// existed in the database. In one case, this may mean that the user did not
