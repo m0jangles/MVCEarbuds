@@ -13,8 +13,6 @@
 
 	<h2>Playlist Page (Temporary Name)</h2>
 
-
-
 	<table>
 		<tr>
 			<td colspan="5" align="center"><strong>${playlistName}</strong></td>
