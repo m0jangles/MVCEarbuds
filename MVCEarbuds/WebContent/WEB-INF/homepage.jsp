@@ -4,20 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Earbuds | Homepage</title>
 </head>
 <body>
 	<div class="container">
 		<h2>Welcome, ${UserInSession.username}</h2>
-		<a class="btn btn-primary btn-std" href="profile.do" role="button">Profile</a>
+		<a class="btn btn-primary btn-std" href="profile.do" role="button"> Profile </a>
 
-		<a class="btn btn-primary btn-std" href="logout.do" role="button">Logout</a>
+		<a class="btn btn-primary btn-std" href="logout.do" role="button"> Logout </a>
 
-		<a class="btn btn-primary btn-std" href="settings.do" role="button">Settings</a>
+		<a class="btn btn-primary btn-std" href="settings.do" role="button"> Settings </a>
 		<br> <img src="${UserInSession.profile.image}" width="250">
 		<br>
 

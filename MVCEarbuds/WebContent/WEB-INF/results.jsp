@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Search Results</title>
 </head>
@@ -20,7 +24,9 @@
 							<td>${song.title}</td>
 							<td>${song.artist}</td>
 							<td>${song.album}</td>
-							<td>${song.url }</td>
+							<td><iframe width="200" height="150"
+									src="https://www.youtube.com/embed/${song.url}" frameborder="0"
+									allow="autoplay; encrypted-media" allowfullscreen> </iframe></td>
 						</tr>
 						</c:forEach>
 
@@ -41,8 +47,12 @@
 				<em>No Results Matching Your Search.</em>
 			</c:otherwise>
 		</c:choose>
-		<a href="homepage.do">Home</a> <a href="profile.do">Profile</a> <a
-			href="settings.do">Settings</a> <a href="logout.do">Logout</a>
+		<a class="btn btn-primary btn-std" href="homepage.do" role="button">
+			Home </a> <a class="btn btn-primary btn-std" href="profile.do"
+			role="button"> Profile </a> <a class="btn btn-primary btn-std"
+			href="settings.do" role="button"> Settings </a> <a
+			class="btn btn-primary btn-std" href="logout.do" role="button">
+			Logout </a>
 	</div>
 
 </body>
