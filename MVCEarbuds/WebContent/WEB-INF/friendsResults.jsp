@@ -45,10 +45,11 @@
 									<img src="${profile.image }"
 										alt="Photo of ${profile.firstName}" width="150" height="150">
 								</c:if>
-								<p>${profile.firstName }${profile.lastName}</p></td>
+								<p>${profile.firstName } ${profile.lastName}</p></td>
 							<td>
-								<form action="addFriend.do">
+								<form action="addFriend.do" method="POST">
 									<input type="submit" value="Send Friend Request">
+									<input type="hidden" name="friendId" value="${profile.user.id}">
 								</form>
 							</td>
 						</tr>
