@@ -55,17 +55,15 @@
 							<td>${song.genresAsString}</td>
 							<td>
 								<form action="addSongFromSearchPage.do" method="POST">
-
-									<select class="inlineFormCustomSelect" name="playlist">
-										<option selected>Select Playlist</option>
+									<select class="inlineFormCustomSelect" name="playlist" required="true">
+										<option selected disabled>Select Playlist</option>
 										<c:forEach var="playlist" items="${playlists}">
 											<option value="${playlist.id}">${playlist.playlistName}</option>
 										</c:forEach>
-									</select> <input type="hidden" name="songId" value="${song.id}">
-									<input type="hidden" name="searchSongInput"
-										value="${searchSongInput}"> <input type="submit"
-										value="Add to Playlist">
-
+									</select> 
+									<input type="hidden" name="songId" value="${song.id}">
+									<input type="hidden" name="searchSongInput" value="${searchSongInput}"> 
+									<input type="submit" value="Add to Playlist">
 								</form>
 							</td>
 							<td><c:if
@@ -76,14 +74,24 @@
 					</c:forEach>
 
 				</table>
-
 			</c:when>
-
+			<c:when test="${not empty profiles }">
+				<c:forEach var="profile" items="${profiles }">
+					<dl>
+						<c:if test="${not empty profile.image}">
+							<li><img src="${profile.image }"
+								alt="Photo of ${profile.firstName}" width="100"></li>
+						</c:if>
+						<li>${profile.firstName }${profile.lastName }</li>
+					</dl>
+				</c:forEach>
+			</c:when>
 			<c:otherwise>
 				<em>No Results Matching Your Search.</em>
 			</c:otherwise>
-
 		</c:choose>
+
+
 	</div>
 
 </body>
