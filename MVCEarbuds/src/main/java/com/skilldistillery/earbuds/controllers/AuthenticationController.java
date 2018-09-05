@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
+import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
+import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.User;
 
@@ -24,6 +26,8 @@ public class AuthenticationController {
 	private AuthenticationDAO dao;
 	@Autowired
 	private ProfileDAO pdao;
+	@Autowired
+	private PlaylistDAO pldao;
 
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
@@ -73,10 +77,15 @@ public class AuthenticationController {
 
 	// Homepage display
 	@RequestMapping(path = "homepage.do", method = RequestMethod.GET)
-	public String showHomepage(Model model) {
+	public String showHomepage(Model model, HttpSession session) {
+		User user = (User)session.getAttribute(USER_IN_SESSION_KEY);
 		List<Post> posts = pdao.getAllPosts();
 		if(!posts.isEmpty()) {
 			model.addAttribute("posts", posts);
+		}
+		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
+		if (!playlists.isEmpty()) {
+			model.addAttribute("playlists", playlists);
 		}
 		return "homepage";
 	}

@@ -70,15 +70,15 @@ public class ProfileController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "allPosts.do", method = RequestMethod.GET)
-	public String viewAllPosts(Model model) {
-		List<Post> posts = dao.getAllPosts();
-		if(!posts.isEmpty()) {
-			model.addAttribute("posts", posts);
-		}
-		return "homepage";
-		
-	}
+//	@RequestMapping(path = "allPosts.do", method = RequestMethod.GET)
+//	public String viewAllPosts(Model model) {
+//		List<Post> posts = dao.getAllPosts();
+//		if(!posts.isEmpty()) {
+//			model.addAttribute("posts", posts);
+//		}
+//		return "homepage";
+//		
+//	}
 	 
 	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
 	public String deletePost(Model model, HttpSession session, 

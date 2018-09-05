@@ -19,20 +19,9 @@
 			role="button"> Logout </a> <a class="btn btn-primary btn-std"
 			href="settings.do" role="button"> Settings </a> <br> <img
 			src="${UserInSession.profile.image}" width="250"> <br>
-		<form action="newPlaylist.do" method="POST">
-			<input type="hidden" name="playlistProfileId"
-				value="${UserInSession.profile.id }"> <input type="text"
-				name="name" placeholder="Name your playlist">
-			<button type="submit" value="New Playlist">Create New
-				Playlist</button>
-		</form>
+		
 		<br>
-		<form action="viewPlaylists.do" method="GET">
-			<input type="hidden" name="id" value="${UserInSession.profile.id }">
-			<button type="submit" value="View Playlists">View Playlists</button>
-		</form>
-
-
+<h3>Your Playlists</h3>
 		<c:choose>
 			<c:when test="${not empty playlists }">
 				<ul>
@@ -41,15 +30,6 @@
 							<form action="getSongs.do" method="GET">
 								<input type="hidden" name="id" value="${playlist.id }">
 								<button type="submit" value="View Songs">View Songs</button>
-							</form>
-							<form action="addSong.do" method="POST">
-								<input type="hidden" name="playlistId" value="${playlist.id }">
-								<input type="text" name="title" placeholder="Title"> <input
-									type="text" name="album" placeholder="Album"> <input
-									type="text" name="albumImage" placeholder="Image URL">
-								<input type="text" name="url" placeholder="YouTube URL">
-								<input type="text" name="artist" placeholder="Artist">
-								<button type="submit" value="Add Song">Add Song</button>
 							</form>
 							<form action="removePlaylist.do" method="POST">
 								<input type="hidden" name="playlistId" value="${playlist.id }">
@@ -62,13 +42,18 @@
 			</c:when>
 			<c:otherwise>
 				<br>
-
 			</c:otherwise>
 		</c:choose>
-		<form action="createPost.do" method="POST">
+			<form action="newPlaylist.do" method="POST">
+			<input type="hidden" name="playlistProfileId"
+				value="${UserInSession.profile.id }"> <input type="text"
+				name="name" placeholder="Name your playlist">
+			<button type="submit" value="New Playlist">Create New
+				Playlist</button>
+		</form>
+		<form id="commentForm" action="createPost.do" method="POST">
 			<input type="hidden" name="id" value="${UserInSession.profile.id }">
-			<input type="text" name="message" placeholder="message">
-
+		<textarea rows="4" cols="50" name="message" form="commentForm"></textarea>
 			<button type="submit" value="POST IT!">POST IT!</button>
 		</form>
 		
