@@ -15,7 +15,7 @@ public interface UserDAO {
 	
 	public boolean deleteFriend(User userInSession, Integer friendId);
 	
-	public List<User> getFriendsList (User id);
+	public List<User> getUserInSessionFriendsList (Integer id);
 	
 	public Profile getUserProfileById(Integer id);
 

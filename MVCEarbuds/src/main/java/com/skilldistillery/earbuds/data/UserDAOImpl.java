@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -55,8 +56,7 @@ public class UserDAOImpl implements UserDAO {
 		// around the lazily loading exception
 		String query = "SELECT u FROM User u JOIN FETCH u.friends WHERE u.id = :id";
 
-		List<User> result = em.createQuery(query, User.class)
-				.setParameter("id", userInSession.getId()).getResultList();
+		List<User> result = em.createQuery(query, User.class).setParameter("id", userInSession.getId()).getResultList();
 
 		User currentUser = new User();
 
@@ -88,10 +88,17 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<User> getFriendsList(User id) {
-		User currentUser = em.find(User.class, id);
-		List<User> friendsList = currentUser.getFriends();
-		return friendsList;
+	public List<User> getUserInSessionFriendsList(Integer userInSessionID) {
+		String query = "SELECT u FROM User u JOIN FETCH u.friends WHERE u.id = :id";
+		List<User> result = em.createQuery(query, User.class).setParameter("id", userInSessionID).getResultList();
+		if (result.size() > 0) {
+			User userInSession = result.get(0);
+			List<User> friendsList = userInSession.getFriends();
+			return friendsList;
+		} else {
+			List<User> emptyList = new ArrayList<>();
+			return emptyList;
+		}
 	}
 
 	@Override

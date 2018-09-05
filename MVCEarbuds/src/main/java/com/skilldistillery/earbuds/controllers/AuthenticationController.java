@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
+import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.User;
@@ -28,6 +29,8 @@ public class AuthenticationController {
 	private ProfileDAO pdao;
 	@Autowired
 	private PlaylistDAO pldao;
+	@Autowired
+	private UserDAO udao;
 
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
@@ -86,6 +89,10 @@ public class AuthenticationController {
 		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
 		if (!playlists.isEmpty()) {
 			model.addAttribute("playlists", playlists);
+		}
+		List<User> myFriends = udao.getUserInSessionFriendsList(user.getId());
+		if (!myFriends.isEmpty() || myFriends != null) {
+			model.addAttribute("myFriends", myFriends);
 		}
 		return "homepage";
 	}

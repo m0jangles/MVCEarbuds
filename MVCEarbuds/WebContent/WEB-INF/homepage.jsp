@@ -110,6 +110,10 @@
 							<button type="submit" value="New Playlist">Create New
 								Playlist</button>
 						</form>
+						
+						<c:forEach var="friend" items="${myFriends }">
+						${friend}
+						</c:forEach>
 					</div>
 				</div>
 			</div>
