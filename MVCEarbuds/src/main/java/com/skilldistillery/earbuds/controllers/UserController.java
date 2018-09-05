@@ -48,5 +48,13 @@ public class UserController {
 		}
 		return "homepage";
 	}
+	@RequestMapping(path = "removeFriend.do", method = RequestMethod.POST)
+	public String userRemoveFriend(Model model, User userInSession, Integer friendId) {
+		boolean notMyFriend = userdao.deleteFriend(userInSession, friendId);
+		if (notMyFriend = true) {
+			model.addAttribute("friendRemoved", notMyFriend);
+		}
+		return "hompage";
+	}
 
 }

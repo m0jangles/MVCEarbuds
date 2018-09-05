@@ -58,4 +58,15 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public boolean deleteFriend(User userInSession, Integer friendId) {
+		User notMyFriendAnymore = em.find(User.class, friendId);
+		userInSession.removeFriend(notMyFriendAnymore);
+		if (!userInSession.getFriends().contains(notMyFriendAnymore)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

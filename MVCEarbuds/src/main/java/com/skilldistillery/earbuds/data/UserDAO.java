@@ -9,5 +9,7 @@ public interface UserDAO {
 	boolean destroyUser(User user);
 
 	public boolean addNewFriend(User userInSession, Integer friendId);
+	
+	public boolean deleteFriend(User userInSession, Integer friendId);
 
 }
