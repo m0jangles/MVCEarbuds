@@ -71,10 +71,7 @@
 
 			<button type="submit" value="POST IT!">POST IT!</button>
 		</form>
-		<form action="allPosts.do" method="GET">
-			<button type="submit" value="View All Posts">See What
-				Everyone is Posting</button>
-		</form>
+		
 		<c:if test="${not empty posts }">
 
 			<c:forEach var="post" items="${posts}">
@@ -85,11 +82,20 @@
 					<td>${post.message}</td>
 
 					<td>
+				<%-- 	<c:set var = "userProfile" scope="session" value="${profile.id }"/>
+					<c:set var = "userPost" scope="session" value="${UserInSession.profile.id}"/>
+					
+					<c:if test="${userProfile==userPost}"> --%>
 						<form action="deletePost.do" method="POST">
-							<input type="hidden" name="id"
-								value="${UserInSession.profile.id }"> <input
-								type="submit" value="Remove Song">
+							<input type="hidden" name="user"
+								value="${UserInSession }">
+							<input type="hidden" name="postId"
+								value="${post.id }">
+								
+								 <input
+								type="submit" value="Delete Post">
 						</form>
+					<%-- 	</c:if> --%>
 					</td>
 				</tr>
 

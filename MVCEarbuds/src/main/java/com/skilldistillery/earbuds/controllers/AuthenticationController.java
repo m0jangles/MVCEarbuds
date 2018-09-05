@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
+import com.skilldistillery.earbuds.data.ProfileDAO;
+import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.User;
 
 @Controller
@@ -18,6 +22,8 @@ public class AuthenticationController {
 	// comment
 	@Autowired
 	private AuthenticationDAO dao;
+	@Autowired
+	private ProfileDAO pdao;
 
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
@@ -67,7 +73,11 @@ public class AuthenticationController {
 
 	// Homepage display
 	@RequestMapping(path = "homepage.do", method = RequestMethod.GET)
-	public String showHomepage() {
+	public String showHomepage(Model model) {
+		List<Post> posts = pdao.getAllPosts();
+		if(!posts.isEmpty()) {
+			model.addAttribute("posts", posts);
+		}
 		return "homepage";
 	}
 

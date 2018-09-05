@@ -61,9 +61,8 @@ public class ProfileController {
 	
 	@RequestMapping(path = "createPost.do", method = RequestMethod.POST)
 	public ModelAndView createPost(Integer id,
-			@RequestParam("message") String message,
-			@RequestParam("postDate") Date postDate) {
-		Post newPost = dao.addPost(id, message, postDate);
+			@RequestParam("message") String message) {
+		Post newPost = dao.addPost(id, message);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", id);
 		mv.addObject("newPost", newPost);
@@ -79,6 +78,17 @@ public class ProfileController {
 		}
 		return "homepage";
 		
+	}
+	 
+	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
+	public String deletePost(Model model, User user, 
+			@RequestParam("postId") Integer postId) {
+		
+		boolean postDeleted = dao.deletePost(user, postId);
+		if(postDeleted = true) {
+		model.addAttribute("postDeleted", postDeleted);
+		}
+		return "homepage";	
 	}
 
 }

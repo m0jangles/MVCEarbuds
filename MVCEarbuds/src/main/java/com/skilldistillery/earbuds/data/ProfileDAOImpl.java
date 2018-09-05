@@ -1,7 +1,5 @@
 package com.skilldistillery.earbuds.data;
 
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,6 +12,7 @@ import com.skilldistillery.earbuds.entities.Location;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.Song;
+import com.skilldistillery.earbuds.entities.User;
 
 @Component
 @Transactional
@@ -24,8 +23,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private String query;
 
 	@Override
-	public Profile updateInfo(Profile profileWithChanges, int id, String city,
-			String state, String country) {
+	public Profile updateInfo(Profile profileWithChanges, int id, String city, String state, String country) {
 
 		// This is the profile that already exists in the database which we are
 		// updating with the passed in profile's attributes, which are different.
@@ -35,9 +33,8 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 		// See if the location already exists in the database.
 		query = "SELECT l FROM Location l WHERE l.city = :city AND l.state = :state";
-		List<Location> locationList = em.createQuery(query, Location.class)
-				.setParameter("city", city).setParameter("state", state)
-				.getResultList();
+		List<Location> locationList = em.createQuery(query, Location.class).setParameter("city", city)
+				.setParameter("state", state).getResultList();
 
 		// If the size is not 0, then the query found that the location already
 		// existed in the database. In one case, this may mean that the user did not
@@ -85,27 +82,40 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 		return managedProfile;
 	}
-	
-	public Post addPost(Integer id, String message, Date postDate) {
+
+	public Post addPost(Integer id, String message) {
 		Profile profile = em.find(Profile.class, id);
-		
+
 		Post post = new Post();
 		post.setProfile(profile);
 		post.setMessage(message);
 		post.setSong(em.find(Song.class, 1));
-		
+
 		em.persist(post);
 		em.flush();
-		
+
 		return post;
-		
+
 	}
-	
-	public List<Post> getAllPosts(){
+
+	public List<Post> getAllPosts() {
 		String query = "Select p from Post p";
 		List<Post> posts = em.createQuery(query, Post.class).getResultList();
 		return posts;
-		
+
+	}
+
+	@Override
+	public boolean deletePost(User user, Integer postId) {
+		List<Post> posts = user.getProfile().getPosts();
+		Post post = em.find(Post.class, postId);
+		user.getProfile().removePost(post);
+		if (!user.getProfile().getPosts().contains(post)) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }
