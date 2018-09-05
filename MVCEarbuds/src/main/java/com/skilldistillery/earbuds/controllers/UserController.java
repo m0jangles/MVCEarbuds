@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +56,16 @@ public class UserController {
 		if (notMyFriend = true) {
 			model.addAttribute("friendRemoved", notMyFriend);
 		}
-		return "hompage";
+		return "homepage";
+	}
+	@RequestMapping(path = "viewMyFriends.do", method = RequestMethod.GET)
+	public String showUserFriendsList(Model model, User user) {
+		// If getting lazy load error, add fetch to User class
+		List<User> myFriends = userdao.getFriendsList(user);
+		if(myFriends != null) {
+			model.addAttribute("myFriends", myFriends);
+		}
+		return "homepage";
 	}
 
 }

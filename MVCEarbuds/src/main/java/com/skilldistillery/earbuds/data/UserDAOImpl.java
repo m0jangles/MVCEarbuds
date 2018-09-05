@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -29,7 +31,6 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 
 		return user;
-
 	}
 
 	@Override
@@ -41,9 +42,8 @@ public class UserDAOImpl implements UserDAO {
 			return true;
 		else
 			return false;
-
 	}
-	
+
 	// User a friend to their friends list
 	@Override
 	public boolean addNewFriend(User userInSession, Integer friendId) {
@@ -67,6 +67,20 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<User> getFriendsList(User id) {
+		User currentUser = em.find(User.class, id);
+		List<User> friendsList = currentUser.getFriends();
+		return friendsList;
+	}
+
+	@Override
+	public Profile getUserProfileById(Integer id) {
+		User profileOwner = em.find(User.class, id);
+		Profile userProfile = profileOwner.getProfile();
+		return userProfile;
 	}
 
 }

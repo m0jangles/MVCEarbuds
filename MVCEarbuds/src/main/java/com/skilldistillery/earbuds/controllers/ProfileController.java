@@ -1,8 +1,5 @@
 package com.skilldistillery.earbuds.controllers;
 
-import java.sql.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
+import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
@@ -27,6 +25,9 @@ public class ProfileController {
 
 	@Autowired
 	private AuthenticationDAO authDao;
+	
+	@Autowired
+	private UserDAO userdao;
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
 	public String showProfilePage() {
@@ -69,16 +70,6 @@ public class ProfileController {
 		mv.setViewName("redirect:homepage.do");
 		return mv;
 	}
-	
-//	@RequestMapping(path = "allPosts.do", method = RequestMethod.GET)
-//	public String viewAllPosts(Model model) {
-//		List<Post> posts = dao.getAllPosts();
-//		if(!posts.isEmpty()) {
-//			model.addAttribute("posts", posts);
-//		}
-//		return "homepage";
-//		
-//	}
 	 
 	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
 	public String deletePost(Model model, HttpSession session, 
@@ -89,6 +80,15 @@ public class ProfileController {
 		model.addAttribute("postDeleted", postDeleted);
 		}
 		return "redirect:homepage.do";	
+	}
+	
+	@RequestMapping(path = "viewAnotherProfile.do", method = RequestMethod.GET)
+	public String viewAnotherUserProfile(Model model, Integer friendId) {
+		Profile otherProfile = userdao.getUserProfileById(friendId);
+		if (otherProfile != null) {
+			model.addAttribute("otherProfile", otherProfile);
+		}
+		return "friendProfile";
 	}
 
 }
