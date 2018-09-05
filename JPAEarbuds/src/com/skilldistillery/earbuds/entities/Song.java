@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,18 +33,19 @@ public class Song {
 
 	private String artist;
 
-	@ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+	@ManyToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
 	@JoinTable(name = "playlist_song",
 			joinColumns = @JoinColumn(name = "song_id"),
 			inverseJoinColumns = @JoinColumn(name = "playlist_id"))
 	private List<Playlist> playlists;
 
-	@ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER)
 	private List<Genre> genres;
 
 	@ManyToMany(mappedBy = "songs")
 	private List<Profile> profiles;
-	
+
 	@OneToMany(mappedBy = "song")
 	private List<Post> posts;
 
@@ -183,7 +185,7 @@ public class Song {
 			playlist.removeSong(this);
 		}
 	}
-	
+
 	public void addProfile(Profile profile) {
 		if (profiles == null)
 			profiles = new ArrayList<>();
@@ -200,7 +202,7 @@ public class Song {
 		}
 
 	}
-	
+
 	public void addPost(Post post) {
 		if (posts == null)
 			posts = new ArrayList<>();
@@ -225,7 +227,8 @@ public class Song {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((album == null) ? 0 : album.hashCode());
-		result = prime * result + ((albumImage == null) ? 0 : albumImage.hashCode());
+		result = prime * result
+				+ ((albumImage == null) ? 0 : albumImage.hashCode());
 		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
 		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + id;
@@ -301,6 +304,16 @@ public class Song {
 		return "Song [id=" + id + ", title=" + title + ", album=" + album
 				+ ", albumImage=" + albumImage + ", url=" + url + ", artist=" + artist
 				+ "]";
+	}
+
+	public String getGenresAsString() {
+		String s = "";
+		String separator = "";
+		for (Genre g : getGenres()) {
+			s = s + separator + g.getName();
+			separator = ", &nbsp;";
+		}
+		return s;
 	}
 
 }

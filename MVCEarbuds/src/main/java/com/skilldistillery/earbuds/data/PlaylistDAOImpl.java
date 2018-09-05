@@ -21,7 +21,8 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 
 	public List<Playlist> getPlaylists(Integer id) {
 		String query = "SELECT p from Playlist p JOIN FETCH p.profile WHERE p.profile.id = :id";
-		List<Playlist> playlists = em.createQuery(query, Playlist.class).setParameter("id", id).getResultList();
+		List<Playlist> playlists = em.createQuery(query, Playlist.class)
+				.setParameter("id", id).getResultList();
 
 		return playlists;
 
@@ -29,13 +30,13 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 
 	public List<Song> getSongs(Integer id) {
 		String query = "SELECT p from Playlist p JOIN FETCH p.songs WHERE p.id = :id";
-		List<Playlist> result = em.createQuery(query, Playlist.class).setParameter("id", id).getResultList();
-		
+		List<Playlist> result = em.createQuery(query, Playlist.class)
+				.setParameter("id", id).getResultList();
+
 		if (result.size() > 0) {
 			List<Song> songs = result.get(0).getSongs();
 			return songs;
-		}
-		else {
+		} else {
 			return null;
 		}
 	}

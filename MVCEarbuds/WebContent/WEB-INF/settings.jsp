@@ -4,16 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Earbuds | Settings</title>
 </head>
 <body>
-
+<div class="container">
 	<h3>Settings</h3>
 
 	<p>
-		<a href="homepage.do">Home</a> <a href="profile.do">Profile</a> <a
-			href="logout.do">Logout</a>
+		<a class="btn btn-primary btn-std" href="homepage.do" role="button">Home</a> 
+		<a class="btn btn-primary btn-std" href="profile.do" role="button">Profile</a>
+
+		<a class="btn btn-primary btn-std" href="logout.do" role="button">Logout</a>
 	</p>
 
 	<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
@@ -55,10 +60,7 @@
 				name="updateID" value="${UserInSession.profile.id}" />
 		</form>
 	</fieldset>
-
-	<p>
-		${UserInSession} <br> ${UserInSession.profile}
-	</p>
+</div>
 
 </body>
 </html>
