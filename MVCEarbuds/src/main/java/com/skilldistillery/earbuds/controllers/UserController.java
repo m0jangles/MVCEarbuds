@@ -22,9 +22,8 @@ public class UserController {
 	private UserDAO userdao;
 
 	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
-	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser,
-			BindingResult result, Model model, RedirectAttributes redir,
-			@RequestParam("firstName") String firstName,
+	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser, BindingResult result, Model model,
+			RedirectAttributes redir, @RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
 
 		if (result.hasErrors()) {
@@ -39,6 +38,15 @@ public class UserController {
 		}
 
 		return "redirect:login.do";
+	}
+
+	@RequestMapping(path = "addFriend.do", method = RequestMethod.POST)
+	public String userAddFriend(Model model, User userInSession, Integer friendId) {
+		boolean friendAdded = userdao.addNewFriend(userInSession, friendId);
+		if (friendAdded = true) {
+			model.addAttribute("friendAdded", friendAdded);
+		}
+		return "homepage";
 	}
 
 }
