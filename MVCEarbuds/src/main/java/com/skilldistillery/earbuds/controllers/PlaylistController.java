@@ -62,7 +62,7 @@ public class PlaylistController {
 		model.addAttribute("id", playlistId);
 
 		model.addAttribute("genres", genres);
-		return "viewPlaylists";
+		return "viewPlaylist";
 	}
 
 	@RequestMapping(path = "showVideo.do", method = RequestMethod.GET)
