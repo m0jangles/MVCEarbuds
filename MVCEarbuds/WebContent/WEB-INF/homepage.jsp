@@ -9,92 +9,101 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
+
 <title>Earbuds | Homepage</title>
 </head>
 <body>
 	<div class="container">
-		<h2>Welcome, ${UserInSession.username}</h2>
-		<a class="btn btn-primary btn-std" href="profile.do" role="button">
-			Profile </a> <a class="btn btn-primary btn-std" href="logout.do"
-			role="button"> Logout </a> <a class="btn btn-primary btn-std"
-			href="settings.do" role="button"> Settings </a> <br> <img
-			src="${UserInSession.profile.image}" width="250"> <br>
-		
-		<br>
-<h3>Your Playlists</h3>
-		<c:choose>
-			<c:when test="${not empty playlists }">
-				<ul>
-					<c:forEach var="playlist" items="${playlists }">
-						<li>${playlist.playlistName }
-							<form action="getSongs.do" method="GET">
-								<input type="hidden" name="id" value="${playlist.id }">
-								<button type="submit" value="View Songs">View Songs</button>
-							</form>
-							<form action="removePlaylist.do" method="POST">
-								<input type="hidden" name="playlistId" value="${playlist.id }">
-								<button type="submit" value="Delete Playlist">Delete
-									this playlist</button>
-							</form>
-						</li>
-					</c:forEach>
-				</ul>
-			</c:when>
-			<c:otherwise>
+		<div class="row">
+			<div class="col">
 				<br>
-			</c:otherwise>
-		</c:choose>
-			<form action="newPlaylist.do" method="POST">
-			<input type="hidden" name="playlistProfileId"
-				value="${UserInSession.profile.id }"> <input type="text"
-				name="name" placeholder="Name your playlist">
-			<button type="submit" value="New Playlist">Create New
-				Playlist</button>
-		</form>
-		<form id="commentForm" action="createPost.do" method="POST">
-			<input type="hidden" name="id" value="${UserInSession.profile.id }">
-		<textarea rows="4" cols="50" name="message" form="commentForm"></textarea>
-			<button type="submit" value="POST IT!">POST IT!</button>
-		</form>
-		
-		<c:if test="${not empty posts }">
+				<h2>Welcome, ${UserInSession.username}</h2>
+				<a class="btn btn-primary btn-std" href="profile.do" role="button">
+					Profile </a> <a class="btn btn-primary btn-std" href="logout.do"
+					role="button"> Logout </a> <a class="btn btn-primary btn-std"
+					href="settings.do" role="button"> Settings </a> <br> <img
+					src="${UserInSession.profile.image}" width="250"> <br> <br>
 
-			<c:forEach var="post" items="${posts}">
+				<form id="commentForm" action="createPost.do" method="POST">
+					<input type="hidden" name="id" value="${UserInSession.profile.id }">
+					<textarea rows="4" cols="30" name="message" form="commentForm"></textarea>
+					<button type="submit" value="POST IT!">POST IT!</button>
+				</form>
+			</div>
+			<br>
+			<div class="col">
+				<c:if test="${not empty posts }">
+					<h3>Your Feed for All Things Music</h3>
+					<div style='overflow: scroll; width: 400px; height: 400px;'>
+						<c:forEach var="post" items="${posts}">
 
-				<tr>
-					<td>${post.profile.user.username}</td>
-					<td>${post.postDate}</td>
-					<td>${post.message}</td>
+							<tr>
+								<td>${post.postDate}</td>
+								<td>${post.profile.user.username}</td>
+								<td>${post.message}</td>
 
-					<td>
-				<%-- 	<c:set var = "userProfile" scope="session" value="${profile.id }"/>
-					<c:set var = "userPost" scope="session" value="${UserInSession.profile.id}"/>
-					
-					<c:if test="${userProfile==userPost}"> --%>
-						<form action="deletePost.do" method="POST">
-							<input type="hidden" name="postId"
-								value="${post.id }">
-								
-								 <input
-								type="submit" value="Delete Post">
+								<td>
+
+									<form action="deletePost.do" method="POST">
+										<input type="hidden" name="postId" value="${post.id }">
+
+										<input type="submit" value="Delete Post">
+									</form>
+
+								</td>
+							</tr>
+
+						</c:forEach>
+					</div>
+			</div>
+			</c:if>
+
+			<div class="row">
+
+				<div class="col">
+					<br>
+					<h3>Your Playlists</h3>
+					<div style='overflow: scroll; width: 400px; height: 400px;'>
+						<c:choose>
+							<c:when test="${not empty playlists }">
+
+								<c:forEach var="playlist" items="${playlists }">
+
+									<tr>
+										<td colspan="5" align="center"><strong> <a
+												href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
+										</strong></td>
+									</tr>
+
+									<form action="getSongs.do" method="GET">
+										<input type="hidden" name="id" value="${playlist.id }">
+										<button type="submit" value="View Songs">View Songs</button>
+									</form>
+									<form action="removePlaylist.do" method="POST">
+										<input type="hidden" name="playlistId" value="${playlist.id }">
+										<button type="submit" value="Delete Playlist">Delete
+											Playlist</button>
+									</form>
+
+								</c:forEach>
+
+							</c:when>
+							<c:otherwise>
+								<br>
+							</c:otherwise>
+						</c:choose>
+						<form action="newPlaylist.do" method="POST">
+							<input type="hidden" name="playlistProfileId"
+								value="${UserInSession.profile.id }"> <input type="text"
+								name="name" placeholder="Name your playlist">
+							<button type="submit" value="New Playlist">Create New
+								Playlist</button>
 						</form>
-					<%-- 	</c:if> --%>
-					</td>
-				</tr>
+					</div>
+				</div>
+			</div>
+			<div class="row"></div>
 
-			</c:forEach>
-		</c:if>
-
-		<form action="findUsers.do" method="GET">
-			<input type="text" name="searchUserInput" placeholder="Find Friends">
-			<button type="submit" value="Search">Search Users</button>
-		</form>
-		<form action="findSongs.do" method="GET">
-			<input type="text" name="searchSongInput" placeholder="Search Music">
-			<button type="submit" value="Search">Search Music</button>
-		</form>
-		<br>
-
-	</div>
+		</div>
 </body>
 </html>
