@@ -1,5 +1,8 @@
 package com.skilldistillery.earbuds.data;
 
+import java.util.List;
+
+import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
 
 public interface UserDAO {
@@ -11,5 +14,9 @@ public interface UserDAO {
 	public boolean addNewFriend(User userInSession, Integer friendId);
 	
 	public boolean deleteFriend(User userInSession, Integer friendId);
+	
+	public List<User> getFriendsList (User id);
+	
+	public Profile getUserProfileById(Integer id);
 
 }
