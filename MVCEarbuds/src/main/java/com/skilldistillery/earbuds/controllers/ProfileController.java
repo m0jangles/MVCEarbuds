@@ -1,6 +1,7 @@
 package com.skilldistillery.earbuds.controllers;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -68,6 +69,16 @@ public class ProfileController {
 		mv.addObject("newPost", newPost);
 		mv.setViewName("homepage");
 		return mv;
+	}
+	
+	@RequestMapping(path = "allPosts.do", method = RequestMethod.GET)
+	public String viewAllPosts(Model model) {
+		List<Post> posts = dao.getAllPosts();
+		if(!posts.isEmpty()) {
+			model.addAttribute("posts", posts);
+		}
+		return "homepage";
+		
 	}
 
 }

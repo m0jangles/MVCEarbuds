@@ -75,9 +75,27 @@
 				
 			<button type="submit" value="POST IT!">POST IT!</button>
 		</form>
+		<form action="allPosts.do" method="GET">
+		<button type="submit" value="View All Posts">See What Everyone is Posting</button>
+		</form>
+		<c:if test="${not empty posts }">
 		
-		<c:if test="${not empty newPost }">
-		<c:out value="${newPost }" />
+		<c:forEach var="post" items="${posts}">
+
+			<tr>
+				<td>${post.profile.user.username}</td>
+				<td>${post.date}</td>
+				<td>${post.message}</td>
+				
+				<td>
+					<form action="deletePost.do" method="POST">
+						<input type="hidden" name="id" value="${UserInSession.profile.id }"> 
+						<input type="submit" value="Remove Song">
+					</form>
+				</td>
+			</tr>
+
+		</c:forEach>
 		</c:if>
 		
 		<form action="findUsers.do" method="GET">

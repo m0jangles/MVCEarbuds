@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.skilldistillery.earbuds.entities.Location;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
+import com.skilldistillery.earbuds.entities.Song;
 
 @Component
 @Transactional
@@ -87,12 +88,22 @@ public class ProfileDAOImpl implements ProfileDAO {
 	public Post addPost(Integer id, String message, Date postDate) {
 		Profile profile = em.find(Profile.class, id);
 		Post post = new Post();
+		post.setProfile(profile);
 		post.setMessage(message);
 		post.setPostDate(postDate);
+		post.setSong(em.find(Song.class, 1));
 		
 		em.persist(profile);
+		em.flush();
 		
 		return post;
+		
+	}
+	
+	public List<Post> getAllPosts(){
+		String query = "Select p from Post p";
+		List<Post> posts = em.createQuery(query, Post.class).getResultList();
+		return posts;
 		
 	}
 
