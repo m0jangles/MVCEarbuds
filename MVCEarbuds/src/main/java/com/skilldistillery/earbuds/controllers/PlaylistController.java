@@ -43,20 +43,6 @@ public class PlaylistController {
 		List<Song> songs = dao.getSongs(playlistId);
 
 		List<Genre> genres = gdao.getEntireGenreList();
-		
-		// ** NEW STUFF ** TODO
-		// Get the list of genres for every song in the song list
-		
-		List<Genre> genreList = songs.get(0).getGenres();
-		
-		List<List<Genre>> genreListofLists = new ArrayList<>();
-		for (Song song : songs) {
-			genreListofLists.add(song.getGenres());
-		}
-
-		model.addAttribute("genreList", genreListofLists);
-		
-		// ** END NEW STUFF **
 
 		String playlistName = dao.getPlaylistById(playlistId).getPlaylistName();
 		if (songs != null) {

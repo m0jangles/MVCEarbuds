@@ -47,6 +47,8 @@ public class SongDAOImpl implements SongDAO {
 		// If the song does not already exist, and the user provides a genre for the
 		// song, find the genre in the database and assign it to the song.
 		else {
+			String newUrl = findYoutube11(songWithChanges.getUrl());
+			songWithChanges.setUrl(newUrl);
 			em.persist(songWithChanges);
 			em.flush();
 
@@ -78,5 +80,26 @@ public class SongDAOImpl implements SongDAO {
 			return false;
 		}
 	}
+	
+	@Override
+	public String findYoutube11(String url) {
+        int pos = url.indexOf("watch?v=");
+        if (pos >= 0)
+            return url.substring(pos + 8, pos + 19);
+
+        pos = url.indexOf("/v/");
+        if (pos >= 0)
+            return url.substring(pos + 3, pos + 14);
+
+        pos = url.indexOf("?v=");
+        if (pos >= 0)
+            return url.substring(pos + 3, pos + 14);
+
+        if (url.length() >= 11)
+            return url.substring(url.length() - 11);
+
+        return "OCmuATH2yzo"; // Homer - DOH !
+    }
+
 
 }

@@ -11,5 +11,7 @@ public interface SongDAO {
 			String genre);
 
 	boolean removeSong(Integer id, Integer songId);
+	
+	public String findYoutube11(String url);
 
 }
