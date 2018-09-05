@@ -42,14 +42,15 @@
 						<tr>
 
 							<td><c:if test="${not empty profile.image}">
-									<img src="${profile.image }"
-										alt="Photo of ${profile.firstName}" width="150" height="150">
+									<a href="friendProfile.do?friendID=${profile.user.id}">
+										<img src="${profile.image }" alt="Photo of ${profile.firstName}" width="150" height="150">
+									</a>
 								</c:if>
 								<p>${profile.firstName } ${profile.lastName}</p></td>
 							<td>
 								<form action="addFriend.do" method="POST">
-									<input type="submit" value="Send Friend Request">
-									<input type="hidden" name="friendId" value="${profile.user.id}">
+									<input type="submit" value="Send Friend Request"> <input
+										type="hidden" name="friendId" value="${profile.user.id}">
 								</form>
 							</td>
 						</tr>

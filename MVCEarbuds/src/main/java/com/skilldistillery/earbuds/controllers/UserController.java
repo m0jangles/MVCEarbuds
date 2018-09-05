@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.User;
 
@@ -23,6 +24,9 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userdao;
+	
+	@Autowired
+	private AuthenticationDAO authDao;
 
 	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
 	public String createNewUser(@ModelAttribute("userSignUp") @Valid User newUser,
@@ -77,4 +81,15 @@ public class UserController {
 		return "homepage";
 	}
 
+	@RequestMapping(path = "friendProfile.do", method = RequestMethod.GET)
+	public String showFriendProfile(Model model, Integer friendID) {
+		
+		User otherUser = authDao.findUserById(friendID);
+		
+		model.addAttribute("otherUser", otherUser);
+		
+		return "friendProfile";
+	}
+	
+	
 }
