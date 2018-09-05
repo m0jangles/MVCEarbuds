@@ -38,13 +38,6 @@
 			${UserInSession.profile.location.country}
 		</p>
 	</div>
-	<div class="container">
-	<c:forEach var="friend" items="${UserInSession.friends}">
-	${friend.profile.firstName} ${friend.profile.lastName }
-	</c:forEach>
-	</div>
-	
-	
 
 </body>
 </html>
