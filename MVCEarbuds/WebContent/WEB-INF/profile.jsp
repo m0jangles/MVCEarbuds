@@ -43,6 +43,8 @@
 	${friend.profile.firstName} ${friend.profile.lastName }
 	</c:forEach>
 	</div>
+	
+	
 
 </body>
 </html>
