@@ -66,7 +66,7 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", id);
 		mv.addObject("newPost", newPost);
-		mv.setViewName("homepage");
+		mv.setViewName("redirect:homepage.do");
 		return mv;
 	}
 	
@@ -81,14 +81,14 @@ public class ProfileController {
 	}
 	 
 	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
-	public String deletePost(Model model, User userInSession, 
+	public String deletePost(Model model, HttpSession session, 
 			@RequestParam("postId") Integer postId) {
-		
-		boolean postDeleted = dao.deletePost(userInSession, postId);
+		User user = (User)session.getAttribute("UserInSession");
+		boolean postDeleted = dao.deletePost(user, postId);
 		if(postDeleted = true) {
 		model.addAttribute("postDeleted", postDeleted);
 		}
-		return "homepage";	
+		return "redirect:homepage.do";	
 	}
 
 }

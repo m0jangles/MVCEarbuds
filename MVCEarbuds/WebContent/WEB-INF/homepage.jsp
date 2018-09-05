@@ -87,10 +87,8 @@
 					
 					<c:if test="${userProfile==userPost}"> --%>
 						<form action="deletePost.do" method="POST">
-							<input type="hidden" name="user"
-								value="${UserInSession }">
 							<input type="hidden" name="postId"
-								value="${profile.post.id }">
+								value="${post.id }">
 								
 								 <input
 								type="submit" value="Delete Post">
