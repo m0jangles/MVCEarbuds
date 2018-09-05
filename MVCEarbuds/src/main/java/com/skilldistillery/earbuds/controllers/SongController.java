@@ -43,7 +43,7 @@ public class SongController {
 	@RequestMapping(path = "deleteSong.do", method = RequestMethod.POST)
 	public ModelAndView removeSongFromPlaylist(Integer playlistId,
 			Integer songId) {
-		
+
 		ModelAndView mv = new ModelAndView();
 		boolean result = dao.removeSong(playlistId, songId);
 		mv.addObject("songDeleted", result);
