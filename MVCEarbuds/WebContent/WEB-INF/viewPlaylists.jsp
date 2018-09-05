@@ -22,6 +22,7 @@
 			<td>Song</td>
 			<td>Artist</td>
 			<td>Album</td>
+			<td>Genre</td>
 			<td></td>
 		</tr>
 
@@ -32,6 +33,7 @@
 				<td>${song.title}</td>
 				<td>${song.artist}</td>
 				<td>${song.album}</td>
+				<td>${song.genresAsString}</td>
 				<td>
 					<form action="deleteSong.do" method="POST">
 						<input type="hidden" name="playlistId" value="${id }"> <input
