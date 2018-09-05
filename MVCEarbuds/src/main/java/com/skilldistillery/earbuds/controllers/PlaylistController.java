@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.earbuds.data.GenreDAO;
 import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.entities.Genre;
 import com.skilldistillery.earbuds.entities.Playlist;
@@ -22,6 +23,8 @@ public class PlaylistController {
 
 	@Autowired
 	private PlaylistDAO dao;
+	@Autowired
+	private GenreDAO gdao;
 
 	@RequestMapping(path = "viewPlaylists.do", params = "id",
 			method = RequestMethod.GET)
@@ -39,9 +42,10 @@ public class PlaylistController {
 
 		List<Song> songs = dao.getSongs(playlistId);
 
+		List<Genre> genres = gdao.getEntireGenreList();
+		
 		// ** NEW STUFF ** TODO
 		// Get the list of genres for every song in the song list
-		
 		
 		List<Genre> genreList = songs.get(0).getGenres();
 		
@@ -60,6 +64,7 @@ public class PlaylistController {
 		}
 		model.addAttribute("playlistName", playlistName);
 		model.addAttribute("id", playlistId);
+		model.addAttribute("genres", genres);
 		return "viewPlaylists";
 	}
 

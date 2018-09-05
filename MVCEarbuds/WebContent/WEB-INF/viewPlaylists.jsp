@@ -6,10 +6,18 @@
 
 <html>
 <head>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Earbuds | Playlists</title>
 </head>
 <body>
+<div class="container">
+	<a class="btn btn-primary btn-std" href="homepage.do" role="button">Home</a>
+	<a class="btn btn-primary btn-std" href="profile.do" role="button">Profile</a>
+	<a class="btn btn-primary btn-std" href="logout.do" role="button">Logout</a>
+	<a class="btn btn-primary btn-std" href="settings.do" role="button">Settings</a>
 
 	<h2>Playlist Page (Temporary Name)</h2>
 
@@ -29,7 +37,11 @@
 		<c:forEach var="song" items="${songs}">
 
 			<tr>
-				<td><img src="${song.albumImage}" height="80" width="80"></td>
+			<td>
+			<c:if test="${not empty song.albumImage }">
+				<img src="${song.albumImage}" height="80" width="80">
+			</c:if>
+			</td>
 				<td>${song.title}</td>
 				<td>${song.artist}</td>
 				<td>${song.album}</td>
@@ -82,8 +94,12 @@
 						<td><input type="text" name="url"></td>
 					</tr>
 					<tr>
-						<td><label for="genre">Genre:</label></td>
-						<td><input type="text" name="genre"></td>
+						<td><select class="inlineFormCustomSelect" name="genre">
+						<option selected>Genre</option>
+						<c:forEach var="genre" items="${genres}">
+						<option value="${genre.name}">${genre.name}</option>
+						</c:forEach>
+						</select></td>
 					</tr>
 				</table>
 
@@ -104,6 +120,7 @@
 
 		</fieldset>
 	</c:if>
+</div>
 
 </body>
 </html>

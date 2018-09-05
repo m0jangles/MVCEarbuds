@@ -1,5 +1,9 @@
 package com.skilldistillery.earbuds.data;
 
-public interface GenreDAO {
+import java.util.List;
 
+import com.skilldistillery.earbuds.entities.Genre;
+
+public interface GenreDAO {
+	public List<Genre> getEntireGenreList();
 }
