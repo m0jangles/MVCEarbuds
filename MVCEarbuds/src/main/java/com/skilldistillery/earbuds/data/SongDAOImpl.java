@@ -77,6 +77,21 @@ public class SongDAOImpl implements SongDAO {
 	}
 
 	@Override
+	public boolean addSongToPlaylistFromSearchPage(int playlistID, int songID) {
+
+		Playlist playlistToUpdate = em.find(Playlist.class, playlistID);
+		Song songToAddToPlaylist = em.find(Song.class, songID);
+
+		playlistToUpdate.addSong(songToAddToPlaylist);
+
+		if (playlistToUpdate.getSongs().contains(songToAddToPlaylist)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
 	public boolean removeSong(Integer id, Integer songId) {
 		Playlist playlist = em.find(Playlist.class, id);
 		Song song = em.find(Song.class, songId);

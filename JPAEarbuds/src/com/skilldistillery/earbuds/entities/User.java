@@ -3,6 +3,7 @@ package com.skilldistillery.earbuds.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,8 +36,9 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
 
-	@ManyToMany
-	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"),
+	@ManyToMany(cascade = CascadeType.REMOVE)
+	@JoinTable(name = "user_friend", 
+			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "friend_id"))
 	private List<User> friends;
 

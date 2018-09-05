@@ -38,5 +38,7 @@ public interface SongDAO {
 		return "OCmuATH2yzo"; // Homer - DOH !
 	}
 	// Paul is a genius!
+	
+	public boolean addSongToPlaylistFromSearchPage(int playlistID, int songID);
 
 }
