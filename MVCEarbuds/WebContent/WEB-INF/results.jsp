@@ -68,7 +68,7 @@
 									<form action="postSong.do" method="POST">
 										<input type="hidden" name="songId" value="${song.id }">
 										<input type="hidden" name="id" value="${UserInSession.profile.id }">
-										<input type="hidden" name="message" value="song">
+										<input type="hidden" name="message" value="    ">
 										<input type="submit" value="Share to Feed">
 									</form>
 								
