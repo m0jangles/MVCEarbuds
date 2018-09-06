@@ -2,6 +2,8 @@ package com.skilldistillery.earbuds.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.entities.Genre;
 import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Song;
+import com.skilldistillery.earbuds.entities.User;
 
 @Controller
 public class PlaylistController {
@@ -24,6 +27,8 @@ public class PlaylistController {
 	private PlaylistDAO dao;
 	@Autowired
 	private GenreDAO gdao;
+	
+	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path = "viewPlaylists.do", params = "id",
 			method = RequestMethod.GET)
@@ -100,17 +105,19 @@ public class PlaylistController {
 	}
 	@RequestMapping(path = "getThisProfileSongs.do", params = "id",
 			method = RequestMethod.GET)
-	public String getPublicSongs(Model model, @RequestParam("id") Integer playlistId) {
-
+	public String getPublicSongs(Model model, @RequestParam("id") Integer playlistId, HttpSession session) {
+		User me = (User)session.getAttribute(USER_IN_SESSION_KEY);
+		Integer userID = me.getId();
 		List<Song> songs = dao.getSongs(playlistId);
 		List<Genre> genres = gdao.getEntireGenreList();
+		List<Playlist> myPlaylists = dao.getPlaylistsByUserID(userID);
 		String playlistName = dao.getPlaylistById(playlistId).getPlaylistName();
 		if (songs != null) {
 			model.addAttribute("songs", songs);
 		}
+		model.addAttribute("myPlaylists", myPlaylists);
 		model.addAttribute("playlistName", playlistName);
 		model.addAttribute("id", playlistId);
-
 		model.addAttribute("genres", genres);
 		return "profilePlaylist";
 	}

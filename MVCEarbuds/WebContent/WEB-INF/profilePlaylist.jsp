@@ -55,11 +55,11 @@
 						<form action="addSongFromFriendPlaylist.do" method="POST">
 							<select class="inlineFormCustomSelect" name="playlist">
 								<option selected disabled>Select Playlist</option>
-								<c:forEach var="playlist" items="${playlists}">
-									<option value="${playlist.id}">${playlist.playlistName}</option>
+								<c:forEach var="myPlaylist" items="${myPlaylists}">
+									<option value="${myPlaylist.id}">${myPlaylist.playlistName}</option>
 								</c:forEach>
 							</select> <input type="hidden" name="songId" value="${song.id}"> <input
-								type="hidden" name="friendPlaylistID" value="${profile.playlist.id}">
+								type="hidden" name="friendPlaylistID" value="${id}">
 							<input type="submit" value="Add to Playlist">
 						</form> <%-- <form action="postSong.do" method="POST">
 							<input type="hidden" name="songId" value="${song.id }"> <input
