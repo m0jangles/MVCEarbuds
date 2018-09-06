@@ -120,4 +120,65 @@ public class SongDAOImpl implements SongDAO {
 
 	}
 
+	@Override
+	public boolean addSongtoPost(Song songWithChanges, Integer profileId,
+			String genre, String message) {
+		Profile profile = em.find(Profile.class, profileId);
+		Post post = new Post();
+
+		String songWithChangesTitle = songWithChanges.getTitle();
+		String songWithChangesArtist = songWithChanges.getArtist();
+		String songWithChangesAlbum = songWithChanges.getAlbum();
+
+		query = "SELECT s FROM Song s WHERE s.title = :title "
+				+ "AND s.artist = :artist AND s.album = :album";
+
+		List<Song> result1 = em.createQuery(query, Song.class)
+				.setParameter("title", songWithChangesTitle)
+				.setParameter("artist", songWithChangesArtist)
+				.setParameter("album", songWithChangesAlbum).getResultList();
+
+		// Check if song exists already in the database. If so, just set the
+		// playlist to add that song. Otherwise, persist the song and then add it to
+		// the playlist.
+		if (result1.size() > 0) {
+			post.setProfile(profile);
+			post.setMessage(message);
+			post.setSong(songWithChanges);
+//			playlistToUpdate.addSong(result1.get(0));
+		}
+		// If the song does not already exist, and the user provides a genre for the
+		// song, find the genre in the database and assign it to the song.
+		else {
+			String newUrl = SongDAO.findYoutube11(songWithChanges.getUrl());
+			songWithChanges.setUrl(newUrl);
+			em.persist(songWithChanges);
+			em.flush();
+
+			query = "SELECT g FROM Genre g WHERE g.name = :genre";
+
+			List<Genre> result2 = em.createQuery(query, Genre.class)
+					.setParameter("genre", genre).getResultList();
+
+			if (result2.size() > 0) {
+				Genre g = result2.get(0);
+				g.addSong(songWithChanges);
+
+			}
+
+			post.setProfile(profile);
+			post.setMessage(message);
+			post.setSong(songWithChanges);
+
+		}
+
+		if (result1.size() > 0
+				|| em.find(Song.class, songWithChanges.getId()) != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 }

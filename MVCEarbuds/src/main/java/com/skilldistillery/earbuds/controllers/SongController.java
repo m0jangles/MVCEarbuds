@@ -78,12 +78,14 @@ public class SongController {
 	}
 	
 	@RequestMapping(path = "postSong.do", method = RequestMethod.POST)
-	public ModelAndView postSong(Integer id,
+	public ModelAndView addSongtoPost(Integer profileId, Song song,
 			@RequestParam("message") String message,
-			@RequestParam("songId") Integer songId) {
-		Post songPost = dao.postSong(id, message, songId);
+			@RequestParam("songId") Integer songId,
+			@RequestParam("genre") String genre) {
+		Post songPost = dao.postSong(profileId, message, songId);
+		boolean addedSong = dao.addSongtoPost(song, profileId, genre, message);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("user", id);
+		
 		mv.addObject("newPost", songPost);
 		mv.setViewName("redirect:homepage.do");
 		return mv;

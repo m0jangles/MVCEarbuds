@@ -43,4 +43,6 @@ public interface SongDAO {
 	
 	public boolean addSongToPlaylistFromSearchPage(int playlistID, int songID);
 
+	public boolean addSongtoPost(Song songWithChanges, Integer profileId,
+			String genre, String message);
 }
