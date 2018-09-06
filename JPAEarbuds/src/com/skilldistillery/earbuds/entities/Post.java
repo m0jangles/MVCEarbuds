@@ -29,7 +29,7 @@ public class Post {
 	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "song_id")
 	private Song song;
 

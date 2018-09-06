@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
+import com.skilldistillery.earbuds.data.GenreDAO;
 import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
 import com.skilldistillery.earbuds.data.UserDAO;
+import com.skilldistillery.earbuds.entities.Genre;
 import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.User;
@@ -31,6 +33,8 @@ public class AuthenticationController {
 	private PlaylistDAO pldao;
 	@Autowired
 	private UserDAO udao;
+	@Autowired
+	private GenreDAO gdao;
 
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
@@ -94,6 +98,8 @@ public class AuthenticationController {
 		if (!myFriends.isEmpty() || myFriends != null) {
 			model.addAttribute("myFriends", myFriends);
 		}
+		List<Genre> genres = gdao.getEntireGenreList();
+		model.addAttribute("genres", genres);
 		return "homepage";
 	}
 
