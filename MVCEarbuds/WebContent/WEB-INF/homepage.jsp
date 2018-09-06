@@ -148,6 +148,7 @@ footer {
 
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
 						<c:forEach var="post" items="${posts}">
+<<<<<<< HEAD
 							<table>
 
 
@@ -155,21 +156,24 @@ footer {
 									<td><em>Date: ${post.postDate}</em></td>
 								</tr>
 								<tr>
-									<td><strong><em>${post.profile.user.username}</strong>
-										posted: </em></td>
-
-									<td><font face="verdana" color="black" size="4">
-											${post.message}</font></td>
+									<td><strong><em>${post.profile.user.username}</strong>  posted: </em></td>
+									
+									<td><font face="verdana" color="black" size="4"> ${post.message}</font></td>
 								</tr>
-								<c:if test="${post.song.id != 1}">
-									<iframe width="200" height="150"
-										src="https://www.youtube.com/embed/${post.song.url}"
-										frameborder="0" allow="autoplay; encrypted-media"
-										allowfullscreen> </iframe>
-								</c:if>
 							</table>
+=======
+                            
+                                ${post.postDate}
+                                ${post.profile.user.username}
+                                ${post.message}
+                                <c:if test="${post.song.id != 1}">
+								<iframe width="200" height="150"
+									src="https://www.youtube.com/embed/${post.song.url}"
+									frameborder="0" allow="autoplay; encrypted-media"
+									allowfullscreen> </iframe>
+							</c:if>
 
-
+>>>>>>> 140159aa0a8f976f1dbb788f11a2921e841b7c5b
 							<form action="deletePost.do" method="POST">
 								<input type="hidden" name="postId" value="${post.id }">
 
