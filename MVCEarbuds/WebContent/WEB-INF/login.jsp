@@ -90,7 +90,10 @@ footer {
 	<br>
 	<br>
 	<div class="container-fluid text-center">
-		<h1>Welcome</h1>
+		<h1>Welcome!</h1>
+		<div>
+			<h3>Sign Up</h3>
+		</div>
 		<%-- <fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 			<legend> Sign Up </legend>
 			<form:form action="signUp.do" method="POST"
@@ -123,43 +126,62 @@ footer {
 				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</form:form>
 		</fieldset> --%>
-		<form class="form-horizontal" action="signUp.do" method="POST" modelAttribute="userSignUp">
-			<div class="fform-group">
-				<div class="col-md-4 form-group">
-					<input type="text" class="form-control" name="username"
-						placeholder="Username" required />
-				</div>
-				<div class="col-md-4 form-group">
-					<input type="text" class="form-control" name="password"
-						placeholder="Password" required />
-				</div>
-				<div class="col-md-4 form-group">
-					<input type="text" class="form-control" name="email"
-						placeholder="Email" required />
-				</div>
-				<div class="col-md-4 form-group">
-					<input type="text" class="form-control" name="firstName"
-						placeholder="First Name">
-				</div>
-				<div class="col-md-4 form-group">
-					<input type="text" class="form-control" name="lastName"
-						placeholder="Last Name">
-				</div>
+		<div class="container-fluid text-center col-md-offset-4">
+				<form class="form-horizontal" action="signUp.do" method="POST"
+					modelAttribute="userSignUp">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="username">Username:</label>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" name="username"
+								placeholder="Username" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="password">Password:</label>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" name="password"
+								placeholder="Password" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">Email:</label>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" name="email"
+								placeholder="Email" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="firstName">First
+							Name:</label>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" name="firstName"
+								placeholder="First Name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="lastName">Last
+							Name:</label>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" name="lastName"
+								placeholder="Last Name">
+						</div>
+					</div>
+					<div class="col-md-5 text-center">
+					<button type="submit" class="btn btn-lg btn-primary">Sign
+						Up!</button>
+						</div>
+				</form>
+			</div>
 			</div>
 
-
-			<button type="submit" class="btn btn-primary">Sign Up</button>
-		</form>
-
-		<c:if test="${wasSignUpSuccessful}">
-			<p>User sign up was successful!</p>
-		</c:if>
-	</div>
+			<c:if test="${wasSignUpSuccessful}">
+				<p>User sign up was successful!</p>
+			</c:if>
+		</div>
 
 	<c:if test="${wasSignUpSuccessful}">
 		<p>User sign up was successful!</p>
 	</c:if>
-	</div>
 
 </body>
 </html>
