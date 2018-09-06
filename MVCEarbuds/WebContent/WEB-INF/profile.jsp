@@ -40,7 +40,7 @@
 		</p>
 	</div>
 
-	<h3>Playlists</h3>
+	<%-- <h3>Playlists</h3>
 	<div style='overflow: scroll; width: 400px; height: 400px;'>
 		<c:choose>
 			<c:when test="${not empty UserInSession.profile.playlists }">
@@ -63,7 +63,7 @@
 			<c:otherwise>
 				<br>
 			</c:otherwise>
-		</c:choose>
+		</c:choose> --%>
 	</div>
 </body>
 </html>
