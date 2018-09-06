@@ -99,6 +99,21 @@ public class ProfileDAOImpl implements ProfileDAO {
 		return post;
 
 	}
+	
+	public Post postSong(Integer id, String message, Song song) {
+		Profile profile = em.find(Profile.class, id);
+
+		Post post = new Post();
+		post.setProfile(profile);
+		post.setMessage(message);
+		post.setSong(song);
+
+		em.persist(post);
+		em.flush();
+
+		return post;
+
+	}
 
 	public List<Post> getAllPosts() {
 		String query = "Select p from Post p";

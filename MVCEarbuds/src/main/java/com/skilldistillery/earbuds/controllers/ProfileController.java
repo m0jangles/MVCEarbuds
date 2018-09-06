@@ -70,6 +70,17 @@ public class ProfileController {
 		mv.setViewName("redirect:homepage.do");
 		return mv;
 	}
+	@RequestMapping(path = "postSong.do", method = RequestMethod.POST)
+	public ModelAndView postSong(Integer id,
+			@RequestParam("message") String message,
+			@RequestParam("songId") Integer songId) {
+		Post newPost = dao.addPost(id, message);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", id);
+		mv.addObject("newPost", newPost);
+		mv.setViewName("redirect:homepage.do");
+		return mv;
+	}
 	 
 	@RequestMapping(path = "deletePost.do", method = RequestMethod.POST)
 	public String deletePost(Model model, HttpSession session, 

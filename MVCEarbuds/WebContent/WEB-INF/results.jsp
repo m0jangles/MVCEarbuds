@@ -64,7 +64,15 @@
 									<input type="hidden" name="songId" value="${song.id}">
 									<input type="hidden" name="searchSongInput" value="${searchSongInput}"> 
 									<input type="submit" value="Add to Playlist">
-								</form>
+									</form>
+									<form action="postSong.do" method="POST">
+										<input type="hidden" name="songId" value="${song.id }">
+										<input type="hidden" name="id" value="${UserInSession.profile.id }">
+										<input type="hidden" name="message" value="song">
+										<input type="submit" value="Share to Feed">
+									</form>
+								
+								
 							</td>
 							<td><c:if
 									test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
