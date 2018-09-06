@@ -67,8 +67,8 @@
 								<td><input type="text" name="message"></td>
 							</tr>
 						</table>
-						<input type="submit" value="Share" /> <input
-							type="hidden" name="playlistId" value="${id}">
+						<input type="submit" value="Share" /> <input type="hidden"
+							name="playlistId" value="${id}">
 					</fieldset>
 				</form>
 
@@ -83,9 +83,14 @@
                                 ${post.postDate}
                                 ${post.profile.user.username}
                                 ${post.message}
-                                
-                                    <form action="deletePost.do"
-								method="POST">
+                                <c:if test="${post.song.id != 1}">
+								<iframe width="200" height="150"
+									src="https://www.youtube.com/embed/${post.song.url}"
+									frameborder="0" allow="autoplay; encrypted-media"
+									allowfullscreen> </iframe>
+							</c:if>
+
+							<form action="deletePost.do" method="POST">
 								<input type="hidden" name="postId" value="${post.id }">
 								<input type="submit" value="Delete Post">
 							</form>
