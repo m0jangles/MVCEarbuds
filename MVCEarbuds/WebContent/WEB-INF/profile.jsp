@@ -75,7 +75,6 @@ footer {
 <div class="container">
 	<div>
 		<h2>Profile Page</h2>
-		<p>Create Post</p>
 
 		<img src="${UserInSession.profile.image}" width="300">
 
