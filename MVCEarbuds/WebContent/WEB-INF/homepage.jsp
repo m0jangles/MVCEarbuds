@@ -13,9 +13,13 @@
 <title>Earbuds | Homepage</title>
 </head>
 <body>
+
 	<div class="container">
+
 		<div class="row">
+
 			<div class="col">
+
 				<br>
 				<h2>Welcome, ${UserInSession.username}</h2>
 				<a class="btn btn-primary btn-std" href="profile.do" role="button">
@@ -29,34 +33,35 @@
 					<textarea rows="4" cols="30" name="message" form="commentForm"></textarea>
 					<button type="submit" value="POST IT!">POST IT!</button>
 				</form>
+
 			</div>
+
 			<br>
+
 			<div class="col">
 				<c:if test="${not empty posts }">
 					<h3>Your Feed for All Things Music</h3>
+
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
+
 						<c:forEach var="post" items="${posts}">
 
-							<tr>
-								<td>${post.postDate}</td>
-								<td>${post.profile.user.username}</td>
-								<td>${post.message}</td>
+							
+								${post.postDate}
+								${post.profile.user.username}
+								${post.message}
 
-								<td>
+								
 
 									<form action="deletePost.do" method="POST">
-										<input type="hidden" name="postId" value="${post.id }">
+								<input type="hidden" name="postId" value="${post.id }">
 
-										<input type="submit" value="Delete Post">
-									</form>
-
-								</td>
-							</tr>
-
+								<input type="submit" value="Delete Post">
+							</form>
 						</c:forEach>
 					</div>
+				</c:if>
 			</div>
-			</c:if>
 
 			<div class="row">
 
@@ -80,11 +85,10 @@
 
 								<c:forEach var="playlist" items="${playlists }">
 
-									<tr>
-										<td colspan="5" align="center"><strong> <a
-												href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
-										</strong></td>
-									</tr>
+
+									<strong> <a href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
+									</strong>
+
 
 									<form action="getSongs.do" method="GET">
 										<input type="hidden" name="id" value="${playlist.id }">
@@ -117,7 +121,9 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
+		
+	</div>
+
 </body>
 </html>
