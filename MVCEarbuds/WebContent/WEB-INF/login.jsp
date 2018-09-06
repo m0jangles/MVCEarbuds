@@ -8,11 +8,11 @@
 <head>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="personalStylesheet" href="Style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="personalStylesheet" href="Style.css">
 
 <meta charset="UTF-8">
 <title>Earbuds | Log In or Sign Up</title>
@@ -55,7 +55,7 @@ footer {
 }
 </style>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -68,36 +68,30 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
-				</ul>
+				<%--Login Form Bootstrap --%>
+				<form:form class="navbar-form navbar-right" method="POST"
+					action="login.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username"
+							placeholder="Username" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="password"
+							placeholder="Password" required>
+					</div>
+					<button type="submit" class="btn btn-default">Sign In</button>
+				</form:form>
+				<%--End Login Form --%>
 			</div>
 		</div>
 	</nav>
 
+	<br>
+	<br>
+	<br>
 	<div class="container-fluid text-center">
 		<h1>Welcome</h1>
-		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
-			<legend> Log In </legend>
-			<form:form action="login.do" method="POST" modelAttribute="user">
-				<table>
-					<tr>
-						<td><form:label path="username">Username:</form:label></td>
-						<td><form:input path="username" /></td>
-						<td><form:errors path="username" /></td>
-					</tr>
-					<tr>
-						<td><form:label path="password">Password:</form:label></td>
-						<td><form:input path="password" /></td>
-						<td><form:errors path="password" /></td>
-					</tr>
-				</table>
-				<input type="submit" value="Log In">
-			</form:form>
-		</fieldset>
-
-		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
+		<%-- <fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 			<legend> Sign Up </legend>
 			<form:form action="signUp.do" method="POST"
 				modelAttribute="userSignUp">
@@ -126,13 +120,53 @@ footer {
 						<td><input type="text" name="lastName"></td>
 					</tr>
 				</table>
-				<input type="submit" value="Sign Up">
+				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</form:form>
-		</fieldset>
+		</fieldset> --%>
+		<form action="signUp.do" method="POST" modelAttribute="userSignUp">
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="username">Username:</label> <input type="text"
+						class="form-control" name="username" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="password">Password:</label> <input type="text"
+						class="form-control" name="password" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" name="email" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="firstName">First Name:</label> <input type="text"
+						class="form-control" name="firstName">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="lastName">Last Name:</label> <input type="text"
+						class="form-control" name="lastName">
+				</div>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Sign Up</button>
+		</form>
 
 		<c:if test="${wasSignUpSuccessful}">
 			<p>User sign up was successful!</p>
 		</c:if>
+	</div>
+
+	<c:if test="${wasSignUpSuccessful}">
+		<p>User sign up was successful!</p>
+	</c:if>
 	</div>
 
 </body>
