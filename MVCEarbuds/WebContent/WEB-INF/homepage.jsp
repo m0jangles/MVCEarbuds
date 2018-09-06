@@ -121,9 +121,12 @@
 							<c:forEach var="friend" items="${myFriends}">
 
 								<tr>
-									<td><img src="${friend.profile.image}" height="50"
-										width="50" /></td>
-									<td>${friend.profile.firstName}${friend.profile.lastName}</td>
+									<td>
+										<a href="friendProfile.do?friendID=${friend.profile.user.id}">
+											<img src="${friend.profile.image}" height="50"width="50" />
+										</a>
+									</td>
+									<td>${friend.profile.firstName} ${friend.profile.lastName}</td>
 								</tr>
 
 							</c:forEach>
