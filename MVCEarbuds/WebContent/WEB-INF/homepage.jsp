@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="personalStylesheet" href="Style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="personalStylesheet" href="Style.css">
 
 <meta charset="UTF-8">
 <title>Earbuds | Homepage</title>
@@ -69,95 +70,108 @@ footer {
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="profile.do">Profile</a></li>
-					<li><a href="logout.do">Logout</a></li>
-					<li><a href="settings.do">Settings</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="www.youtube.com"><span
-							class="glyphicon glyphicon-log-in"></span> YouTube</a></li>
+					<li><a href="logout.do"><span
+							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 				</ul>
+				<form:form class="navbar-form navbar-right" method="GET"
+					action="findUsers.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchUserInput"
+							placeholder="Find Users">
+					</div>
+					<button type="submit" class="btn btn-default">Find Users</button>
+				</form:form>
+				<form:form class="navbar-form navbar-right" method="GET"
+					action="findSongs.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchSongInput"
+							placeholder="Search Music">
+					</div>
+					<button type="submit" class="btn btn-default">Search Music</button>
+				</form:form>
+
+
 			</div>
 		</div>
 	</nav>
-
-
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<br> <br> <br>
 				<h2>Welcome, ${UserInSession.username}</h2>
+				
 
-				<img src="${UserInSession.profile.image}" width="250"> <br>
+					<img src="${UserInSession.profile.image}" width="200"> <br>
 
-				<br>
-				<form id="commentForm" action="createPost.do" method="POST">
-					<input type="hidden" name="id" value="${UserInSession.profile.id }">
-					<textarea rows="4" cols="30" name="message" form="commentForm"></textarea>
-					<button type="submit" class="btn btn-primary">Post Your
-						Message</button>
-				</form>
+					<br>
+					<div class="form-group">
+					<form id="commentForm" action="createPost.do" method="POST">
+						<input type="hidden" name="id"
+							value="${UserInSession.profile.id }">
+						<textarea rows="4" cols="50" name="message" form="commentForm"></textarea>
+						<button type="submit" class="btn btn-primary btn-lg">Post Your
+							Message</button>
+					</form>
+					</div>
 
-				<form action="postSong.do" method="POST">
-					<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
-						<legend> Share New Song </legend>
-						<table>
-							<tr>
-								<td><label for="title">Song Title:</label></td>
-								<td><input type="text" name="title"></td>
-							</tr>
-							<tr>
-								<td><label for="artist">Artist:</label></td>
-								<td><input type="text" name="artist"></td>
-							</tr>
-							<tr>
-								<td><label for="album">Album:</label></td>
-								<td><input type="text" name="album"></td>
-							</tr>
-							<tr>
-								<td><label for="albumImage">Album Image Link:</label></td>
-								<td><input type="text" name="albumImage"></td>
-							</tr>
-							<tr>
-								<td><label for="url">Song Link:</label></td>
-								<td><input type="text" name="url"></td>
-							</tr>
-							<tr>
-								<td><select class="inlineFormCustomSelect" name="genre">
-										<option selected>Genre</option>
-										<c:forEach var="genre" items="${genres}">
-											<option value="${genre.name}">${genre.name}</option>
-										</c:forEach>
-								</select></td>
-							</tr>
+					<form action="postSong.do" method="POST">
+						<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
+							<legend> Share New Song </legend>
+							<table>
+								<tr>
+									<td><label for="title">Song Title:</label></td>
+									<td><input type="text" name="title"></td>
+								</tr>
+								<tr>
+									<td><label for="artist">Artist:</label></td>
+									<td><input type="text" name="artist"></td>
+								</tr>
+								<tr>
+									<td><label for="album">Album:</label></td>
+									<td><input type="text" name="album"></td>
+								</tr>
+								<tr>
+									<td><label for="albumImage">Album Image Link:</label></td>
+									<td><input type="text" name="albumImage"></td>
+								</tr>
+								<tr>
+									<td><label for="url">Song Link:</label></td>
+									<td><input type="text" name="url"></td>
+								</tr>
+								<tr>
+									<td><select class="inlineFormCustomSelect" name="genre">
+											<option selected>Genre</option>
+											<c:forEach var="genre" items="${genres}">
+												<option value="${genre.name}">${genre.name}</option>
+											</c:forEach>
+									</select></td>
+								</tr>
 
-							<tr>
-								<td><label for="message">Message:</label></td>
-								<td><input type="text" name="message"></td>
-							</tr>
-						</table>
-						<input type="submit" value="Share" /> <input type="hidden"
-							name="playlistId" value="${id}">
-					</fieldset>
-				</form>
-
+								<tr>
+									<td><label for="message">Message:</label></td>
+									<td><input type="text" name="message"></td>
+								</tr>
+							</table>
+							<input type="submit" value="Share" /> <input type="hidden"
+								name="playlistId" value="${id}">
+						</fieldset>
+					</form>
 			</div>
-			<br>
-			<div class="col">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<br><br><br>
 				<h3>- Music Feed -</h3>
 				<c:if test="${not empty posts }">
-
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
 						<c:forEach var="post" items="${posts}">
 							<table>
-
-
 								<tr>
 									<td><em>Date: ${post.postDate}</em></td>
 								</tr>
 								<tr>
 									<td><strong><em>${post.profile.user.username}</strong>
 										posted: </em></td>
-
 									<td><font face="verdana" color="black" size="4">
 											${post.message}</font></td>
 								</tr>
@@ -168,33 +182,19 @@ footer {
 										allowfullscreen> </iframe>
 								</c:if>
 							</table>
-
-
 							<form action="deletePost.do" method="POST">
 								<input type="hidden" name="postId" value="${post.id }">
 
-								<button type="submit" class="btn btn-primary btn-danger"
+								<button type="submit" class="btn btn-primary btn-sm btn-danger"
 									value="Delete Post">Delete Post</button>
-
 							</form>
 						</c:forEach>
-					</div>
 				</c:if>
+				</div>
 			</div>
 
-			<div class="col">
-				<br>
-				<form action="findUsers.do" method="GET">
-					<input type="text" name="searchUserInput"
-						placeholder="Search Users">
-					<button type="submit" class="btn btn-primary">Search Users</button>
-				</form>
-				<br>
-				<form action="findSongs.do" method="GET">
-					<input type="text" name="searchSongInput"
-						placeholder="Search Music">
-					<button type="submit" class="btn btn-primary">Search Music</button>
-				</form>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<br><br><br>
 				<h3>Your Playlists</h3>
 				<div style='overflow: scroll; width: 400px; height: 400px;'>
 					<c:choose>
@@ -206,7 +206,7 @@ footer {
 
 								<form action="removePlaylist.do" method="POST">
 									<input type="hidden" name="playlistId" value="${playlist.id }">
-									<button type="submit" class="btn btn-primary btn-danger"
+									<button type="submit" class="btn btn-primary btn-sm btn-danger"
 										value="Delete Playlist">Delete Playlist</button>
 								</form>
 							</c:forEach>
@@ -238,8 +238,6 @@ footer {
 
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </body>
