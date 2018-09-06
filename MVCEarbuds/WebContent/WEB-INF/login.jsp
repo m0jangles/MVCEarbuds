@@ -55,7 +55,7 @@ footer {
 }
 </style>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -68,27 +68,29 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 				</ul>
+				<%--Login Form Bootstrap --%>
+				<form:form class="navbar-form navbar-right" method="POST"
+					action="login.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username"
+							placeholder="Username" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="password"
+							placeholder="Password" required>
+					</div>
+					<button type="submit" class="btn btn-default">Sign In</button>
+				</form:form>
+				<%--End Login Form --%>
 			</div>
 		</div>
 	</nav>
 
+<br>
+<br>
+<br>
 	<div class="container-fluid text-center">
 		<h1>Welcome</h1>
-		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
-			<legend> Log In </legend>
-			<form:form action="login.do" method="POST" modelAttribute="user">
-						<form:label path="username">Username:</form:label>
-						<form:input path="username" />
-						<form:errors path="username" />
-						<br>
-						<form:label path="password">Password:</form:label>
-						<form:input path="password" />
-						<form:errors path="password" />
-						<br>
-				<button type="submit" class="btn btn-primary">Log in</button>
-			</form:form>
-		</fieldset>
-
 		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 			<legend> Sign Up </legend>
 			<form:form action="signUp.do" method="POST"
