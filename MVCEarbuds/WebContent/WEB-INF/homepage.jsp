@@ -115,14 +115,25 @@
 								Playlist</button>
 						</form>
 
-						<c:forEach var="friend" items="${myFriends }">
-						${friend}
-						</c:forEach>
+						<h3>Your Friends</h3>
+
+						<table>
+							<c:forEach var="friend" items="${myFriends}">
+
+								<tr>
+									<td><img src="${friend.profile.image}" height="50"
+										width="50" /></td>
+									<td>${friend.profile.firstName}${friend.profile.lastName}</td>
+								</tr>
+
+							</c:forEach>
+						</table>
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 </body>
