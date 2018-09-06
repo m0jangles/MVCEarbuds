@@ -42,7 +42,7 @@
 					items="${playlists }">
 					<tr>
 						<td colspan="5" align="center"><strong> <a
-								href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
+								href="getThisProfileSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
 						</strong></td>
 					</tr>
 					<form action="getThisProfileSongs.do" method="GET">

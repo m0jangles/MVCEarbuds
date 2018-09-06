@@ -51,6 +51,29 @@
 					<td>${song.artist}</td>
 					<td>${song.album}</td>
 					<td>${song.genresAsString}</td>
+					<td>
+						<form action="addSongFromFriendPlaylist.do" method="POST">
+							<select class="inlineFormCustomSelect" name="playlist">
+								<option selected disabled>Select Playlist</option>
+								<c:forEach var="playlist" items="${playlists}">
+									<option value="${playlist.id}">${playlist.playlistName}</option>
+								</c:forEach>
+							</select> <input type="hidden" name="songId" value="${song.id}"> <input
+								type="hidden" name="friendPlaylistID" value="${profile.playlist.id}">
+							<input type="submit" value="Add to Playlist">
+						</form> <%-- <form action="postSong.do" method="POST">
+							<input type="hidden" name="songId" value="${song.id }"> <input
+								type="hidden" name="id" value="${UserInSession.profile.id }">
+							<input type="hidden" name="message" value="    "> <input
+								type="submit" value="Share to Feed">
+						</form> --%>
+
+
+					</td>
+					<td><c:if
+							test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
+									Song successfully added to playlist!
+								</c:if></td>
 				</tr>
 
 			</c:forEach>

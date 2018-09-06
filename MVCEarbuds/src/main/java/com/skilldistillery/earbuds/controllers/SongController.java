@@ -90,4 +90,26 @@ public class SongController {
 		mv.setViewName("redirect:homepage.do");
 		return mv;
 	}
+	
+	@RequestMapping(path = "addSongFromFriendPlaylist.do",
+			method = RequestMethod.POST)
+	public ModelAndView addSongToPlaylistFromProfilePlaylist(
+			@RequestParam(name = "playlist", required = false) Integer playlistID,
+			@RequestParam("songId") int songID,
+			@RequestParam("friendPlaylistID") Integer friendPlaylistID,
+			RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		if (playlistID == null) {
+			mv.setViewName("redirect:getThisProfileSongs.do?id="+friendPlaylistID);
+			return mv;
+		}
+		
+		boolean result = dao.addSongToPlaylistFromSearchPage(playlistID, songID);
+		redir.addFlashAttribute("wasAdditionSuccessful", result);
+		redir.addFlashAttribute("songSuccessfulID", songID);
+
+		mv.setViewName("redirect:getThisProfileSongs.do?id="+friendPlaylistID);
+
+		return mv;
+	}
 }
