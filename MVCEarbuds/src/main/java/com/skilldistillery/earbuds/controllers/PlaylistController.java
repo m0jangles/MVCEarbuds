@@ -1,6 +1,5 @@
 package com.skilldistillery.earbuds.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class PlaylistController {
 		if (!playlists.isEmpty()) {
 			model.addAttribute("playlists", playlists);
 		}
-		return "homepage";
+		return "profile";
 	}
 
 	@RequestMapping(path = "getSongs.do", params = "id",
