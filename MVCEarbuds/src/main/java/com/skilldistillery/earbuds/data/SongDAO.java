@@ -1,5 +1,6 @@
 package com.skilldistillery.earbuds.data;
 
+import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Song;
 
 public interface SongDAO {
@@ -9,6 +10,7 @@ public interface SongDAO {
 
 	public boolean addSongToPlaylist(Song songWithChanges, Integer playlistId,
 			String genre);
+	public Post postSong(Integer id, String message, Integer songId);
 
 	boolean removeSong(Integer id, Integer songId);
 
