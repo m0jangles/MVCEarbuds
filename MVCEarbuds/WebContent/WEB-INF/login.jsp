@@ -8,11 +8,11 @@
 <head>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="personalStylesheet" href="Style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="personalStylesheet" href="Style.css">
 
 <meta charset="UTF-8">
 <title>Earbuds | Log In or Sign Up</title>
@@ -68,10 +68,6 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
-				</ul>
 			</div>
 		</div>
 	</nav>
@@ -81,19 +77,15 @@ footer {
 		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 			<legend> Log In </legend>
 			<form:form action="login.do" method="POST" modelAttribute="user">
-				<table>
-					<tr>
-						<td><form:label path="username">Username:</form:label></td>
-						<td><form:input path="username" /></td>
-						<td><form:errors path="username" /></td>
-					</tr>
-					<tr>
-						<td><form:label path="password">Password:</form:label></td>
-						<td><form:input path="password" /></td>
-						<td><form:errors path="password" /></td>
-					</tr>
-				</table>
-				<input type="submit" value="Log In">
+						<form:label path="username">Username:</form:label>
+						<form:input path="username" />
+						<form:errors path="username" />
+						<br>
+						<form:label path="password">Password:</form:label>
+						<form:input path="password" />
+						<form:errors path="password" />
+						<br>
+				<button type="submit" class="btn btn-primary">Log in</button>
 			</form:form>
 		</fieldset>
 
@@ -126,7 +118,7 @@ footer {
 						<td><input type="text" name="lastName"></td>
 					</tr>
 				</table>
-				<input type="submit" value="Sign Up">
+				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</form:form>
 		</fieldset>
 

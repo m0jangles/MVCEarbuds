@@ -65,10 +65,9 @@ footer {
       <li class="active"><a href="homepage.do">Home</a></li>
         <li><a href="profile.do">Profile</a></li>
         <li><a href="settings.do">Settings</a></li>
-        <li><a href="logout.do">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="logout.do"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
       </ul>
     </div>
   </div>
