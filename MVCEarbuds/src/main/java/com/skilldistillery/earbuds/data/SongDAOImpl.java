@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import com.skilldistillery.earbuds.entities.Genre;
 import com.skilldistillery.earbuds.entities.Playlist;
+import com.skilldistillery.earbuds.entities.Post;
+import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.Song;
 
 @Component
@@ -101,6 +103,21 @@ public class SongDAOImpl implements SongDAO {
 		} else {
 			return false;
 		}
+	}
+	
+	public Post postSong(Integer id, String message, Integer songId) {
+		Profile profile = em.find(Profile.class, id);
+		Song song = em.find(Song.class, songId);
+		Post post = new Post();
+		post.setProfile(profile);
+		post.setMessage(message);
+		post.setSong(song);
+
+		em.persist(post);
+		em.flush();
+
+		return post;
+
 	}
 
 }

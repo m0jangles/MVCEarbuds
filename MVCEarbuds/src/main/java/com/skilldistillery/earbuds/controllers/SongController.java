@@ -3,7 +3,6 @@ package com.skilldistillery.earbuds.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.earbuds.data.SongDAO;
+import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Song;
 
 @Controller
@@ -74,6 +74,18 @@ public class SongController {
 
 		mv.setViewName("redirect:findSongs.do?searchSongInput="+searchSongInput);
 
+		return mv;
+	}
+	
+	@RequestMapping(path = "postSong.do", method = RequestMethod.POST)
+	public ModelAndView postSong(Integer id,
+			@RequestParam("message") String message,
+			@RequestParam("songId") Integer songId) {
+		Post songPost = dao.postSong(id, message, songId);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", id);
+		mv.addObject("newPost", songPost);
+		mv.setViewName("redirect:homepage.do");
 		return mv;
 	}
 }
