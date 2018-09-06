@@ -35,8 +35,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean destroyUser(User user) {
-		User u = em.find(User.class, user.getId());
+	public boolean destroyUser(Integer userToDeleteID) {
+		
+		User u = em.find(User.class, userToDeleteID);
 		em.remove(u);
 
 		if (em.find(User.class, u.getId()) == null)
