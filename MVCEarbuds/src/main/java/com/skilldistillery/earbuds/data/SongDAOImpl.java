@@ -105,7 +105,7 @@ public class SongDAOImpl implements SongDAO {
 			return false;
 		}
 	}
-	
+
 	public Post postSong(Integer id, String message, Integer songId) {
 		Profile profile = em.find(Profile.class, id);
 		Song song = em.find(Song.class, songId);
@@ -123,14 +123,14 @@ public class SongDAOImpl implements SongDAO {
 
 	@Override
 	public void addSongtoPost(PostDTO postDTO, Integer profileID) {
-		Profile p =  em.find(Profile.class, profileID);
+		Profile p = em.find(Profile.class, profileID);
 		Song s = new Song();
 		s.setTitle(postDTO.getTitle());
 		s.setArtist(postDTO.getArtist());
 		s.setAlbum(postDTO.getAlbum());
 		s.setAlbumImage(postDTO.getAlbumImage());
 		s.setUrl(SongDAO.findYoutube11(postDTO.getUrl()));
-		
+
 		query = "SELECT g FROM Genre g WHERE g.name = :genre";
 
 		List<Genre> result = em.createQuery(query, Genre.class)
@@ -140,14 +140,11 @@ public class SongDAOImpl implements SongDAO {
 		post.setProfile(p);
 		post.setSong(s);
 		post.setMessage(postDTO.getMessage());
-		
+
 		em.persist(post);
 		em.flush();
-		
-
 	}
-	
-	
+
 //	public boolean addSongtoPost(Song songWithChanges, Integer profileId,
 //			String genre, String message) {
 //		Profile profile = em.find(Profile.class, profileId);
@@ -208,6 +205,4 @@ public class SongDAOImpl implements SongDAO {
 //			return false;
 //		}
 
-	}
-
-
+}
