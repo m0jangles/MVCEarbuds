@@ -35,13 +35,17 @@ public class ProfileController {
 	
 	@Autowired
 	private PlaylistDAO pldao;
+	
+	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
-	public String showProfilePage(Model model, User user) {
-//		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
-//		if (!playlists.isEmpty()) {
-//			model.addAttribute("playlists", playlists);
-//		}
+	public String showProfilePage(Model model, HttpSession session) {
+		User user = (User)session.getAttribute(USER_IN_SESSION_KEY);
+		Integer userID = user.getProfile().getId();
+		List<Playlist> playlists = pldao.getPlaylists(userID);
+		if (!playlists.isEmpty()) {
+			model.addAttribute("playlists", playlists);
+		}
 		return "profile";
 	}
 
