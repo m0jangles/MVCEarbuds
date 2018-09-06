@@ -86,12 +86,12 @@ footer {
 		</div>
 	</nav>
 
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
 	<div class="container-fluid text-center">
 		<h1>Welcome</h1>
-		<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
+		<%-- <fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
 			<legend> Sign Up </legend>
 			<form:form action="signUp.do" method="POST"
 				modelAttribute="userSignUp">
@@ -122,11 +122,51 @@ footer {
 				</table>
 				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</form:form>
-		</fieldset>
+		</fieldset> --%>
+		<form action="signUp.do" method="POST" modelAttribute="userSignUp">
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="username">Username:</label> <input type="text"
+						class="form-control" name="username" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="password">Password:</label> <input type="text"
+						class="form-control" name="password" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" name="email" required />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="firstName">First Name:</label> <input type="text"
+						class="form-control" name="firstName">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-1">
+					<label for="lastName">Last Name:</label> <input type="text"
+						class="form-control" name="lastName">
+				</div>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Sign Up</button>
+		</form>
 
 		<c:if test="${wasSignUpSuccessful}">
 			<p>User sign up was successful!</p>
 		</c:if>
+	</div>
+
+	<c:if test="${wasSignUpSuccessful}">
+		<p>User sign up was successful!</p>
+	</c:if>
 	</div>
 
 </body>
