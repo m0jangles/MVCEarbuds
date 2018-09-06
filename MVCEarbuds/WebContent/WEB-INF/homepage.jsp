@@ -13,6 +13,7 @@
 <title>Earbuds | Homepage</title>
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col">

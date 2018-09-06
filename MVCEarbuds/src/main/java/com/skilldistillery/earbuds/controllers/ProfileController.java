@@ -38,10 +38,10 @@ public class ProfileController {
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
 	public String showProfilePage(Model model, User user) {
-		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
-		if (!playlists.isEmpty()) {
-			model.addAttribute("playlists", playlists);
-		}
+//		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
+//		if (!playlists.isEmpty()) {
+//			model.addAttribute("playlists", playlists);
+//		}
 		return "profile";
 	}
 
