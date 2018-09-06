@@ -123,35 +123,27 @@ footer {
 				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</form:form>
 		</fieldset> --%>
-		<form action="signUp.do" method="POST" modelAttribute="userSignUp">
-			<div class="form-row">
-				<div class="col-md-4 mb-1">
-					<label for="username">Username:</label> <input type="text"
-						class="form-control" name="username" required />
+		<form class="form-horizontal" action="signUp.do" method="POST" modelAttribute="userSignUp">
+			<div class="fform-group">
+				<div class="col-md-4 form-group">
+					<input type="text" class="form-control" name="username"
+						placeholder="Username" required />
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col-md-4 mb-1">
-					<label for="password">Password:</label> <input type="text"
-						class="form-control" name="password" required />
+				<div class="col-md-4 form-group">
+					<input type="text" class="form-control" name="password"
+						placeholder="Password" required />
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col-md-4 mb-1">
-					<label for="email">Email:</label> <input type="text"
-						class="form-control" name="email" required />
+				<div class="col-md-4 form-group">
+					<input type="text" class="form-control" name="email"
+						placeholder="Email" required />
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col-md-4 mb-1">
-					<label for="firstName">First Name:</label> <input type="text"
-						class="form-control" name="firstName">
+				<div class="col-md-4 form-group">
+					<input type="text" class="form-control" name="firstName"
+						placeholder="First Name">
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col-md-4 mb-1">
-					<label for="lastName">Last Name:</label> <input type="text"
-						class="form-control" name="lastName">
+				<div class="col-md-4 form-group">
+					<input type="text" class="form-control" name="lastName"
+						placeholder="Last Name">
 				</div>
 			</div>
 
