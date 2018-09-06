@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
+import com.skilldistillery.earbuds.data.PlaylistDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
 import com.skilldistillery.earbuds.data.UserDAO;
 import com.skilldistillery.earbuds.entities.Playlist;
@@ -31,13 +32,16 @@ public class ProfileController {
 	
 	@Autowired
 	private UserDAO userdao;
+	
+	@Autowired
+	private PlaylistDAO pldao;
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
 	public String showProfilePage(Model model, User user) {
-//		List<Playlist> playlists = dao.getPlaylists(user.getProfile().getId());
-//		if (!playlists.isEmpty()) {
-//			model.addAttribute("playlists", playlists);
-//		}
+		List<Playlist> playlists = pldao.getPlaylists(user.getProfile().getId());
+		if (!playlists.isEmpty()) {
+			model.addAttribute("playlists", playlists);
+		}
 		return "profile";
 	}
 

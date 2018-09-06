@@ -15,15 +15,16 @@
 	<div class="container">
 		<h2>Profile Page</h2>
 
-		<a class="btn btn-primary btn-std" href="settings.do" type="button"> Settings </a>
-		<a class="btn btn-primary btn-std" href="logout.do" type="button"> Logout </a>
-		<a class="btn btn-primary btn-std" href="homepage.do" type="button"> Home </a>
+		<a class="btn btn-primary btn-std" href="settings.do" type="button">
+			Settings </a> <a class="btn btn-primary btn-std" href="logout.do"
+			type="button"> Logout </a> <a class="btn btn-primary btn-std"
+			href="homepage.do" type="button"> Home </a>
 		<p>
-
-			<form action="viewPlaylists.do" method="GET"><input type="hidden" name="id" value="${UserInSession.profile.id }">
+		<form action="viewPlaylists.do" method="GET">
+			<input type="hidden" name="id" value="${UserInSession.profile.id }">
 			<button type="submit" value="View Playlists">Playlists</button>
-		</p>
-		
+			</p>
+
 		</form>
 
 		<p>Create Post</p>
@@ -39,5 +40,30 @@
 		</p>
 	</div>
 
+	<h3>Playlists</h3>
+	<div style='overflow: scroll; width: 400px; height: 400px;'>
+		<c:choose>
+			<c:when test="${not empty UserInSession.profile.playlists }">
+
+				<c:forEach var="playlist"
+					items="${UserInSession.profile.playlists }">
+					<tr>
+						<td colspan="5" align="center"><strong> <a
+								href="getSongs.do?id=${UserInSession.profile.playlist.id }">${UserInSession.profile.playlist.playlistName}</a>
+						</strong></td>
+					</tr>
+					<form action="getSongs.do" method="GET">
+						<input type="hidden" name="id"
+							value="${UserInSession.profile.playlist.id }">
+						<button type="submit" value="View Songs">View Songs</button>
+					</form>
+				</c:forEach>
+
+			</c:when>
+			<c:otherwise>
+				<br>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </body>
 </html>
