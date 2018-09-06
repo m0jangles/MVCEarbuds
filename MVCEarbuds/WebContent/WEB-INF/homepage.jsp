@@ -26,8 +26,52 @@
 				<form id="commentForm" action="createPost.do" method="POST">
 					<input type="hidden" name="id" value="${UserInSession.profile.id }">
 					<textarea rows="4" cols="30" name="message" form="commentForm"></textarea>
-					<button type="submit" value="POST IT!">POST IT!</button>
+					<button type="submit" value="POST IT!">Post Your Message</button>
 				</form>
+
+				<form action="postSong.do" method="POST">
+					<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
+						<legend> Share New Song </legend>
+						<table>
+							<tr>
+								<td><label for="title">Song Title:</label></td>
+								<td><input type="text" name="title"></td>
+							</tr>
+							<tr>
+								<td><label for="artist">Artist:</label></td>
+								<td><input type="text" name="artist"></td>
+							</tr>
+							<tr>
+								<td><label for="album">Album:</label></td>
+								<td><input type="text" name="album"></td>
+							</tr>
+							<tr>
+								<td><label for="albumImage">Album Image Link:</label></td>
+								<td><input type="text" name="albumImage"></td>
+							</tr>
+							<tr>
+								<td><label for="url">Song Link:</label></td>
+								<td><input type="text" name="url"></td>
+							</tr>
+							<tr>
+								<td><select class="inlineFormCustomSelect" name="genre">
+										<option selected>Genre</option>
+										<c:forEach var="genre" items="${genres}">
+											<option value="${genre.name}">${genre.name}</option>
+										</c:forEach>
+								</select></td>
+							</tr>
+
+							<tr>
+								<td><label for="message">Message:</label></td>
+								<td><input type="text" name="message"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Share" /> <input
+							type="hidden" name="playlistId" value="${id}">
+					</fieldset>
+				</form>
+
 			</div>
 			<br>
 			<div class="col">
