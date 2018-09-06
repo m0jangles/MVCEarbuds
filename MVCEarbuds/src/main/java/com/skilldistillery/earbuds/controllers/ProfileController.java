@@ -93,7 +93,7 @@ public class ProfileController {
 		return "redirect:homepage.do";	
 	}
 	
-	@RequestMapping(path = "viewAnotherProfile.do", method = RequestMethod.GET)
+	@RequestMapping(path = "friendProfile.do", method = RequestMethod.GET)
 	public String viewAnotherUserProfile(Model model, Integer friendId) {
 		Profile otherProfile = userdao.getUserProfileById(friendId);
 		if (otherProfile != null) {
