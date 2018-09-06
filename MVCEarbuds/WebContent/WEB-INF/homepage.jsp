@@ -40,7 +40,7 @@
 
 			<div class="col">
 				<c:if test="${not empty posts }">
-					<h3>Your Feed for All Things Music</h3>
+					<h3>- Your Feed for All Things Music -</h3>
 
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
 
