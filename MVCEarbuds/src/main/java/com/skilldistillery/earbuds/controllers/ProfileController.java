@@ -1,5 +1,7 @@
 package com.skilldistillery.earbuds.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.earbuds.data.AuthenticationDAO;
 import com.skilldistillery.earbuds.data.ProfileDAO;
 import com.skilldistillery.earbuds.data.UserDAO;
+import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Post;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.User;
@@ -30,7 +33,11 @@ public class ProfileController {
 	private UserDAO userdao;
 
 	@RequestMapping(path = "profile.do", method = RequestMethod.GET)
-	public String showProfilePage() {
+	public String showProfilePage(Model model, User user) {
+//		List<Playlist> playlists = dao.getPlaylists(user.getProfile().getId());
+//		if (!playlists.isEmpty()) {
+//			model.addAttribute("playlists", playlists);
+//		}
 		return "profile";
 	}
 
@@ -63,17 +70,6 @@ public class ProfileController {
 	@RequestMapping(path = "createPost.do", method = RequestMethod.POST)
 	public ModelAndView createPost(Integer id,
 			@RequestParam("message") String message) {
-		Post newPost = dao.addPost(id, message);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("user", id);
-		mv.addObject("newPost", newPost);
-		mv.setViewName("redirect:homepage.do");
-		return mv;
-	}
-	@RequestMapping(path = "postSong.do", method = RequestMethod.POST)
-	public ModelAndView postSong(Integer id,
-			@RequestParam("message") String message,
-			@RequestParam("songId") Integer songId) {
 		Post newPost = dao.addPost(id, message);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", id);
