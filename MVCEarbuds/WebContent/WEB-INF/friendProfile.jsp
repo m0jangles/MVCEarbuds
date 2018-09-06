@@ -45,7 +45,7 @@
 								href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
 						</strong></td>
 					</tr>
-					<form action="getSongs.do" method="GET">
+					<form action="getThisProfileSongs.do" method="GET">
 						<input type="hidden" name="id"
 							value="${playlist.id }">
 						<button type="submit" value="View Songs">View Songs</button>
