@@ -33,4 +33,21 @@ footer {
 	.row.content {
 		height: auto;
 	}
+	
+body, html {
+    height: 100%;
+}
+
+.bg-img { 
+    /* The image used */
+    background-image: url("Ear_Buds_Vector_Free.ai");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 }
