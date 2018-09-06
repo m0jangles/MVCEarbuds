@@ -45,10 +45,11 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "addFriend.do", method = RequestMethod.POST)
-	public String userAddFriend(Model model, Integer friendId, HttpSession session) {
-		
+	public String userAddFriend(Model model, Integer friendId,
+			HttpSession session) {
+
 		User userInSession = (User) session.getAttribute("UserInSession");
-		
+
 		boolean friendAdded = userdao.addNewFriend(userInSession, friendId);
 		if (friendAdded = true) {
 			model.addAttribute("friendAdded", friendAdded);
@@ -66,6 +67,15 @@ public class UserController {
 		}
 		return "homepage";
 	}
+
+	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST)
+	public String removeUser(@RequestParam("deleteUser") Integer userToDeleteID) {
+
+		userdao.destroyUser(userToDeleteID);
+
+		return "redirect:login.do";
+	}
+
 //
 //	@RequestMapping(path = "viewMyFriends.do", method = RequestMethod.GET)
 //	public String showUserFriendsList(Model model, User user) {

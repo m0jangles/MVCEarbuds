@@ -98,4 +98,20 @@ public class PlaylistController {
 		mv.setViewName("homepage");
 		return mv;
 	}
+	@RequestMapping(path = "getThisProfileSongs.do", params = "id",
+			method = RequestMethod.GET)
+	public String getPublicSongs(Model model, @RequestParam("id") Integer playlistId) {
+
+		List<Song> songs = dao.getSongs(playlistId);
+		List<Genre> genres = gdao.getEntireGenreList();
+		String playlistName = dao.getPlaylistById(playlistId).getPlaylistName();
+		if (songs != null) {
+			model.addAttribute("songs", songs);
+		}
+		model.addAttribute("playlistName", playlistName);
+		model.addAttribute("id", playlistId);
+
+		model.addAttribute("genres", genres);
+		return "profilePlaylist";
+	}
 }

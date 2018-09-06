@@ -101,6 +101,10 @@ public class ProfileController {
 	public String viewAnotherUserProfile(Model model, Integer friendID) {
 		User friend = authDao.findUserById(friendID);
 		model.addAttribute("otherUser", friend);
+		List<Playlist> playlists = pldao.getPlaylists(friendID);
+		if (!playlists.isEmpty()) {
+			model.addAttribute("playlists", playlists);
+		}
 		return "friendProfile";
 	}
 

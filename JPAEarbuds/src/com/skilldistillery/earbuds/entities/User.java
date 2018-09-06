@@ -34,7 +34,7 @@ public class User {
 	@NotEmpty
 	private String email;
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private Profile profile;
 
 	@ManyToMany
