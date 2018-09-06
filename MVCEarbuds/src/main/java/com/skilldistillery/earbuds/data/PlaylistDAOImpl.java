@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.skilldistillery.earbuds.entities.Playlist;
 import com.skilldistillery.earbuds.entities.Profile;
 import com.skilldistillery.earbuds.entities.Song;
+import com.skilldistillery.earbuds.entities.User;
 
 @Component
 @Transactional
@@ -18,9 +19,10 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	String query;
 
 	public List<Playlist> getPlaylists(Integer id) {
-		String query = "SELECT p from Playlist p JOIN FETCH p.profile WHERE p.profile.id = :id";
+		query = "SELECT p from Playlist p JOIN FETCH p.profile WHERE p.profile.id = :id";
 		List<Playlist> playlists = em.createQuery(query, Playlist.class)
 				.setParameter("id", id).getResultList();
 
@@ -29,7 +31,7 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	}
 
 	public List<Song> getSongs(Integer id) {
-		String query = "SELECT p from Playlist p JOIN FETCH p.songs WHERE p.id = :id";
+		query = "SELECT p from Playlist p JOIN FETCH p.songs WHERE p.id = :id";
 		List<Playlist> result = em.createQuery(query, Playlist.class)
 				.setParameter("id", id).getResultList();
 
@@ -67,6 +69,21 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	public Playlist getPlaylistById(Integer id) {
 		Playlist playlist = em.find(Playlist.class, id);
 		return playlist;
+	}
+
+	@Override
+	public List<Playlist> getPlaylistsByUserID(Integer userID) {
+		User user = em.find(User.class, userID);
+		Profile profile = user.getProfile();
+		query = "SELECT p from Playlist p WHERE p.profile.id = :id";
+		List<Playlist> playlists = em.createQuery(query, Playlist.class)
+				.setParameter("id", profile.getId()).getResultList();
+		if (!playlists.isEmpty()) {
+			return playlists;
+		}
+		else {
+			return null;
+		}
 	}
 
 }

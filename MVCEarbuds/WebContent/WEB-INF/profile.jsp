@@ -40,21 +40,21 @@
 		</p>
 	</div>
 
-	<%-- <h3>Playlists</h3>
+<h3>Playlists</h3>
 	<div style='overflow: scroll; width: 400px; height: 400px;'>
 		<c:choose>
-			<c:when test="${not empty UserInSession.profile.playlists }">
+			<c:when test="${not empty playlists }">
 
 				<c:forEach var="playlist"
-					items="${UserInSession.profile.playlists }">
+					items="${playlists }">
 					<tr>
 						<td colspan="5" align="center"><strong> <a
-								href="getSongs.do?id=${UserInSession.profile.playlist.id }">${UserInSession.profile.playlist.playlistName}</a>
+								href="getSongs.do?id=${playlist.id }">${playlist.playlistName}</a>
 						</strong></td>
 					</tr>
 					<form action="getSongs.do" method="GET">
 						<input type="hidden" name="id"
-							value="${UserInSession.profile.playlist.id }">
+							value="${playlist.id }">
 						<button type="submit" value="View Songs">View Songs</button>
 					</form>
 				</c:forEach>
@@ -63,7 +63,7 @@
 			<c:otherwise>
 				<br>
 			</c:otherwise>
-		</c:choose> --%>
+		</c:choose>
 	</div>
 </body>
 </html>
