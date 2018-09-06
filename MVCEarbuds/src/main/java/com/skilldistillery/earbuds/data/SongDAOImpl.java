@@ -169,6 +169,8 @@ public class SongDAOImpl implements SongDAO {
 			post.setProfile(profile);
 			post.setMessage(message);
 			post.setSong(songWithChanges);
+			em.persist(post);
+			em.flush();
 
 		}
 
