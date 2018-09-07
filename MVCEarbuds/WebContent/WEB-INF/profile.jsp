@@ -88,7 +88,6 @@ body {
 	margin: auto;
 	position: relative;
 	top: 100px;
-	right: 200px;
 }
 
 .user-details .user-info-block {
@@ -98,7 +97,6 @@ body {
 	background: rgb(255, 255, 255);
 	z-index: 0;
 	padding-top: 35px;
-	right: 200px;
 }
 
 .user-info-block .user-heading {
