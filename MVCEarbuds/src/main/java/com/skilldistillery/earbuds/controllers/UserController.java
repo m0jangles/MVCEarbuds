@@ -55,7 +55,7 @@ public class UserController {
 			model.addAttribute("friendAdded", friendAdded);
 		}
 
-		return "homepage";
+		return "redirect:homepage.do";
 	}
 
 	@RequestMapping(path = "removeFriend.do", method = RequestMethod.POST)
