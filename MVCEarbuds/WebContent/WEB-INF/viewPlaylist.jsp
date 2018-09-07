@@ -27,6 +27,7 @@
 }
 
 .container {
+	
 }
 
 .vid {
@@ -53,41 +54,98 @@ body {
 }
 
 .col-md-4 {
-	background-color: lightslategrey;
+	background-color: #6b6666;
 	opacity: 0.95;
+}
+
+fieldset {
+	background-color: whitesmoke;
 }
 </style>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="homepage.do">Earbuds</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-      <li class="active"><a href="homepage.do">Home</a></li>
-        <li><a href="profile.do">Profile</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.do"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<br>
-<br>
-<br>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="homepage.do">Earbuds</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="homepage.do">Home</a></li>
+					<li><a href="profile.do">Profile</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="logout.do"><span
+							class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
 	<div class="container1">
 
 		<h3 class="playlistTitle">${playlistName}</h3>
 
 	</div>
+
+	<c:forEach var="song" items="${songs}">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h4>${song.title}</h4>
+
+					<p>
+						<strong>Artist:</strong> ${song.artist }
+					</p>
+
+					<img src="${song.albumImage}" class="img-responsive center-block"
+						alt=albumart">
+
+					<p>
+						<strong>Album:</strong> ${song.album}
+					</p>
+
+					<p>
+						<strong>Genre:</strong> ${song.genresAsString}
+					</p>
+
+					<form action="deleteSong.do" method="POST">
+						<p>
+							<input type="hidden" name="playlistId" value="${id }"> <input
+								type="hidden" name="songId" value="${song.id }"> <input
+								type="submit" value="Remove Song">
+						</p>
+					</form>
+
+
+
+				</div>
+				<!--.col -->
+
+				<div class="col-md-8">
+					<div class="vid">
+						<iframe width="200" height="150"
+							src="https://www.youtube.com/embed/${song.url}" frameborder="0"
+							allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+					</div>
+					<!--./vid -->
+
+				</div>
+				<!--.col -->
+
+			</div>
+			<!--./row -->
+
+		</div>
+		<!--./container -->
+	</c:forEach>
 
 	<form action="displayAddSongForm.do" method="GET">
 		<input type="submit" value="Add a Song to Playlist"> <input
@@ -150,61 +208,6 @@ body {
 			</form>
 		</fieldset>
 	</c:if>
-
-
-	<c:forEach var="song" items="${songs}">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<h4>${song.title}</h4>
-
-					<p>
-						<strong>Artist:</strong> ${song.artist }
-					</p>
-
-					<img src="${song.albumImage}" class="img-responsive center-block"
-						alt=albumart">
-
-					<p>
-						<strong>Album:</strong> ${song.album}
-					</p>
-
-					<p>
-						<strong>Genre:</strong> ${song.genresAsString}
-					</p>
-
-					<form action="deleteSong.do" method="POST">
-						<p>
-							<input type="hidden" name="playlistId" value="${id }"> <input
-								type="hidden" name="songId" value="${song.id }"> <input
-								type="submit" value="Remove Song">
-						</p>
-					</form>
-
-
-
-				</div>
-				<!--.col -->
-
-				<div class="col-md-8">
-					<div class="vid">
-						<iframe width="200" height="150"
-							src="https://www.youtube.com/embed/${song.url}" frameborder="0"
-							allow="autoplay; encrypted-media" allowfullscreen> </iframe>
-					</div>
-					<!--./vid -->
-
-				</div>
-				<!--.col -->
-
-			</div>
-			<!--./row -->
-
-		</div>
-		<!--./container -->
-	</c:forEach>
-
-
 
 </body>
 </html>
