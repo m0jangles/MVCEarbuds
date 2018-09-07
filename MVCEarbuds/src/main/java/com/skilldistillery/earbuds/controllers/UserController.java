@@ -73,7 +73,7 @@ public class UserController {
 
 		userdao.destroyUser(userToDeleteID);
 
-		return "redirect:login.do";
+		return "redirect:logout.do";
 	}
 
 //
