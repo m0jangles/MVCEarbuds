@@ -18,6 +18,10 @@
 <title>Earbuds | Log In or Sign Up</title>
 </head>
 <style>
+body {
+	background-image:
+		url("https://cdn.pixabay.com/photo/2016/12/01/07/30/music-1874621_1280.jpg");
+}
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -79,7 +83,8 @@ footer {
 						<input type="text" class="form-control" name="password"
 							placeholder="Password" required>
 					</div>
-					<button type="submit" class="btn btn-default">Sign In</button>
+					<button type="submit" class="btn btn-outline-dark btn-std">Sign
+						In</button>
 				</form:form>
 				<%--End Login Form --%>
 			</div>
@@ -94,94 +99,55 @@ footer {
 		<div>
 			<h3>Sign Up</h3>
 		</div>
-		<%-- <fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
-			<legend> Sign Up </legend>
-			<form:form action="signUp.do" method="POST"
-				modelAttribute="userSignUp">
-				<table>
-					<tr>
-						<td><form:label path="username">Username:</form:label></td>
-						<td><form:input path="username" /></td>
-						<td><form:errors path="username" /></td>
-					</tr>
-					<tr>
-						<td><form:label path="password">Password:</form:label></td>
-						<td><form:input path="password" /></td>
-						<td><form:errors path="password" /></td>
-					</tr>
-					<tr>
-						<td><form:label path="email">Email:</form:label></td>
-						<td><form:input path="email" /></td>
-						<td><form:errors path="email" /></td>
-					</tr>
-					<tr>
-						<td><label for="firstName">First Name:</label></td>
-						<td><input type="text" name="firstName"></td>
-					</tr>
-					<tr>
-						<td><label for="lastName">Last Name:</label></td>
-						<td><input type="text" name="lastName"></td>
-					</tr>
-				</table>
-				<button type="submit" class="btn btn-primary">Sign Up</button>
-			</form:form>
-		</fieldset> --%>
 		<div class="container-fluid text-center col-md-offset-4">
-				<form class="form-horizontal" action="signUp.do" method="POST"
-					modelAttribute="userSignUp">
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="username">Username:</label>
-						<div class="col-md-4 form-group">
-							<input type="text" class="form-control" name="username"
-								placeholder="Username" required />
-						</div>
+			<form class="form-horizontal" action="signUp.do" method="POST"
+				modelAttribute="userSignUp">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="username">Username:</label>
+					<div class="col-md-4 form-group">
+						<input type="text" class="form-control" name="username"
+							placeholder="Username" required />
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="password">Password:</label>
-						<div class="col-md-4 form-group">
-							<input type="text" class="form-control" name="password"
-								placeholder="Password" required />
-						</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="password">Password:</label>
+					<div class="col-md-4 form-group">
+						<input type="text" class="form-control" name="password"
+							placeholder="Password" required />
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">Email:</label>
-						<div class="col-md-4 form-group">
-							<input type="text" class="form-control" name="email"
-								placeholder="Email" required />
-						</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">Email:</label>
+					<div class="col-md-4 form-group">
+						<input type="text" class="form-control" name="email"
+							placeholder="Email" required />
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="firstName">First
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="firstName">First Name:</label>
+					<div class="col-md-4 form-group">
+						<input type="text" class="form-control" name="firstName"
+							placeholder="First Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="lastName">Last
 							Name:</label>
-						<div class="col-md-4 form-group">
-							<input type="text" class="form-control" name="firstName"
-								placeholder="First Name">
-						</div>
+					<div class="col-md-4 form-group">
+						<input type="text" class="form-control" name="lastName"
+							placeholder="Last Name">
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="lastName">Last
-							Name:</label>
-						<div class="col-md-4 form-group">
-							<input type="text" class="form-control" name="lastName"
-								placeholder="Last Name">
-						</div>
-					</div>
-					<div class="col-md-5 text-center">
-					<button type="submit" class="btn btn-lg btn-primary">Sign
+				</div>
+				<div class="col-md-5 text-center">
+					<button type="submit" class="btn btn-default btn-lg">Sign
 						Up!</button>
-						</div>
-				</form>
-			</div>
-			</div>
-
-			<c:if test="${wasSignUpSuccessful}">
-				<p>User sign up was successful!</p>
-			</c:if>
+				</div>
+			</form>
 		</div>
+	</div>
 
 	<c:if test="${wasSignUpSuccessful}">
 		<p>User sign up was successful!</p>
 	</c:if>
-
 </body>
 </html>
