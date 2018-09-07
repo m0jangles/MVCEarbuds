@@ -298,7 +298,7 @@ INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALU
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (15, 'Wake Me Up', 'True', 'images/AlbumArt/Avicii.jpeg', 'IcrbM1l_BoI', 'Avicii');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (16, 'Proud Mary', 'Proud Mary: The Best of Ike & Tina Turner', 'images/AlbumArt/Tina.jpeg', 'hzQnPz6TpGc', 'Ike & Tina Turner');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (17, 'Wagon Wheel', 'Wagon Wheel', 'images/AlbumArt/Darius_Rucker.jpeg', 'hvKyBcCDOB4', 'Darius Rucker');
-INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (18, 'Under Pressure', 'Hot Space', 'images/AlbumArt/Queen&DavidBowie', 'YoDh_gHDvkk', 'Queen & David Bowie');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (18, 'Under Pressure', 'Hot Space', 'images/AlbumArt/Queen&DavidBowie.jpeg', 'YoDh_gHDvkk', 'Queen & David Bowie');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (19, 'I Wanna Dance with Somebody', 'I Wanna Dance with Somebody', 'images/AlbumArt/Whitney.jpeg', 'zbLjJ6x2Hgs', 'Whitney Houston');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (20, 'Hey Jude', 'Hey Jude', 'images/AlbumArt/Beatles.jpeg', 'A_MjCqQoLLA', 'The Beatles');
 
@@ -353,6 +353,15 @@ INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (7, 'An
 INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (8, 'Paul\'s Car Playlist', 1, 1);
 INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (9, 'Denise\'s Songs to Get Jacked To', 3, 1);
 INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (10, 'Songs for a Rainy Day', 1, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (11, 'Songs to Sing in the Shower', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (12, 'Gym', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (13, 'Motivation Nation', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (14, 'Steve\'s Favorite Coding Jams', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (15, 'Rob\'s Songs to Program the House to', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (16, 'Andrew\'s Golfing Songs', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (17, 'Paul\'s Car Playlist', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (18, 'Denise\'s Songs to Get Jacked To', 7, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (19, 'Songs for a Rainy Day', 7, 1);
 
 COMMIT;
 
