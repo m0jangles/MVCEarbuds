@@ -174,6 +174,7 @@ footer {
                 <button type="submit" class="btn btn-primary btn-sm btn-danger"
                   value="Delete Post">Delete Post</button>
               </form>
+              <br>
             </c:forEach>
         </c:if>
         </div>
@@ -193,6 +194,7 @@ footer {
                   <button type="submit" class="btn btn-primary btn-sm btn-danger"
                     value="Delete Playlist">Delete Playlist</button>
                 </form>
+                <br>
               </c:forEach>
             </c:when>
             <c:otherwise>
@@ -219,6 +221,7 @@ footer {
               </tr>
             </c:forEach>
           </table>
+           
         </div>
       </div>
     </div>
