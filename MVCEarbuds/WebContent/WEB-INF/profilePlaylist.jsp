@@ -7,80 +7,146 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="personalStylesheet" href="Style.css">
 <meta charset="UTF-8">
 <title>Earbuds | Playlists</title>
 </head>
+<style>
+.playlistTitle {
+	text-align: center;
+	color: white;
+}
+
+body {
+	background-image: url("images/friendPlaylistDarkerPic.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+.container1 {
+	background: grey;
+}
+
+.container {
+	
+}
+
+.vid {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+.vid iframe, .vid object, .vid embed {
+	position: absolute;
+	top: 50px;
+	left: 100px;
+	width: 70%;
+	height: 70%;
+}
+</style>
 <body>
-	<div class="container">
-		<a class="btn btn-primary btn-std" href="homepage.do" role="button">
-			Home </a> <a class="btn btn-primary btn-std" href="profile.do"
-			role="button"> Profile </a> <a class="btn btn-primary btn-std"
-			href="logout.do" role="button"> Logout </a> <a
-			class="btn btn-primary btn-std" href="settings.do" role="button">
-			Settings </a>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="homepage.do">Earbuds</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="homepage.do">Home</a></li>
+					<li><a href="profile.do">Profile</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="logout.do"><span
+							class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
 
-		<h2>Playlist Page (Temporary Name)</h2>
+	<div class="container1">
 
-		<table>
-			<tr>
-				<td colspan="5" align="center"><strong>${playlistName}</strong></td>
-			</tr>
-			<tr>
-				<th></th>
-				<th></th>
-				<th>Song</th>
-				<th>Artist</th>
-				<th>Album</th>
-				<th>Genre</th>
-				<th></th>
-			</tr>
+		<h2 class="playlistTitle">${playlistName}</h2>
 
-			<c:forEach var="song" items="${songs}">
-
-				<tr>
-					<td><iframe width="200" height="150"
-							src="https://www.youtube.com/embed/${song.url}" frameborder="0"
-							allow="autoplay; encrypted-media" allowfullscreen> </iframe></td>
-					<td><c:if test="${not empty song.albumImage }">
-							<img src="${song.albumImage}" height="80" width="80">
-						</c:if></td>
-					<td>${song.title}</td>
-					<td>${song.artist}</td>
-					<td>${song.album}</td>
-					<td>${song.genresAsString}</td>
-					<td>
-						<form action="addSongFromFriendPlaylist.do" method="POST">
-							<select class="inlineFormCustomSelect" name="playlist">
-								<option selected disabled>Select Playlist</option>
-								<c:forEach var="myPlaylist" items="${myPlaylists}">
-									<option value="${myPlaylist.id}">${myPlaylist.playlistName}</option>
-								</c:forEach>
-							</select> <input type="hidden" name="songId" value="${song.id}"> <input
-								type="hidden" name="friendPlaylistID" value="${id}">
-							<input type="submit" value="Add to Playlist">
-						</form> <%-- <form action="postSong.do" method="POST">
-							<input type="hidden" name="songId" value="${song.id }"> <input
-								type="hidden" name="id" value="${UserInSession.profile.id }">
-							<input type="hidden" name="message" value="    "> <input
-								type="submit" value="Share to Feed">
-						</form> --%>
-
-
-					</td>
-					<td><c:if
-							test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
-									Song successfully added to playlist!
-								</c:if></td>
-				</tr>
-
-			</c:forEach>
-
-		</table>
-		<br>
 	</div>
+
+	<c:forEach var="song" items="${songs}">
+		<font color="white">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h4>${song.title}</h4>
+
+						<p>
+							<strong>Artist:</strong> ${song.artist }
+						</p>
+
+						<img src="${song.albumImage}" class="img-responsive center-block"
+							alt=albumart">
+
+						<p>
+							<strong>Album:</strong> ${song.album}
+						</p>
+
+						<p>
+							<strong>Genre:</strong> ${song.genresAsString}
+						</p>
+						<div class="form-group">
+							<form action="addSongFromFriendPlaylist.do" method="POST">
+								<select class="form-control" name="playlist">
+									<option selected disabled>Select Playlist</option>
+									<c:forEach var="myPlaylist" items="${myPlaylists}">
+										<option value="${myPlaylist.id}">${myPlaylist.playlistName}</option>
+									</c:forEach>
+								</select> <input type="hidden" name="songId" value="${song.id}">
+								<input type="hidden" name="friendPlaylistID" value="${id}">
+								<button type="submit" class="btn btn-sm btn-default">Add
+									to Playlist</button>
+							</form>
+							<c:if
+								test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
+								<div class="alert alert-success" role="alert">
+									<strong>Song successfully added to playlist!</strong>
+								</div>
+							</c:if>
+						</div>
+
+					</div>
+
+					<!--.col -->
+
+					<div class="col-md-8">
+						<div class="vid">
+							<iframe width="200" height="150"
+								src="https://www.youtube.com/embed/${song.url}" frameborder="0"
+								allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+						</div>
+						<!--./vid -->
+					</div>
+					<!--.col -->
+				</div>
+				<!--./row -->
+
+			</div>
+		</font>
+		<!--./container -->
+	</c:forEach>
 
 </body>
 </html>
