@@ -68,7 +68,8 @@ footer {
 }
 
 body {
-	background: #EAEAEA;
+	background-color: #EAEAEA;
+	background-image: url("images/record-1404325_1920.jpg");
 }
 
 .user-details {
