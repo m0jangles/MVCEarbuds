@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,13 @@
 .searchResults {
 	text-align: center;
 	color: white;
+}
+
+body {
+	background-image: url("images/resultsbackground.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 }
 
 .container1 {
@@ -69,6 +77,22 @@
 					<li><a href="logout.do"><span
 							class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 				</ul>
+					<form:form class="navbar-form navbar-right" method="GET"
+					action="findUsers.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchUserInput"
+							placeholder="Find Users">
+					</div>
+					<button type="submit" class="btn btn-default">Find Users</button>
+				</form:form>
+				<form:form class="navbar-form navbar-right" method="GET"
+					action="findSongs.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchSongInput"
+							placeholder="Search Music">
+					</div>
+					<button type="submit" class="btn btn-default">Search Music</button>
+				</form:form>
 			</div>
 		</div>
 	</nav>
@@ -107,16 +131,16 @@
 
 							<form action="addSongFromSearchPage.do" method="POST">
 								<p>
-									<select class="inlineFormCustomSelect" name="playlist"
-										required="true">
+									<select class="form-control" name="playlist">
 										<option selected disabled>Select Playlist</option>
 										<c:forEach var="playlist" items="${playlists}">
 											<option value="${playlist.id}">${playlist.playlistName}</option>
 										</c:forEach>
 									</select> <input type="hidden" name="songId" value="${song.id}">
 									<input type="hidden" name="searchSongInput"
-										value="${searchSongInput}"> <input type="submit"
-										value="Add to Playlist">
+										value="${searchSongInput}">
+									<button type="submit" class="btn btn-sm btn-default">Add
+										to Playlist</button>
 								</p>
 							</form>
 
@@ -125,15 +149,17 @@
 									<input type="hidden" name="songId" value="${song.id }">
 									<input type="hidden" name="id"
 										value="${UserInSession.profile.id }"> <input
-										type="hidden" name="message" value="    "> <input
-										type="submit" value="Share to Feed">
+										type="hidden" name="message" value="    ">
+									<button type="submit" class="btn btn-sm btn-default">Share
+										to Feed</button>
 								</p>
 							</form>
 
 							<p>
 								<c:if
 									test="${wasAdditionSuccessful && songSuccessfulID == song.id}">
-									Song successfully added to playlist!
+									<div class="alert alert-success" role="alert">Song
+										successfully added to playlist!</div>
 								</c:if>
 							</p>
 

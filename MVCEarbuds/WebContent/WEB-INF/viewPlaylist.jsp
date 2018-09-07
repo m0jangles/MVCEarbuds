@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 
@@ -83,6 +84,22 @@ fieldset {
 					<li><a href="logout.do"><span
 							class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 				</ul>
+					<form:form class="navbar-form navbar-right" method="GET"
+					action="findUsers.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchUserInput"
+							placeholder="Find Users">
+					</div>
+					<button type="submit" class="btn btn-default">Find Users</button>
+				</form:form>
+				<form:form class="navbar-form navbar-right" method="GET"
+					action="findSongs.do">
+					<div class="form-group">
+						<input type="text" class="form-control" name="searchSongInput"
+							placeholder="Search Music">
+					</div>
+					<button type="submit" class="btn btn-default">Search Music</button>
+				</form:form>
 			</div>
 		</div>
 	</nav>
