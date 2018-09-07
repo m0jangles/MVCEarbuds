@@ -83,7 +83,7 @@ footer {
 							placeholder="Username" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" name="password"
+						<input type="password" class="form-control" name="password"
 							placeholder="Password" required>
 					</div>
 					<button type="submit" class="btn btn-outline-dark btn-std">Sign
@@ -115,7 +115,7 @@ footer {
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="password">Password:</label>
 					<div class="col-md-4 form-group">
-						<input type="text" class="form-control" name="password"
+						<input type="password" class="form-control" name="password"
 							placeholder="Password" required />
 					</div>
 				</div>
