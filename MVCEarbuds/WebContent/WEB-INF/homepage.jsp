@@ -188,7 +188,7 @@ a {
 							</table>
 							<form action="deletePost.do" method="POST">
 								<input type="hidden" name="postId" value="${post.id }">
-								<button type="submit" class="btn btn-primary btn-sm btn-danger"
+								<button type="submit" class="btn btn-primary btn-xs btn-danger"
 									value="Delete Post">Delete Post</button>
 							</form>
 							<br>
@@ -208,7 +208,7 @@ a {
 							</font> </strong>
 							<form action="removePlaylist.do" method="POST">
 								<input type="hidden" name="playlistId" value="${playlist.id }">
-								<button type="submit" class="btn btn-primary btn-sm btn-danger"
+								<button type="submit" class="btn btn-primary btn-xs btn-danger"
 									value="Delete Playlist">Delete Playlist</button>
 							</form>
 							<br>

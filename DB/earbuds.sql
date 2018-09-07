@@ -236,6 +236,10 @@ USE `earbuds`;
 INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (1, 'DRodman', 'password', 'DRodman@aol.com');
 INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (2, 'KhalDrogo', 'aquaman', 'ImSoDreAmy@yahoo.com');
 INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (3, 'DragonQueen', 'dragonqueen', 'MotherODragons@msn.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (4, 'TheRock', 'therock', 'WWE@hotmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (5, 'NathalieP', 'password', 'nathalieP@gmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (6, 'OGElectricCar', 'password', 'elon@gmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (7, 'SpaceBook', 'password', 'TomA@myspace.com');
 
 COMMIT;
 
@@ -248,6 +252,10 @@ USE `earbuds`;
 INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (1, 'Chicago', 'Illinois', 'United States');
 INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (2, 'Atlantis', 'Georgia', 'United States');
 INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (3, 'Essos', 'North Dakota', 'Essos');
+INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (4, 'Denver', 'Colorado', 'United States');
+INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (5, 'San Francisco', 'California', 'United States');
+INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (6, 'Mobile', 'Alabama', 'United States');
+INSERT INTO `location` (`id`, `city`, `state`, `country`) VALUES (7, 'Raleigh', 'North Carolina', 'United States');
 
 COMMIT;
 
@@ -260,6 +268,10 @@ USE `earbuds`;
 INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (1, 1, 'images/ProfilePic/DennisRod.jpg', 'Dennis', 'Rodman', 1);
 INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (2, 2, 'images/ProfilePic/dreamy.png', 'Jason', 'Momoa', 2);
 INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (3, 3, 'images/ProfilePic/Daenerys.png', 'Daenerys', 'Targaryen', 3);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (4, 4, 'images/ProfilePic/Dwayne.jpeg', 'Dwayne', 'Johnson', 4);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (5, 5, 'images/ProfilePic/Natalie.jpeg', 'Natalie ', 'Portman', 5);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (6, 6, 'images/ProfilePic/elon.jpeg', 'Elon', 'Musk', 6);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (7, 7, 'images/ProfilePic/tom.jpeg', 'Tom', 'Anderson', 7);
 
 COMMIT;
 
@@ -279,6 +291,16 @@ INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALU
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (8, 'Cherokee', 'The Epic', 'images/AlbumArt/Kamasi_Washington_The_Epic.jpg', '3DM9fGXHhlk', 'Kamasi Washington');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (9, 'Hurt', 'American IV: The Man Comes Around', 'images/AlbumArt/JohnnyCash_AmericanIV.jpg', 'FywSzjRq0e4', 'Johnny Cash');
 INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (10, 'Juicy', 'Ready To Die', 'images/AlbumArt/BiggieSmalls_ReadyToDie.jpg', 'KVQfWRl97jo', 'Biggie Smalls');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (11, 'Thriller', 'Thriller', 'images/AlbumArt/MJ_Thriller.jpeg', 'sOnqjkJTMaA', 'Michael Jackson');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (12, 'Mrs. Robinson', 'Simon & Garfunkal', 'images/AlbumArt/SG.jpeg', '9C1BCAgu2I8', 'Simon & Garfunkel');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (13, 'The Sound of Silence', 'Evolution', 'images/AlbumArt/Disturbed.jpeg', 'u9Dg-g7t2l4', 'Disturbed');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (14, 'Barbie Girl', 'Aquarium', 'images/AlbumArt/BarbieGirl.jpeg', 'ZyhrYis509A', 'Aqua');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (15, 'Wake Me Up', 'True', 'images/AlbumArt/Avicii.jpeg', 'IcrbM1l_BoI', 'Avicii');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (16, 'Proud Mary', 'Proud Mary: The Best of Ike & Tina Turner', 'images/AlbumArt/Tina.jpeg', 'hzQnPz6TpGc', 'Ike & Tina Turner');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (17, 'Wagon Wheel', 'Wagon Wheel', 'images/AlbumArt/Darius_Rucker.jpeg', 'hvKyBcCDOB4', 'Darius Rucker');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (18, 'Under Pressure', 'Hot Space', 'images/AlbumArt/Queen&DavidBowie', 'YoDh_gHDvkk', 'Queen & David Bowie');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (19, 'I Wanna Dance with Somebody', 'I Wanna Dance with Somebody', 'images/AlbumArt/Whitney.jpeg', 'zbLjJ6x2Hgs', 'Whitney Houston');
+INSERT INTO `song` (`id`, `title`, `album`, `album_image`, `url`, `artist`) VALUES (20, 'Hey Jude', 'Hey Jude', 'images/AlbumArt/Beatles.jpeg', 'A_MjCqQoLLA', 'The Beatles');
 
 COMMIT;
 
@@ -322,6 +344,15 @@ COMMIT;
 START TRANSACTION;
 USE `earbuds`;
 INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (1, 'Songs to Sing in the Shower', 2, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (2, 'Gym', 1, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (3, 'Motivation Nation', 3, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (4, 'Songs to Sing in the Shower', 4, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (5, 'Steve\'s Favorite Coding Jams', 5, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (6, 'Rob\'s Songs to Program the House to', 6, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (7, 'Andrew\'s Golfing Songs', 5, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (8, 'Paul\'s Car Playlist', 1, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (9, 'Denise\'s Songs to Get Jacked To', 3, 1);
+INSERT INTO `playlist` (`id`, `name`, `profile_id`, `is_private`) VALUES (10, 'Songs for a Rainy Day', 1, 1);
 
 COMMIT;
 
@@ -336,6 +367,72 @@ INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (2, 2, 1);
 INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (3, 3, 1);
 INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (4, 4, 1);
 INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (5, 5, 1);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (6, 6, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (7, 7, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (8, 8, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (9, 9, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (10, 10, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (11, 11, 2);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (12, 12, 3);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (13, 13, 3);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (14, 14, 3);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (15, 15, 3);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (16, 16, 4);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (17, 17, 4);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (18, 18, 4);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (19, 18, 4);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (20, 19, 4);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (21, 20, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (22, 9, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (23, 8, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (24, 1, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (25, 5, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (26, 8, 5);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (27, 9, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (28, 2, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (29, 11, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (30, 2, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (31, 17, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (32, 20, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (33, 7, 6);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (34, 9, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (35, 12, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (36, 13, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (37, 14, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (38, 15, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (39, 19, 7);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (40, 3, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (41, 2, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (42, 1, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (43, 11, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (44, 20, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (45, 5, 8);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (46, 4, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (47, 12, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (48, 9, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (49, 11, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (50, 13, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (51, 14, 9);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (52, 4, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (53, 3, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (54, 13, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (55, 15, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (56, 18, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (57, 19, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (58, 8, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (59, 10, 10);
+INSERT INTO `playlist_song` (`id`, `song_id`, `playlist_id`) VALUES (60, 11, 10);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `song_post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `earbuds`;
+INSERT INTO `song_post` (`id`, `profile_id`, `song_id`, `message`, `post_date`) VALUES (1, 7, 7, 'This is my JAAAAM!!', '2018-09-06 00:00:00');
+INSERT INTO `song_post` (`id`, `profile_id`, `song_id`, `message`, `post_date`) VALUES (2, 7, 8, 'I\'m so pumped for the new album!', '2018-09-06 00:00:00');
 
 COMMIT;
 
@@ -357,6 +454,24 @@ INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (9, 7, 8);
 INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (10, 8, 4);
 INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (11, 9, 1);
 INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (12, 10, 24);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (13, 11, 5);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (14, 12, 7);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (15, 13, 2);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (16, 14, 5);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (17, 15, 8);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (18, 16, 22);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (19, 17, 1);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (20, 18, 7);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (21, 19, 5);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (22, 20, 2);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (23, 16, 5);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (24, 17, 14);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (25, 12, 14);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (26, 12, 7);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (27, 13, 15);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (28, 13, 13);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (29, 14, 7);
+INSERT INTO `song_genre` (`id`, `song_id`, `genre_id`) VALUES (30, 15, 5);
 
 COMMIT;
 
