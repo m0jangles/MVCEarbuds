@@ -20,7 +20,7 @@
 <style>
 body {
 	background-image:
-		url("https://cdn.pixabay.com/photo/2016/12/01/07/30/music-1874621_1280.jpg");
+		url("images/earbudsHome.jpg");
 }
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {

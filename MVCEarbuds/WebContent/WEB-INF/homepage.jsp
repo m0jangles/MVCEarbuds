@@ -87,7 +87,6 @@ footer {
       </div>
     </div>
   </nav>
-  
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -172,11 +171,10 @@ footer {
               </table>
               <form action="deletePost.do" method="POST">
                 <input type="hidden" name="postId" value="${post.id }">
-                <button type="submit" class="btn btn-primary btn-xs btn-danger"
+                <button type="submit" class="btn btn-primary btn-sm btn-danger"
                   value="Delete Post">Delete Post</button>
               </form>
             </c:forEach>
-            </div>
         </c:if>
         </div>
       </div>
@@ -192,7 +190,7 @@ footer {
                 </font> </strong>
                 <form action="removePlaylist.do" method="POST">
                   <input type="hidden" name="playlistId" value="${playlist.id }">
-                  <button type="submit" class="btn btn-primary btn-xs btn-danger"
+                  <button type="submit" class="btn btn-primary btn-sm btn-danger"
                     value="Delete Playlist">Delete Playlist</button>
                 </form>
               </c:forEach>
