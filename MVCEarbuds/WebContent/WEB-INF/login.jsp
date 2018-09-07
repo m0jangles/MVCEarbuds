@@ -98,7 +98,7 @@ footer {
 	<br>
 	<br>
 	<div class="container-fluid text-center">
-		<h1>Welcome!</h1>
+		<h1>Welcome To Earbuds!</h1>
 		<div>
 			<h3>Sign Up</h3>
 		</div>
