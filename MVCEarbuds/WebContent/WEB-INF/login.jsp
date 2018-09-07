@@ -21,6 +21,9 @@
 body {
 	background-image:
 		url("images/earbudsHome.jpg");
+		background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background-position: center; 
 }
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
