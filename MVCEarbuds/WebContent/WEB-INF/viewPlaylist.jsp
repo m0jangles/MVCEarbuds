@@ -44,6 +44,18 @@
 	width: 70%;
 	height: 70%;
 }
+
+body {
+	background-image: url("images/backgroundUserPlaylist.jpeg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+.col-md-4 {
+	background-color: lightslategrey;
+	opacity: 0.95;
+}
 </style>
 
 <body>
