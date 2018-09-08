@@ -135,7 +135,9 @@ public class SongDAOImpl implements SongDAO {
 
 		List<Genre> result = em.createQuery(query, Genre.class)
 				.setParameter("genre", postDTO.getGenre()).getResultList();
-		s.addGenre(result.get(0));
+		if (result.size() > 0) {
+			s.addGenre(result.get(0));
+		}
 		Post post = new Post();
 		post.setProfile(p);
 		post.setSong(s);
