@@ -24,7 +24,7 @@
 }
 
 body {
-	background-image: url("images/friendPlaylistDarkerPic.jpg");
+	background-image: url("images/sleeves.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;

@@ -15,6 +15,8 @@
 <meta charset="UTF-8">
 <title>Earbuds | Homepage</title>
 <style>
+
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -49,10 +51,14 @@ footer {
 
 body {
 	background-image:
-		url("https://smartandsecurecomputing.org/nicholas/wp-content/uploads/2018/02/blurredbackground.jpg");
+		/* url("https://smartandsecurecomputing.org/nicholas/wp-content/uploads/2018/02/blurredbackground.jpg"); */
+		/* url("https://i.pinimg.com/originals/87/b7/15/87b7156a0e8bad9ee8ee24e2102bdb59.jpg"); */ 
+		url("images/red.jpg"); 
+		/* url("https://i.pinimg.com/originals/e2/ed/c1/e2edc1f9814c175287e7b99bfae80ac6.jpg"); */
+		
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-position: center;
+	background-position: center; 
 }
 
 a {
@@ -62,7 +68,18 @@ a {
 .friendName {
 	margin-left: 20px;
 }
+.font {
+	text-align: center;
+	color: white;
+}
 
+.container1 {
+	background: black;
+}
+/* .container2 {
+	background: black;
+	
+} */
 </style>
 </head>
 <body>
@@ -104,11 +121,13 @@ a {
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid">
+	<div class="container-fluid" >
 		<div class="row">
+
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<br> <br> <br>
-				<h2>Welcome, ${UserInSession.username}</h2>
+				<div class="container1">
+				<h2 class="font">- Welcome, ${UserInSession.username} -</h2></div>
 
 				<img src="${UserInSession.profile.image}" width="200"> <br>
 				<br>
@@ -117,36 +136,38 @@ a {
 						<input type="hidden" name="id"
 							value="${UserInSession.profile.id }">
 						<textarea rows="4" cols="50" name="message" form="commentForm"></textarea>
+						<br>
 						<button type="submit" class="btn btn-primary btn-lg">Post
 							Your Message</button>
 					</form>
 				</div>
 				<form action="postSong.do" method="POST">
-					<fieldset style="display: inline; box-shadow: 5px 5px 10px gray;">
-						<legend> Share New Song </legend>
+					<fieldset style="display: inline;">
+					<div class="container1">
+						<legend class="font"> Share New Song </legend></div>
 						<table>
 							<tr>
-								<td><label for="title">Song Title:</label></td>
+								<td><label for="title" class="font">Song Title:</label></td>
 								<td><input type="text" name="title"></td>
 							</tr>
 							<tr>
-								<td><label for="artist">Artist:</label></td>
+								<td><label for="artist" class="font">Artist:</label></td>
 								<td><input type="text" name="artist"></td>
 							</tr>
 							<tr>
-								<td><label for="album">Album:</label></td>
+								<td><label for="album" class="font">Album:</label></td>
 								<td><input type="text" name="album"></td>
 							</tr>
 							<tr>
-								<td><label for="albumImage">Album Image Link:</label></td>
+								<td><label for="albumImage" class="font">Album Image Link:</label></td>
 								<td><input type="text" name="albumImage"></td>
 							</tr>
 							<tr>
-								<td><label for="url">Song Link:</label></td>
+								<td><label for="url" class="font">Song Link:</label></td>
 								<td><input type="text" name="url"></td>
 							</tr>
 							<tr>
-								<td><select class="inlineFormCustomSelect" name="genre">
+								<td><select class="inlineFormCustomSelect" name="genre" class="font">
 										<option selected>Genre</option>
 										<c:forEach var="genre" items="${genres}">
 											<option value="${genre.name}">${genre.name}</option>
@@ -154,7 +175,7 @@ a {
 								</select></td>
 							</tr>
 							<tr>
-								<td><label for="message">Message:</label></td>
+								<td><label for="message" class="font">Message:</label></td>
 								<td><input type="text" name="message"></td>
 							</tr>
 						</table>
@@ -163,20 +184,23 @@ a {
 					</fieldset>
 				</form>
 			</div>
+
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<br> <br> <br>
-				<h3>- Music Feed -</h3>
+				<div class="container1">
+				<h3 class="font">- Music Feed -</h3></div>
 				<c:if test="${not empty posts }">
 					<div style='overflow: scroll; width: 400px; height: 400px;'>
 						<c:forEach var="post" items="${posts}">
+							<div class="container2">
 							<table>
 								<tr>
-									<td><em>Date: ${post.postDate}</em></td>
+									<td><font face="courier new" color="white" ><em>Date: ${post.postDate}</em></font></td>
 								</tr>
 								<tr>
-									<td><strong><em>${post.profile.user.username}</strong>
-										posted: </em></td>
-									<td><font face="verdana" color="black" size="4">
+									<td><font face="courier new" color="white" ><em><strong>${post.profile.user.username}</strong>
+										posted: </em></font></strong></td>
+									<td><font face="verdana" color="white" size="4">
 											${post.message}</font></td>
 								</tr>
 								<c:if test="${post.song.id != 1}">
@@ -186,6 +210,7 @@ a {
 										allowfullscreen> </iframe>
 								</c:if>
 							</table>
+							</div>
 							<form action="deletePost.do" method="POST">
 								<input type="hidden" name="postId" value="${post.id }">
 								<button type="submit" class="btn btn-primary btn-xs btn-danger"
@@ -198,7 +223,8 @@ a {
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 			<br> <br> <br>
-			<h3>Your Playlists</h3>
+			<div class="container1">
+			<h3 class="font">- Your Playlists -</h3></div>
 			<div style='overflow: scroll; width: 400px; height: 400px;'>
 				<c:choose>
 					<c:when test="${not empty playlists }">
@@ -226,7 +252,8 @@ a {
 					<button type="submit" class="btn btn-primary" value="New Playlist">Create
 						New Playlist</button>
 				</form>
-				<h3>Your Friends</h3>
+				<div class="container1">
+				<h3 class="font"> Your Friends -</h3></div>
 				<table>
 					<c:forEach var="friend" items="${myFriends}">
 						<tr>
@@ -234,7 +261,7 @@ a {
 								href="friendProfile.do?friendID=${friend.profile.user.id}">
 									<img src="${friend.profile.image}" height="50" width="50" />
 							</a>
-							<td><span class="friendName">${friend.profile.firstName} ${friend.profile.lastName}</span></td>
+							<td class="font"><span class="friendName">${friend.profile.firstName} ${friend.profile.lastName}</span></td>
 						</tr>
 					</c:forEach>
 				</table>

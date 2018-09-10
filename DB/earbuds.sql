@@ -233,13 +233,15 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `earbuds`;
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (1, 'DRodman', 'password', 'DRodman@aol.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (2, 'KhalDrogo', 'aquaman', 'ImSoDreAmy@yahoo.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (3, 'DragonQueen', 'dragonqueen', 'MotherODragons@msn.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (4, 'TheRock', 'therock', 'WWE@hotmail.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (5, 'NathalieP', 'password', 'nathalieP@gmail.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (6, 'OGElectricCar', 'password', 'elon@gmail.com');
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (7, 'SpaceBook', 'password', 'TomA@myspace.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (1, 'Steve$', 'password', 'SteveS@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (2, 'MarkyMark', 'password', 'MarkG@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (3, 'FrankieC', 'password', 'FrankieC@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (4, 'JerryC', 'password', 'JerryC@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (5, 'MeganG', 'password', 'MeganG@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (6, 'OmarJ', 'password', 'OmarJ@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (7, 'JonM', 'password', 'JonM@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (8, 'ChrisT', 'password', 'ChrisT@earbuds.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES (9, 'MarcusS', 'password', 'MarcusS@earbuds.com');
 
 COMMIT;
 
@@ -265,13 +267,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `earbuds`;
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (1, 1, 'images/ProfilePic/DennisRod.jpg', 'Dennis', 'Rodman', 1);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (2, 2, 'images/ProfilePic/dreamy.png', 'Jason', 'Momoa', 2);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (3, 3, 'images/ProfilePic/Daenerys.png', 'Daenerys', 'Targaryen', 3);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (4, 4, 'images/ProfilePic/Dwayne.jpeg', 'Dwayne', 'Johnson', 4);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (5, 5, 'images/ProfilePic/Natalie.jpeg', 'Natalie ', 'Portman', 5);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (6, 6, 'images/ProfilePic/elon.jpeg', 'Elon', 'Musk', 6);
-INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (7, 7, 'images/ProfilePic/tom.jpeg', 'Tom', 'Anderson', 7);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (1, 1, 'images/ProfilePic/SteveStriker.png', 'Steve', 'Striker', 1);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (2, 2, 'images/ProfilePic/MarkGriffin.png', 'Mark', 'Griffin', 2);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (3, 3, 'images/ProfilePic/FrankieCarter.png', 'Frankie', 'Carter', 3);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (4, 4, 'images/ProfilePic/JerryConner.png', 'Jerry', 'Conner', 4);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (5, 5, 'images/ProfilePic/MeganGifford.png', 'Megan', 'Gifford', 5);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (6, 6, 'images/ProfilePic/OmarJuarez.png', 'Omar', 'Juarez', 6);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (7, 7, 'images/ProfilePic/JonMartins.png', 'Jon', 'Martins', 7);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (8, 8, 'images/ProfilePic/ChrisThomas.png', 'Chris', 'Thomas', 2);
+INSERT INTO `profile` (`id`, `user_id`, `image_link`, `first_name`, `last_name`, `location_id`) VALUES (9, 9, 'images/ProfilePic/MarcusSmith.png', 'Marcus', 'Smith', 4);
 
 COMMIT;
 

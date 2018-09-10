@@ -20,7 +20,7 @@
 <style>
 body {
 	background-image:
-		url("images/earbudsHome.jpg");
+		url("https://i.redd.it/3euvmc3uumxz.png");
 		background-repeat: no-repeat;
     	background-attachment: fixed;
     	background-position: center; 
@@ -60,6 +60,14 @@ footer {
 		height: auto;
 	}
 }
+.font {
+	text-align: center;
+	color: white;
+}
+
+.container1 {
+	background: black;
+}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -98,15 +106,16 @@ footer {
 	<br>
 	<br>
 	<div class="container-fluid text-center">
-		<h1>Welcome To Earbuds!</h1>
+	
+		<h1 class="font">Welcome To Earbuds!</strong></font></h1>
 		<div>
 			<h3>Sign Up</h3>
 		</div>
 		<div class="container-fluid text-center col-md-offset-4">
 			<form class="form-horizontal" action="signUp.do" method="POST"
 				modelAttribute="userSignUp">
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="username">Username:</label>
+				<div class="form-group" >
+					<label class="control-label col-sm-2" for="username" class="font">Username:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="username"
 							placeholder="Username" required />

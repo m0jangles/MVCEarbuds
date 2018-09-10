@@ -51,6 +51,23 @@ footer {
 		height: auto;
 	}
 }
+body {
+	background-color: #EAEAEA;
+/* 	background-image: url("images/record-1404325_1920.jpg"); */
+	background-image: url("images/red.jpg");
+
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+.font {
+	text-align: center;
+	color: white;
+}
+
+.container1 {
+	background: black;
+}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -94,14 +111,14 @@ footer {
 	</nav>
 	<div class="container-fluid text-center">
 	<br><br><br>
-		<div>
-			<h3>Settings</h3>
+		<div class="container1">
+			<h3 class="font">Settings</h3>
 		</div>
 		
 		<div class="container-fluid text-center col-md-offset-4">
 			<form class="form-horizontal" action="updateProfile.do" method="POST">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="firstName">First
+					<label class="control-label col-sm-2" for="firstName" class="font">First
 						Name:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="firstName"
@@ -109,7 +126,7 @@ footer {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="lastName">Last
+					<label class="control-label col-sm-2" for="lastName" class="font">Last
 						Name:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="lastName"
@@ -117,7 +134,7 @@ footer {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="image">Profile
+					<label class="control-label col-sm-2" for="image" class="font">Profile
 						Picture URL:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="image"
@@ -125,21 +142,21 @@ footer {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationCity">City:</label>
+					<label class="control-label col-sm-2" for="locationCity " class="font">City:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationCity"
 							value="${UserInSession.profile.location.city}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationState">State:</label>
+					<label class="control-label col-sm-2" for="locationState" class="font">State:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationState"
 							value="${UserInSession.profile.location.state}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationCountry">Country:</label>
+					<label class="control-label col-sm-2" for="locationCountry" class="font">Country:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationCountry"
 							value="${UserInSession.profile.location.country}">

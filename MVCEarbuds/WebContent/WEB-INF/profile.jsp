@@ -70,7 +70,9 @@ footer {
 
 body {
 	background-color: #EAEAEA;
-	background-image: url("images/record-1404325_1920.jpg");
+/* 	background-image: url("images/record-1404325_1920.jpg"); */
+	background-image: url("images/sleeves.jpg");
+
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
