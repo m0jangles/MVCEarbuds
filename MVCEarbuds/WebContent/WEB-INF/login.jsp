@@ -18,12 +18,81 @@
 <title>Earbuds | Log In or Sign Up</title>
 </head>
 <style>
+.jumbotron {
+	margin-top: 0px;
+	position: relative;
+	background: url("https://i.redd.it/3euvmc3uumxz.png") center
+		no-repeat;
+	min-height: 500px;
+	background-size: 150%;
+}
+.jumbotron h1 {
+	text-align: left;
+	color: white;
+	font-size: 2.7em;
+	margin-top: 50px;
+	margin-left: -20px;
+}
+
+.jumbotron-content {
+	color: white;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0px 15px;
+	width: 25%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .75);
+	border-radius: 5px;
+}
+
+.jumbotron-content h3 {
+	margin-top: 5%;
+	text-align: center;
+	color: white;
+	font-size: 1.75em;
+}
+
+.jumbotron .btn {
+	padding: 5px 5%;
+	margin: 5% 20%;
+}
+.jumbotron-content label {
+  color: white;
+  font-size: 1em;
+}
+
+@media ( min-width : 992px) {
+	.jumbotron .btn {
+		padding: 5px 10%;
+	}
+}
+
+@media ( max-width : 991px) {
+	.jumbotron-content {
+		position: absolute;
+		height: 100%;
+	}
+}
+
+@media ( max-width : 768px) {
+	.jumbotron {
+		background-size: 100% 100%;
+	}
+	.jumbotron-content {
+		top: 0;
+		height: 100%;
+		width: 37%;
+	}
+	.jumbotron .btn {
+		font-size: 0.85em;
+		padding: 8px 5%;
+		max-width: 65px;
+	}
+}
+
 body {
-	background-image:
-		url("https://i.redd.it/3euvmc3uumxz.png");
-		background-repeat: no-repeat;
-    	background-attachment: fixed;
-    	background-position: center; 
+	background-color: lightblue;
 }
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -60,6 +129,7 @@ footer {
 		height: auto;
 	}
 }
+
 .font {
 	text-align: center;
 	color: white;
@@ -67,6 +137,7 @@ footer {
 
 .container1 {
 	background: black;
+}
 }
 </style>
 <body>
@@ -94,7 +165,7 @@ footer {
 						<input type="password" class="form-control" name="password"
 							placeholder="Password" required>
 					</div>
-					<button type="submit" class="btn btn-outline-dark btn-std">Sign
+					<button type="submit" class="btn btn-primary btn-std">Sign
 						In</button>
 				</form:form>
 				<%--End Login Form --%>
@@ -105,61 +176,53 @@ footer {
 	<br>
 	<br>
 	<br>
-	<div class="container-fluid text-center">
-	
-		<h1 class="font">Welcome To Earbuds!</strong></font></h1>
-		<div>
-			<h3>Sign Up</h3>
-		</div>
-		<div class="container-fluid text-center col-md-offset-4">
-			<form class="form-horizontal" action="signUp.do" method="POST"
-				modelAttribute="userSignUp">
-				<div class="form-group" >
-					<label class="control-label col-sm-2" for="username" class="font">Username:</label>
-					<div class="col-md-4 form-group">
-						<input type="text" class="form-control" name="username"
+	<div class="container-fluid">
+
+		<div class="jumbotron">
+		<h1>
+			Welcome To Earbuds!
+		</h1>
+
+			<div class="jumbotron-content">
+					<h3>Sign Up</h3>
+				<form class="form-group" action="signUp.do" method="POST"
+					modelAttribute="userSignUp">
+					<div class="form-group">
+						<label class="control-label" for="username" class="font">Username:</label>
+						<input type="email" class="form-control" name="username"
 							placeholder="Username" required />
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="password">Password:</label>
-					<div class="col-md-4 form-group">
-						<input type="password" class="form-control" name="password"
+					<div class="form-group">
+						<label class="control-label" for="password">Password:</label> <input
+							type="password" class="form-control" name="password"
 							placeholder="Password" required />
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Email:</label>
-					<div class="col-md-4 form-group">
-						<input type="text" class="form-control" name="email"
-							placeholder="Email" required />
+					<div class="form-group">
+						<label class="control-label" for="email">Email:</label> <input
+							type="text" class="form-control" name="email" placeholder="Email"
+							required />
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="firstName">First Name:</label>
-					<div class="col-md-4 form-group">
-						<input type="text" class="form-control" name="firstName"
+					<div class="form-group">
+						<label class="control-label" for="firstName">First Name:</label> <input
+							type="text" class="form-control" name="firstName"
 							placeholder="First Name">
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="lastName">Last
-							Name:</label>
-					<div class="col-md-4 form-group">
-						<input type="text" class="form-control" name="lastName"
+					<div class="form-group">
+						<label class="control-label" for="lastName">Last Name:</label> <input
+							type="text" class="form-control" name="lastName"
 							placeholder="Last Name">
 					</div>
-				</div>
-				<div class="col-md-5 text-center">
-					<button type="submit" class="btn btn-default btn-lg">Sign
-						Up!</button>
-				</div>
-			</form>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-std">Sign
+							Up!</button>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
 
-	<c:if test="${wasSignUpSuccessful}">
-		<p>User sign up was successful!</p>
-	</c:if>
+		<c:if test="${wasSignUpSuccessful}">
+			<p>User sign up was successful!</p>
+		</c:if>
+	</div>
 </body>
 </html>
