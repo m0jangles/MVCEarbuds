@@ -68,6 +68,10 @@ footer {
 .container1 {
 	background: black;
 }
+label, form {
+	color: white;
+	
+}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -115,7 +119,7 @@ footer {
 			<form class="form-horizontal" action="signUp.do" method="POST"
 				modelAttribute="userSignUp">
 				<div class="form-group" >
-					<label class="control-label col-sm-2" for="username" class="font">Username:</label>
+					<label class="control-label col-sm-2" for="username">Username:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="username"
 							placeholder="Username" required />

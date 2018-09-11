@@ -68,6 +68,10 @@ body {
 .container1 {
 	background: black;
 }
+label, form {
+	color: white;
+	
+}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -118,7 +122,7 @@ body {
 		<div class="container-fluid text-center col-md-offset-4">
 			<form class="form-horizontal" action="updateProfile.do" method="POST">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="firstName" class="font">First
+					<label class="control-label col-sm-2" for="firstName">First
 						Name:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="firstName"
@@ -126,7 +130,7 @@ body {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="lastName" class="font">Last
+					<label class="control-label col-sm-2" for="lastName">Last
 						Name:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="lastName"
@@ -134,7 +138,7 @@ body {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="image" class="font">Profile
+					<label class="control-label col-sm-2" for="image">Profile
 						Picture URL:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="image"
@@ -142,21 +146,21 @@ body {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationCity " class="font">City:</label>
+					<label class="control-label col-sm-2" for="locationCity">City:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationCity"
 							value="${UserInSession.profile.location.city}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationState" class="font">State:</label>
+					<label class="control-label col-sm-2" for="locationState">State:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationState"
 							value="${UserInSession.profile.location.state}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="locationCountry" class="font">Country:</label>
+					<label class="control-label col-sm-2" for="locationCountry">Country:</label>
 					<div class="col-md-4 form-group">
 						<input type="text" class="form-control" name="locationCountry"
 							value="${UserInSession.profile.location.country}">

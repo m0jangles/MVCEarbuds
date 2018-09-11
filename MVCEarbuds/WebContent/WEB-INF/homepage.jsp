@@ -261,7 +261,8 @@ a {
 								href="friendProfile.do?friendID=${friend.profile.user.id}">
 									<img src="${friend.profile.image}" height="50" width="50" />
 							</a>
-							<td class="font"><span class="friendName">${friend.profile.firstName} ${friend.profile.lastName}</span></td>
+							<td class="font"><a
+								href="friendProfile.do?friendID=${friend.profile.user.id}">${friend.profile.firstName} ${friend.profile.lastName}</a></td>
 						</tr>
 					</c:forEach>
 				</table>
