@@ -33,7 +33,7 @@ public class Song {
 
 	private String artist;
 
-	@ManyToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+	@ManyToMany()
 	@JoinTable(name = "playlist_song",
 			joinColumns = @JoinColumn(name = "song_id"),
 			inverseJoinColumns = @JoinColumn(name = "playlist_id"))

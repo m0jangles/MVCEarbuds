@@ -57,6 +57,7 @@ public class PlaylistDAOImpl implements PlaylistDAO {
 	@Override
 	public boolean removePlaylist(Integer id) {
 		Playlist playlist = em.find(Playlist.class, id);
+		List<Song> songs = playlist.getSongs();
 		em.remove(playlist);
 		if (em.find(Playlist.class, id) == null) {
 			return true;

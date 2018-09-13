@@ -94,12 +94,14 @@ public class PlaylistController {
 	}
 
 	@RequestMapping(path = "removePlaylist.do", method = RequestMethod.POST)
-	public ModelAndView deletePlaylist(Integer playlistId) {
+	public ModelAndView deletePlaylist(RedirectAttributes redir, Integer playlistId) {
 		ModelAndView mv = new ModelAndView();
 		Boolean deletedPlaylist = dao.removePlaylist(playlistId);
-		mv.addObject("deletedPlaylist", deletedPlaylist); // To be able to display a
-																											// message when the
-																											// playlist is deleted
+		if (deletedPlaylist == true) {
+			mv.addObject("deletedPlaylist", deletedPlaylist);
+			mv.setViewName("redirect:homepage.do");
+			return mv;
+		}
 		mv.setViewName("homepage");
 		return mv;
 	}

@@ -234,6 +234,7 @@ a {
 							</font> </strong>
 							<form action="removePlaylist.do" method="POST">
 								<input type="hidden" name="playlistId" value="${playlist.id }">
+								<input type="hidden" name="id" value="${UserInSession.profile.id }">
 								<button type="submit" class="btn btn-primary btn-xs btn-danger"
 									value="Delete Playlist">Delete Playlist</button>
 							</form>
