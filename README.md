@@ -16,3 +16,10 @@ Utilizing a small-team structure, group members established guidelines for split
 shared repository.  Establishing guidelines prior to the project helped to minimize merge conflicts.  Over the course of approximately 8 days, features were incrementally saved to the repository.  Each feature was tested and often refactored before being marked as completed in a Trello board.  Completing one feature at a time kept the team on track to complete the minimum viable product and to keep from stretching the team too thin over too many features.  
 
 Features were chosen based on the availability of time and the feasibility to complete the features in the given time.  Stretch goals were then implemented as time allowed.  Tests were developed and used throughout to ensure features functioned as planned.
+
+## Logging in to the App
+username: Steve$
+pw: password
+
+Once inside the app, an Earbuds user can add posts using the form, add songs to their playlists on the right.  User can remove songs, follow users, and create playlists.  User can search for other users and/or songs using the search boxes on the top and finally logout when finished.
+
